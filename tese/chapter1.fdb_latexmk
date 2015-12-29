@@ -1,0 +1,14 @@
+# Fdb version 3
+["pdflatex"] 1451404455 "chapter1.tex" "/home/gcandal/pdis/tese/chapter1.pdf" "chapter1" 1451404455
+  "/etc/texmf/web2c/texmf.cnf" 1446048860 1101 af7716885e081ab43982cab7b4672c1a ""
+  "/home/gcandal/pdis/tese/chapter1.aux" 1451404318 1766 b6f6b59f259d56ef5ce4dbf21000ec67 ""
+  "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1435377840 31349 7675f8adfbe12aae865d340d35423a49 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1435377840 31349 7675f8adfbe12aae865d340d35423a49 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1446049089 3844461 75b301c5bed9c9041d67274f6e00246f ""
+  "chapter1.tex" 1327924626 5753 ed2874d2375d2efc4fe0ac04aff31d44 ""
+  (generated)
+  "/home/gcandal/pdis/tese/chapter1.log"
+  "chapter1.log"
+  "/home/gcandal/pdis/tese/chapter1.pdf"
