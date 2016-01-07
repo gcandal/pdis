@@ -3,34 +3,96 @@
 \section*{}
 
 This chapter has two purposes: describing the foundations on which this work
-is built on, namely PP and ML, and enumerating
-
-\iffalse
-Neste capítulo é descrito o estado da arte e são
-apresentados trabalhos relacionados para mostrar o que existe no
-mesmo domínio e quais os problemas em aberto.
-Deve deixar claro que existe uma oportunidade de desenvolvimento que
-cobre alguma falha concreta .
-
-O capítulo deve também efetuar uma revisão tecnológica às principais
-ferramentas utilizáveis no âmbito do projeto, justificando futuras
-escolhas.
-\fi
+is built on, namely Machine Learning (ML), Prograbilistic Programming (PP) and
+Visual Programming(VP) while enumerating different tools which are based
+on one of these concepts.
 
 \subsection{Machine learning}
 
-Machine learning is a field with the potential to impact a wide spectrum of
-different areas such as biology, medicine, finance, astronomy
-\cite{Amatriain:2013:BDU:2541176.2514691}, computer vision, sales forecast,
-robotics \cite{intml}, product recommendations, fraud detection or
-internet ads bidding \cite{SciPy}. It can be seen as a subfield of artifical
+Machine learning is a field which can be seen as a subfield of artifical
 intelligence that incorporates mathematics and statistics and is concerned
 with conceiving algorithms that learn autonomously, that is, without human
 interventation \cite{mlbrit}\cite{mlnot}.
+It has the potential to impact a wide spectrum of
+different areas such as biology, medicine, finance, astronomy
+\cite{Amatriain:2013:BDU:2541176.2514691}, computer vision, sales forecast,
+robotics \cite{intml}, product recommendations, fraud detection or
+internet ads bidding \cite{SciPy}.
+
+Learning from data is commercially and scientifically important. ML consists of
+methods that automatically extract interesting knowledge in databases of sometimes chaotic and
+redundant information. ML is a data-based knowledge-discovering process that
+has the potential not only to analyze events in retrospect but also to predict
+future events or important alterations \cite{mapt}.
 
 \subsubsection{Bayesian Reasoning}
 
+
+
 \subsubsection{Probabilistic Programming}
+
+\begin{quote}
+  ``If we view the semantics of the underlying deterministic language as a map
+  from programs to executions of the program, the semantics of a PPL built on it
+   will be a map from programs to distributions over executions. When the
+   program halts with probability one, this induces a proper distribution over
+   return values. Indeed, any computable distribution can be represented as the
+   distribution induced by a Church program in this way''~\cite{Freer2012}
+\end{quote}
+
+Probabilistic programming is a way to create systems that help us make decisions
+in the face of uncertainty. Lots of everyday decisions involve judgment in
+determining relevant factors that we do not directly observe \cite{Szolovits1993}. Historically,
+one way to help make decisions under uncertainty has been to use a probabilistic
+reasoning system \cite{Lassiter2012}. Probabilistic reasoning combines our knowledge of a situation
+with the laws of probability to determine those unobserved factors that are
+critical to the decision. Typically, the way the several observations are
+combined is through the usage of bayesian statistics, due to its anachronistic
+interpretation where existing knowledge (priors) are combined with observations
+in order to gather evidence towards competing hypothesis.
+
+When compared to other machine learning methods (such as random forests, neural
+networks or linear regression), which take homogeneous data as input (requiring
+the user to separate their domain into different models), probabilistic
+programming is used to leverage the data’s original structure. Plus, it provides
+full probability distributions over both the predictions and parameters of the
+model, whereas ML methods can only give the user a certain degree of confidence
+on the predictions.
+
+Until recently, probabilistic reasoning systems have been limited in scope, and
+have been hard to apply to many real world situations. Models are communicated
+using a mix of natural language, pseudo code, and mathematical formulae and solved
+using special purpose, one-off inference methods. Rather than precise
+specifications suitable for automatic inference, graphical models typically
+serve as coarse, high-level descriptions, eliding critical aspects such as
+fine-grained independence, abstraction and recursion.
+
+Probabilistic programming is a new approach that makes probabilistic reasoning
+systems easier to build and more widely applicable. A probabilistic programming
+language (PPL) is a programming language designed to describe probabilistic
+models, in a such a way we can say that the program itself is the model, and
+then perform inference in those models. PPLs have seen recent interest from the
+artificial intelligence, programming languages, cognitive science, and natural
+languages communities. By empowering users with a common dialect in the form of
+a programming language, rather than requiring each one of them to the
+non-trivial and error-prone task of writing their own models and hand-tailored
+inference algorithms for the problem at hand, it encourages exploration, since
+different models require less time to setup and evaluate, and enables sharing
+knowledge in the form of best practices, patterns and tools such as optimized
+compilers or interpreters, debuggers, IDE’s, optimizers and profilers.
+
+PPLs are closely related to graphical models and Bayesian networks, but are more
+expressive and flexible. One can easily realize this by looking at the re-usable
+components PPLs offer, being one of them the inference engine, which can be
+plugged in into different models. For instances, it is easy to replace the
+exact-solution traditional Bayesian networks inference, which requires time
+exponential in the number of variables to run, with approximation algorithms
+such as the Markov Chain Monte Carlo (MCMC) or Variational Message Passing
+(VMP), which make it possible to compute large hierarchical models by resorting
+to sampling and approximation. PPLs often extend from a basic language (i.e.,
+they are embedded in a host language like R, Java or Scala), although some PPLs
+such as WinBUGS and Stan offer a self-contained language, with no obvious origin
+in another language.
 
 \subsection{Visual Programming}
 
