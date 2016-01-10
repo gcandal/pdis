@@ -135,7 +135,7 @@ figure \ref{beliefnet}.
   \begin{center}
     \leavevmode
     \includegraphics[width=0.86\textwidth]{beliefnet}
-    \caption{Belief network for the alarm problem \cite{}}
+    \caption{Belief network for the alarm problem \cite{belfn}}
     \label{fig:beliefnet}
   \end{center}
 \end{figure}
@@ -171,15 +171,65 @@ $$ P(H \mid D) = \frac{P(D \mid H) \, P(H)}{P(D)} $$
 
 Where:
 
-H stands for hypothesis and D for data
+\begin{itemize}
+  \item H: hypothesis
+  \item D: data
+  \item p(H): probability of the hypothesis before the new data is taken into
+account. Also called \textbf{prior}. It can either be calculated using background
+information or subjectively defined using domain knowledge. Loses significance
+as new data is added, so its choice is not determinant to the model's performance
+in the long run.
+  \item p(H|D): what we want to calculate, the probability of the hypothesis
+after considering the new date. It is called \textbf{posterior}.
+  \item p(D|H): probability of the data if the hypothesis was true, called
+the \textbf{likelihood}.
+  \item p(D): probability of the data under any hypothesis, called the
+\textbf{normalizing constant}.
+\end{itemize}
 
-Think Bayes: diachronic
-markov tambem graphical model
-mau: só bernoulli
+Under this interpretation, you may continuously feed data into the model and see
+the probabilities getting updated. We will see more practical examples of this
+in section \ref{pp}.
 
-\subsubsection{Probabilistic Programming}
+At first glance, someone who is learning for the first time about PR applied
+to ML, may think that graphical models such as the one presented in Figure
+\ref{beliefnet} are the best there can be done in terms of using a graphical
+interface for solving this kind of problems and that the only thing is missing
+is an automated way to make the calculations.
+
+While it is true we have never refered mentioned techniques or tools that
+automatically do inference over a Bayesian Network, there are several tools
+with that capability (including an R package \cite{Højsgaard2013} or
+standalone tools \cite{msbn}).
+
+However, not all PR can be done via Bayesian Networks and not all models are graphical
+models \cite{intpp}. PP are the largest class of models available, and here are
+also more algorithms for inference than just the calculation of joint
+probabilities (like we did in the alarm example), as we will discuss in Section
+\ref{sec:pp}.
+
+Bayesian Networks are not the only kind of graphical model, another one is
+Markov Chains, which is yet another example of a model which is not able to
+represent all PR problems. This is clear when we realize that, while PPLs
+support a large number of different distributions (such as Normal, Laplace,
+Gamma, Half-Cauchy or \textit{t}), all Bayesian Networks and Markov Chain
+can be represented in a PPL by just using Bernoulli distributions \cite{PPm}.
+We can see an example of such a translation in Figure \ref{fig:mppl}.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{markppl}
+    \caption{Translation of Discrete Time Markov Chain to a PPL \cite{PPm}}
+    \label{fig:mppl}
+  \end{center}
+\end{figure}
+
+\subsubsection{Probabilistic Programming Languages}
+\label{sec:pp}
 
 Auto PR+BR
+Mais custom que ML
 
 \begin{quote}
   ``If we view the semantics of the underlying deterministic language as a map
@@ -189,17 +239,6 @@ Auto PR+BR
    return values. Indeed, any computable distribution can be represented as the
    distribution induced by a Church program in this way''~\cite{Freer2012}
 \end{quote}
-
-Probabilistic programming is a way to create systems that help us make decisions
-in the face of uncertainty. Lots of everyday decisions involve judgment in
-determining relevant factors that we do not directly observe \cite{Szolovits1993}. Historically,
-one way to help make decisions under uncertainty has been to use a probabilistic
-reasoning system \cite{Lassiter2012}. Probabilistic reasoning combines our knowledge of a situation
-with the laws of probability to determine those unobserved factors that are
-critical to the decision. Typically, the way the several observations are
-combined is through the usage of bayesian statistics, due to its anachronistic
-interpretation where existing knowledge (priors) are combined with observations
-in order to gather evidence towards competing hypothesis.
 
 When compared to other machine learning methods (such as random forests, neural
 networks or linear regression), which take homogeneous data as input (requiring
