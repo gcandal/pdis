@@ -228,26 +228,6 @@ We can see an example of such a translation in Figure \ref{fig:mppl}.
 \subsubsection{Probabilistic Programming Languages}
 \label{sec:pp}
 
-Auto PR+BR
-Mais custom que ML
-
-\begin{quote}
-  ``If we view the semantics of the underlying deterministic language as a map
-  from programs to executions of the program, the semantics of a PPL built on it
-   will be a map from programs to distributions over executions. When the
-   program halts with probability one, this induces a proper distribution over
-   return values. Indeed, any computable distribution can be represented as the
-   distribution induced by a Church program in this way''~\cite{Freer2012}
-\end{quote}
-
-When compared to other machine learning methods (such as random forests, neural
-networks or linear regression), which take homogeneous data as input (requiring
-the user to separate their domain into different models), probabilistic
-programming is used to leverage the data’s original structure. Plus, it provides
-full probability distributions over both the predictions and parameters of the
-model, whereas ML methods can only give the user a certain degree of confidence
-on the predictions.
-
 Until recently, probabilistic reasoning systems have been limited in scope, and
 have been hard to apply to many real world situations. Models are communicated
 using a mix of natural language, pseudo code, and mathematical formulae and solved
@@ -270,6 +250,7 @@ different models require less time to setup and evaluate, and enables sharing
 knowledge in the form of best practices, patterns and tools such as optimized
 compilers or interpreters, debuggers, IDE’s, optimizers and profilers.
 
+Algoritmos
 PPLs are closely related to graphical models and Bayesian networks, but are more
 expressive and flexible. One can easily realize this by looking at the re-usable
 components PPLs offer, being one of them the inference engine, which can be
@@ -278,16 +259,40 @@ exact-solution traditional Bayesian networks inference, which requires time
 exponential in the number of variables to run, with approximation algorithms
 such as the Markov Chain Monte Carlo (MCMC) or Variational Message Passing
 (VMP), which make it possible to compute large hierarchical models by resorting
-to sampling and approximation. PPLs often extend from a basic language (i.e.,
-they are embedded in a host language like R, Java or Scala), although some PPLs
-such as WinBUGS and Stan offer a self-contained language, with no obvious origin
-in another language.
+to sampling and approximation. 
+
+Mais custom que ML, exemplo truskill
+
+When compared to other machine learning methods (such as random forests, neural
+networks or linear regression), which take homogeneous data as input (requiring
+the user to separate their domain into different models), probabilistic
+programming is used to leverage the data’s original structure.
+
+\begin{quote}
+  ``If we view the semantics of the underlying deterministic language as a map
+  from programs to executions of the program, the semantics of a PPL built on it
+   will be a map from programs to distributions over executions. When the
+   program halts with probability one, this induces a proper distribution over
+   return values. Indeed, any computable distribution can be represented as the
+   distribution induced by a Church program in this way''~\cite{Freer2012}
+\end{quote}
+
+Distributions e nao so prob, exemplo dos slides com graficos
+
+Plus, it provides full probability distributions over both the predictions and parameters of the
+model, whereas ML methods can only give the user a certain degree of confidence
+on the predictions.
 
 \subsection{Visual Programming}
 
 \subsubsection{Visual Dataflow Programming}
 
 \subsection{State of the Art}
+
+PPLs often extend from a basic language (i.e.,
+they are embedded in a host language like R, Java or Scala), although some PPLs
+such as WinBUGS and Stan offer a self-contained language, with no obvious origin
+in another language.
 
 \subsubsection{Stan}
 
@@ -310,5 +315,7 @@ in another language.
 \subsubsection{GoJS}
 
 \subsubsection{Blockly}
+
+\subsubsection{Viskell}
 
 \section{Conclusions}
