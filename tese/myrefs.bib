@@ -129,6 +129,43 @@ year = {2012}
  howpublished = {Available at http://www.kdnuggets.com/2015/05/poll-r-rapidminer-python-big-data-spark.html, accessed in 4th Jan 2016},
 }
 
+@Misc{figaro,
+ author = {Reposa, Michael and Takata, Glenn},
+ title = {Figaro},
+ year = 2015,
+ howpublished = {Available at https://github.com/p2t2/figaro, accessed in 14th Jan 2016},
+}
+
+@misc{dippl,
+  title = {{The Design and Implementation of Probabilistic Programming Languages}},
+  author = {Goodman, Noah D and Stuhlm\"{u}ller, Andreas},
+  year = {2014},
+  howpublished = {\url{http://dippl.org}},
+  note = {Accessed: 2016-1-14}
+}
+
+@misc{msalg,
+  title = {{http://research.microsoft.com/en-us/um/cambridge/projects/infernet/docs/Working%20with%20different%20inference%20algorithms.aspx}},
+  author = {Microsoft Research},
+  howpublished = {\url{http://research.microsoft.com/en-us/um/cambridge/projects/infernet/docs/Working%20with%20different%20inference%20algorithms.aspx}},
+  note = {Accessed: 2016-01-14}
+}
+
+@article{DBLP:journals/corr/abs-1212-2991,
+ author = {Shawn Hershey and
+           Jeffrey Bernstein and
+           Bill Bradley and
+           Andrew Schweitzer and
+           Noah Stein and
+           Theophane Weber and
+           Benjamin Vigoda},
+ title = {Accelerating Inference: towards a full Language, Compiler and Hardware stack},
+ journal = {CoRR},
+ volume = {abs/1212.2991},
+ year = {2012},
+ ee = {http://arxiv.org/abs/1212.2991},
+ bibsource = {DBLP, http://dblp.uni-trier.de} }
+
 @article{Winn2005,
 abstract = {This paper presents Variational Message Passing (VMP), a general purpose algorithm for applying variational inference to a Bayesian Network. Like belief propagation, Variational Message Passing proceeds by passing messages between nodes in the graph and updating posterior beliefs using local operations at each node. Each such update increases a lower bound on the log evidence (unless already at a local maximum). In contrast to belief propagation, VMP can be applied to a very general class of conjugate-exponential models because it uses a factorised variational approximation. Furthermore, by introducing ad- ditional variational parameters, VMP can be applied to models containing non-conjugate distributions. The VMP framework also allows the lower bound to be evaluated, and this can be used both for model comparison and for detection of convergence. Variational Mes- sage Passing has been implemented in the form of a general purpose inference engine called VIBES (‘Variational Inference for BayEsian networkS’) which allows models to be specified graphically and then solved variationally without recourse to coding.},
 author = {Winn, John and Bishop, Cm and Jaakkola, T},
@@ -359,4 +396,139 @@ mendeley-groups = {PPL},
 pages = {267--},
 title = {{Probabilistic Programming}},
 year = {2014}
+}
+
+@article{Poole2010,
+abstract = {Pearl [2000, p. 26] attributes to Laplace [1814] the idea of a probabilistic model as a deterministic system with stochastic inputs. Pearl defines causal models in terms of deterministic systems with stochastic inputs. In this paper, I show how deterministic ...},
+author = {Poole, David},
+file = {:home/gcandal/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Poole - 2010 - Probabilistic Programming Languages Independent Choices and Deterministic Systems.pdf:pdf},
+journal = {Heuristics, Probability and Causality: A Tribute to Judea Pearl},
+mendeley-groups = {PPL},
+pages = {253--269},
+title = {{Probabilistic Programming Languages: Independent Choices and Deterministic Systems}},
+url = {http://www.cs.ubc.ca/{~}poole/papers/IndependentChoices.pdf},
+year = {2010}
+}
+
+@article{Andrieu2003,
+abstract = {This purpose of this introductory paper is threefold. First, it introduces the Monte Carlo method with emphasis on probabilistic machine learning. Second, it reviews the main building blocks of modern Markov chain Monte Carlo simulation, thereby providing and introduction to the remaining papers of this special issue. Lastly, it discusses new interesting research horizons.},
+annote = {Enough to get an intuition on MC methods and dig deeper into the subject if needed. Giving up on understanding Metropolis-Hastings in greater detail.},
+archivePrefix = {arXiv},
+arxivId = {1109.4435v1},
+author = {Andrieu, Christophe and {De Freitas}, Nando and Doucet, Arnaud and Jordan, Michael I.},
+doi = {10.1023/A:1020281327116},
+eprint = {1109.4435v1},
+file = {:home/gcandal/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Andrieu et al. - 2003 - An introduction to MCMC for machine learning.pdf:pdf},
+isbn = {08856125 (ISSN)},
+issn = {08856125},
+journal = {Machine Learning},
+keywords = {MCMC,Markov chain Monte Carlo,Sampling,Stochastic algorithms},
+mendeley-groups = {PPL},
+number = {1-2},
+pages = {5--43},
+pmid = {178037200001},
+title = {{An introduction to MCMC for machine learning}},
+volume = {50},
+year = {2003}
+}
+
+@article{minka2012infer,
+  title={Infer .NET 2.5},
+  author={Minka, Tom and Winn, John and Guiver, John and Knowles, David},
+  journal={Microsoft Research Cambridge},
+  year={2012}
+}
+
+@article{Freer2010,
+abstract = {We investigate the class of computable probability distributions and explore the fundamental limitations of using this class to describe and compute conditional distributions. In addition to proving the existence of noncomputable conditional distributions, and thus ruling out the possibility of generic probabilistic inference algorithms (even inefficient ones), we highlight some positive results showing that posterior inference is possible in the presence of additional structure like exchangeability and noise, both of which are common in Bayesian hierarchical modeling. This theoretical work bears on the development of probabilistic programming languages (which enable the specification of complex probabilistic models) and their implementations (which can be used to perform Bayesian reasoning). The probabilistic programming approach is particularly well suited for defining infinite-dimensional, recursively-defined stochastic processes of the sort used in nonparametric Bayesian statistics. We present a new construction of the Mondrian process as a partition-valued Markov process in continuous time, which can be viewed as placing a distribution on an infinite kd-tree data structure.},
+author = {Freer, Cameron E and Mansinghka, Vikash K and Roy, Daniel M},
+file = {:home/gcandal/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Freer, Mansinghka, Roy - 2010 - When are probabilistic programs probably computationally tractable.pdf:pdf},
+journal = {NIPS 2010 Workshop on Monte Carlo Methods in Modern Applications},
+mendeley-groups = {PPL},
+pages = {1--9},
+title = {{When are probabilistic programs probably computationally tractable?}},
+year = {2010}
+}
+
+@article{Minka1999,
+abstract = {This paper presents a new deterministic approximation technique in Bayesian networks. This method, Expectation Propagation, unifies two previous techniques: assumed-density filtering, an extension of the Kalman filter, and loopy belief propagation, an extension of belief propaga- tion in Bayesian networks. Loopy belief propagation, because it propagates exact belief states, is useful for a limited class of belief networks, such as those which are purely discrete. Expec- tation Propagation approximates the belief states by only retaining expectations, such as mean and variance, and iterates until these expectations are consistent throughout the network. This makes it applicable to hybrid networks with discrete and continuous nodes. Experiments with Gaussian mixture models showExpectation Propagation to be convincingly better than methods with similar computational cost: Laplaces method, variational Bayes, and Monte Carlo. Expectation Propagation also provides an efficient algorithm for training Bayes point machine classifiers},
+archivePrefix = {arXiv},
+arxivId = {1301.2294},
+author = {Minka, Thomas P},
+eprint = {1301.2294},
+file = {:home/gcandal/Downloads/minka-ep-uai.pdf:pdf},
+isbn = {1-55860-800-1},
+journal = {Statistics},
+mendeley-groups = {PPL},
+number = {2},
+pages = {362--369},
+title = {{Expectation Propagation for Approximate Bayesian Inference F d}},
+url = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.86.1319{\&}amp;rep=rep1{\&}amp;type=pdf},
+volume = {17},
+year = {1999}
+}
+
+@article{Zhang1994,
+abstract = {The general problem of computing posterior probabilities in Bayesian networds is NP-hard (Cooper 1990). However efficient algorithms are often possible for particular applications by exploiting problem structures. It is well understood that the key to the materialization of such a possibility is to make use of conditional independence and work with factorizations of joint probabilities rather than joint probabilities themselves. Differnent exact approaches can be characterized in terms of their choices of factorizations. We propose a new approach which adopts a straightforward way for factorizing joint probabilities. In comparison with the clique tree propagation approach, our approach is very simple. It allows the pruning of irrelevant variables, it accommodates changes to the knowledge base more easily. It is easier to implement. More importantly, it can be adapted to utilize both intercausal independence and conditional independence in one uniform framework. On the other hand, clique tree propagation is better in terms of facilitating pre-computations.},
+author = {Zhang, Nevin L and Poole, D},
+file = {:home/gcandal/Downloads/canai94.pdf:pdf},
+issn = {0710-0825},
+journal = {Proc. of the Tenth Canadian Conference on Artificial Intelligence},
+keywords = {probabilistic graphical models},
+mendeley-groups = {ML/Prob/Bayes},
+pages = {171--178},
+title = {{A simple approach to Bayesian network computations}},
+url = {http://hdl.handle.net/1783.1/757},
+year = {1994}
+}
+
+@article{Winn2005,
+abstract = {This paper presents Variational Message Passing (VMP), a general purpose algorithm for applying variational inference to a Bayesian Network. Like belief propagation, Variational Message Passing proceeds by passing messages between nodes in the graph and updating posterior beliefs using local operations at each node. Each such update increases a lower bound on the log evidence (unless already at a local maximum). In contrast to belief propagation, VMP can be applied to a very general class of conjugate-exponential models because it uses a factorised variational approximation. Furthermore, by introducing ad- ditional variational parameters, VMP can be applied to models containing non-conjugate distributions. The VMP framework also allows the lower bound to be evaluated, and this can be used both for model comparison and for detection of convergence. Variational Mes- sage Passing has been implemented in the form of a general purpose inference engine called VIBES (‘Variational Inference for BayEsian networkS’) which allows models to be specified graphically and then solved variationally without recourse to coding.},
+author = {Winn, John and Bishop, Cm and Jaakkola, T},
+doi = {10.1007/s002130100880},
+file = {:home/gcandal/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Winn, Bishop, Jaakkola - 2005 - Variational Message Passing.pdf:pdf},
+isbn = {1532-4435},
+issn = {1532-4435},
+journal = {Journal of Machine Learning Research},
+keywords = {bayesian networks,variational methods},
+mendeley-groups = {PPL},
+pages = {661--694},
+pmid = {11713616},
+title = {{Variational Message Passing}},
+url = {http://search.ebscohost.com/login.aspx?direct=true{\&}profile=ehost{\&}scope=site{\&}authtype=crawler{\&}jrnl=15324435{\&}AN=18003399{\&}h=hVptawIRxY9bpe0GokNI9+sC/7JSK74XN+ztPcGsGNYZQY5RlIgU6Iy2WzbduRcHJXoqZMRPgfHZO18TF6s+Kw=={\&}crl=c},
+volume = {6},
+year = {2005}
+}
+
+@article{Minka1999,
+abstract = {This paper presents a new deterministic approximation technique in Bayesian networks. This method, Expectation Propagation, unifies two previous techniques: assumed-density filtering, an extension of the Kalman filter, and loopy belief propagation, an extension of belief propaga- tion in Bayesian networks. Loopy belief propagation, because it propagates exact belief states, is useful for a limited class of belief networks, such as those which are purely discrete. Expec- tation Propagation approximates the belief states by only retaining expectations, such as mean and variance, and iterates until these expectations are consistent throughout the network. This makes it applicable to hybrid networks with discrete and continuous nodes. Experiments with Gaussian mixture models showExpectation Propagation to be convincingly better than methods with similar computational cost: Laplaces method, variational Bayes, and Monte Carlo. Expectation Propagation also provides an efficient algorithm for training Bayes point machine classifiers},
+archivePrefix = {arXiv},
+arxivId = {1301.2294},
+author = {Minka, Thomas P},
+eprint = {1301.2294},
+file = {:home/gcandal/Downloads/minka-ep-uai.pdf:pdf},
+isbn = {1-55860-800-1},
+journal = {Statistics},
+mendeley-groups = {PPL},
+number = {2},
+pages = {362--369},
+title = {{Expectation Propagation for Approximate Bayesian Inference F d}},
+url = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.86.1319{\&}amp;rep=rep1{\&}amp;type=pdf},
+volume = {17},
+year = {1999}
+}
+
+@article{Shen2010,
+abstract = {n recent work we have developed a novel variational inference method for partially observed systems governed by stochastic differential equations. In this paper we provide a comparison of the Variational Gaussian Process Smoother with an exact solution computed using a Hybrid Monte Carlo approach to path sampling, applied to a stochastic double well potential model. It is demonstrated that the variational smoother provides us a very accurate estimate of mean path while conditional variance is slightly underestimated. We conclude with some remarks as t o the advantages and disadvantages of the variational smoother.},
+author = {Shen, Yuan and Archambeau, Cedric and Cornford, Dan and Opper, Manfred and Shawe-taylor, John and Barillec, Remi},
+doi = {10.1007/s11265-008-0299-y},
+file = {:home/gcandal/Downloads/jsps{\_}ys09{\_}web.pdf:pdf},
+issn = {1939-8018},
+journal = {Journal of Signal Processing Systems},
+mendeley-groups = {PPL},
+number = {1},
+pages = {51--59},
+title = {{A comparison of variational and Markov Chain Monte Carlo methods for inference in partially observed stochastic dynamic systems}},
+volume = {61},
+year = {2010}
 }

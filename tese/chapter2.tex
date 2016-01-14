@@ -1,4 +1,4 @@
-\chapter{Background & State of the Art} \label{chap:sota}
+\chapter{Background \& State of the Art} \label{chap:sota}
 
 \section*{}
 
@@ -57,6 +57,7 @@ have been called "cognitive illusions,". We will describe both Bayes's rules
 and Bayesian reasoning in the next section.
 
 \subsubsection{Bayesian Reasoning}
+\label{sec:bayes}
 
 One way to approach PR is by using bayesian reasoning, which is inspired in the
 Bayes Theorem. An equivalent rule to the theorem, in its simplest form (applied
@@ -152,7 +153,9 @@ but there is neither a burglary nor an earthquake?
 
 This last example, for instances, would be calculated as: P(J, M, A, \neg B, \neg E)
 = P(J|A) * P(M|A) * P(A|\neg B, \neg E) * P(\neg B) * P(\neg E) =
-0.9 * 0.7 * 0.001 * 0.999 * 0.998 = 0.00062. Notice how counter-intuitive this
+0.9 * 0.7 * 0.001 * 0.999 * 0.998 = 0.00062.
+
+Notice how counter-intuitive this
 example is: the probability of there being an earthquake is about 32 times larger
 then there being an earthquake, the alarm ringing and the neighbors calling us,
 even if the conditional probabilities are reasonably high (0.95, 0.9 and 0.7).
@@ -189,11 +192,11 @@ the \textbf{likelihood}.
 
 Under this interpretation, you may continuously feed data into the model and see
 the probabilities getting updated. We will see more practical examples of this
-in section \ref{pp}.
+in section \ref{sec:pp}.
 
 At first glance, someone who is learning for the first time about PR applied
 to ML, may think that graphical models such as the one presented in Figure
-\ref{beliefnet} are the best there can be done in terms of using a graphical
+\ref{fig:beliefnet} are the best there can be done in terms of using a graphical
 interface for solving this kind of problems and that the only thing is missing
 is an automated way to make the calculations.
 
@@ -202,8 +205,8 @@ automatically do inference over a Bayesian Network, there are several tools
 with that capability (including an R package \cite{Højsgaard2013} or
 standalone tools \cite{msbn}).
 
-However, not all PR can be done via Bayesian Networks and not all models are graphical
-models \cite{intpp}. PP are the largest class of models available, and here are
+However, not all PR can be done via Bayesian Networks and not all graphical models
+are enough for PR \cite{intpp}. PP are the largest class of models available, and there are
 also more algorithms for inference than just the calculation of joint
 probabilities (like we did in the alarm example), as we will discuss in Section
 \ref{sec:pp}.
@@ -225,11 +228,19 @@ We can see an example of such a translation in Figure \ref{fig:mppl}.
   \end{center}
 \end{figure}
 
+<---- rever com base em prob inference for graphical models
+
 \subsubsection{Probabilistic Programming Languages}
 \label{sec:pp}
 
-Auto PR+BR
-Mais custom que ML
+A probabilistic program (PP) is an ordinary program (that can be written in
+mainstream languages such as C, Java or Haskell) whose purpose is to specify
+a probability distribution of its variables. This is done by sampling over
+several executions of the program. The only needed construct the language
+has to support, in order to be able to write a PP, is having a random number
+generator \cite{Duvenaud}. This whole notion couldn't be better explained than in this text by Freer and
+Roy, regarding Church (a PPL, which we describe in Section \ref{sec:church})
+but common to any PP:
 
 \begin{quote}
   ``If we view the semantics of the underlying deterministic language as a map
@@ -240,60 +251,164 @@ Mais custom que ML
    distribution induced by a Church program in this way''~\cite{Freer2012}
 \end{quote}
 
-When compared to other machine learning methods (such as random forests, neural
+One way to think about this notion is by considering that the program itself
+is the model. An example of the relation between a model (expressed in a PPL)
+and the implied distribution over its variables (obtained using an inference
+method) can be seen in Figure \ref{distribution}, where a variable \textit{flip}
+is set to be a Bernoulli distribution and \textit{x} is defined in terms of
+\textit{flip}. We can then see how the graphic of the inferred distributions
+of \textit{flip's} and \textit{x's} values looks like and confirm what was to
+be expected: for \textit{flip's} values lower than 0.5 we see \textit{x} follows
+a normal distributon, whereas for values greater than 0.5 it follows a gamma
+distribution instead.
+ The goal of PP is to enable PR and ML to be accessible to
+most programmers and data scientists who have enough domain and programming
+knowledge but not enough expertise in probability theory or machine learning.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{distribution}
+    \caption{Implied distributions over variables \cite{Duvenaud}}
+    \label{fig:distribution}
+  \end{center}
+\end{figure}
+
+What is then, a Probabilistic Programming Language (PPL)? First of all, it can
+be a standalone language or an extension to a general purpose programming languag.
+We'll be analyzing examples of languages from either these categories in Section
+\ref{art}, but many more exist, such as as Figaro \cite{figaro} (hosted in Scala),
+webppl \cite{dippl} (embedded in Javascript) or Dimple
+\cite{DBLP:journals/corr/abs-1212-2991} (has both a Java and a MATLAB API).
+The key difference between these languages and a PPL is the latter has
+the added capability of performing conditioning and inference \cite{Andrieu2003}.
+
+Conditioning is the ability to introduce observations about the real world in
+the program. That way, you update the prior probability based
+on those observations. Consider the example in Figure \ref{fig:truskill} (which
+is a simplified version of how Microsoft applies PP in its Xbox matchmaking
+algorithm \cite{minka2012infer}) where the prior is a normal distribution with
+equal parameters for all players (shown by the graphic in the top). Then, it
+defines how the performance of the player is based on his skill (which at the initial
+point in time, is equal to every one of them) and proceeds to make several
+observations regarding games between them. Finally, it shows the inferred
+probability distribution of the posterior on the bottom graphic.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{trueskill}
+    \caption{Microsoft Xbox Live True Skill \cite{minka2012infer}}
+    \label{fig:truskill}
+  \end{center}
+\end{figure}
+
+We said that a PPL empowers the user to formalize a model and then query for the
+probability distribution of its variables, which is automatically done via
+inference. While general-purpose language require you to write one-time
+inference methods that tightly coupled to the PP you are inferring on, PPLs
+ship with an inference engine suited to most PP programs you can write
+\cite{Freer2010}.
+
+An inference engine of a PPL acts similarly to a compiler in a traditional
+language: rather than requiring each user to engineer its own, which requires
+significant expertise and is a non-trivial and error-prone endeavour, every PPL
+has one incorporated. Olivier Grisel called this separation of concerns
+between the language and its inference engine "openbox models, blackbox
+inference engine" \cite{SciPy}.
+
+Having the engine work as a separate model opens up a myriad of new
+possibilities, mainly in the form of knowledge and tool sharing, as we have
+seen in the past in the compiler space. Examples of this would be new compiler
+compiler and interpreter techniques (such as working towards scalability or
+parallelization), optimizers, profilers or debuggers.
+
+Another great advantage of having a modular inference engine is that we can
+try different inference algorithms and pick the one that best fits the problem
+at hand. When analyzing if algorithm suits a certain use case, there are certain
+characteristics worth noting \cite{Minka1999}:
+
+\begin{itemize}
+  \item Determinism - in equal initial conditions, an algorithm always yields
+the same result.
+  \item Exact result or approximation
+  \item Guaranteed convergence - an algorithm may or not be guaranteed to reach
+a result at some point in time. If not, it's possible that it will run forever.
+  \item Efficiency - related to how fast can it reach a result.
+\end{itemize}
+
+Microsoft's Infer.NET provides three inference algorithms \cite{msalg}:
+
+\begin{itemize}
+  \item Expectation Propagation - deterministic, provides exact solutions only
+in some cases, is not guaranteed to converge and is labelled as "reasonably
+efficient".
+  \item Variational Message Passing - also deterministic, but always gives
+approximates results and is guaranteed to converge. It's considered to be the
+most efficient of the three for most cases.
+  \item Gibbs sampling - non-determinisc, may be able to reach exact result
+if given enough time to run, has guaranteed convergence and is regarded as
+not-so-efficient as the other two.
+\end{itemize}
+
+We can divide the three algorithms into two categories: variational bayesian
+methods \cite{Winn2005}\cite{Minka1999} and sampling methods (in the case of Gibbs
+sampling, it's based on Markov chain Monte Carlo) \cite{Andrieu2003}. The main
+difference, as far as the end-user is concerned, is that variational methods
+provide faster results but are subject to bias, whereas sampling methods have
+the potential to produce more accurate results (the downside being it's slower
+and its convergence is hard to diagnose) \cite{Shen2010}.
+
+Please notice than none of these algorithms provides the same kind of exact
+solution as the calculation of the joint probabilities we did in Section
+\ref{sec:bayes}. The reason for that is that calculating an exact solution
+takes time exponential in the number of variables to run, even if we have smarter
+algorithms than the naive calculations we did \cite{Zhang1994}.
+
+When compared to traditional machine learning methods (such as random forests, neural
 networks or linear regression), which take homogeneous data as input (requiring
 the user to separate their domain into different models), probabilistic
-programming is used to leverage the data’s original structure. Plus, it provides
-full probability distributions over both the predictions and parameters of the
-model, whereas ML methods can only give the user a certain degree of confidence
+programming is used to leverage the data’s original structure. This is done by
+empowering the user to write his own models. Rather than using most of his
+time performing feature engineering (that is, trying to fit the problem and the
+data into an existing model), the user will have the tool necessary to design
+the model that best fits the domain he is working on.
+Plus, it provides full probability distributions over both the predictions and parameters of the
+model, whereas ML methods can mostly only give the user a certain degree of confidence
 on the predictions.
 
-Until recently, probabilistic reasoning systems have been limited in scope, and
-have been hard to apply to many real world situations. Models are communicated
+Summarizing, PPLs are a step forward in using PR to solve ML problems since
+it helps overcome the difficulties in using PR in real world problems. This is
+done by adding automated general inference on top of a precise specification
+(the program), where in the past models were communicated
 using a mix of natural language, pseudo code, and mathematical formulae and solved
-using special purpose, one-off inference methods. Rather than precise
-specifications suitable for automatic inference, graphical models typically
-serve as coarse, high-level descriptions, eliding critical aspects such as
-fine-grained independence, abstraction and recursion.
+using special purpose, one-off inference methods.
 
-Probabilistic programming is a new approach that makes probabilistic reasoning
-systems easier to build and more widely applicable. A probabilistic programming
-language (PPL) is a programming language designed to describe probabilistic
-models, in a such a way we can say that the program itself is the model, and
-then perform inference in those models. PPLs have seen recent interest from the
-artificial intelligence, programming languages, cognitive science, and natural
-languages communities. By empowering users with a common dialect in the form of
-a programming language, rather than requiring each one of them to the
-non-trivial and error-prone task of writing their own models and hand-tailored
-inference algorithms for the problem at hand, it encourages exploration, since
+This encourages exploration, since
 different models require less time to setup and evaluate, and enables sharing
-knowledge in the form of best practices, patterns and tools such as optimized
-compilers or interpreters, debuggers, IDE’s, optimizers and profilers.
+knowledge in the form of best practices and design and development patterns.
 
-PPLs are closely related to graphical models and Bayesian networks, but are more
-expressive and flexible. One can easily realize this by looking at the re-usable
-components PPLs offer, being one of them the inference engine, which can be
-plugged in into different models. For instances, it is easy to replace the
-exact-solution traditional Bayesian networks inference, which requires time
-exponential in the number of variables to run, with approximation algorithms
-such as the Markov Chain Monte Carlo (MCMC) or Variational Message Passing
-(VMP), which make it possible to compute large hierarchical models by resorting
-to sampling and approximation. PPLs often extend from a basic language (i.e.,
-they are embedded in a host language like R, Java or Scala), although some PPLs
-such as WinBUGS and Stan offer a self-contained language, with no obvious origin
-in another language.
+However, using a full fleged programming language might still be an entry
+barrier. We want to help statisticians and data scientists alike to learn
+faster and be more productive using a PPL in a way similar to the tools they
+are accostumed to. In order to do so, we'll be combining a PPL with Visual
+Programming (Section \ref{vp}).
 
 \subsection{Visual Programming}
+\label{vp}
 
 \subsubsection{Visual Dataflow Programming}
 
 \subsection{State of the Art}
+\label{art}
 
 \subsubsection{Stan}
 
 \subsubsection{WinBUGS}
+\label{sec:wbugs}
 
 \subsubsection{Church}
+\label{sec:church}
 
 \subsubsection{Infer.NET}
 
