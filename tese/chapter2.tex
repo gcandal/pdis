@@ -8,7 +8,7 @@ Prograbilistic Programming (PP) and
 Visual Programming(VP) while enumerating different tools which are based
 on one of these concepts.
 
-\subsection{Machine learning}
+\section{Machine learning}
 
 Machine learning is a field which can be seen as a subfield of artifical
 intelligence that incorporates mathematics and statistics and is concerned
@@ -26,7 +26,7 @@ redundant information. ML is a data-based knowledge-discovering process that
 has the potential not only to analyze events in retrospect but also to predict
 future events or important alterations \cite{mapt}.
 
-\subsection{Probabilistic Reasoning}
+\section{Probabilistic Reasoning}
 
 Probabilistic reasoning is the formation of probability judgments and of
 subjective beliefs about the likelihoods of outcomes and the frequencies of
@@ -56,12 +56,12 @@ gives a value of about 7.5\%. Such systematic deviations from Bayesian reasoning
 have been called "cognitive illusions,". We will describe both Bayes's rules
 and Bayesian reasoning in the next section.
 
-\subsubsection{Bayesian Reasoning}
+\subsection{Bayesian Reasoning}
 \label{sec:bayes}
 
 One way to approach PR is by using bayesian reasoning, which is inspired in the
-Bayes Theorem. An equivalent rule to the theorem, in its simplest form (applied
-to a single event) is:
+Bayes Theorem (or Rule, or Law). An equivalent formula to the theorem, in its
+simplest form (applied to a single event) is:
 
 $$ P(A \mid B) = \frac{P(A \land B)}{P(B)} $$
 
@@ -87,6 +87,8 @@ belief. It can either be a result logical combination of probabilities through
 the usage of axioms (it's closely related to Aristotlean logic)
 or it can also reflect a personal belief (which is called a subjective view).
 \end{itemize}
+
+\subsubsection{An example}
 
 One example of the application of this theorem is \cite{reas}: you know your home's alarm
 is ringing, but you don't know whether that was caused by a burglar or
@@ -126,6 +128,8 @@ graph, where the relation "Parent" stands for "May cause" and you can specify
 the conditional probabilities of a child given a parent's result. This graphical
 model is called a Bayesian Network.
 
+\subsubsection{Bayesian Networks}
+
 We can extended our alarm example further, by considering not only a burglar
 can trigger the alarm, but an earthquake also can (while there can still be
 false positives). Also, consider that we have 2 neighbors (Mary and John) who
@@ -163,6 +167,8 @@ This is the result of the calculation of the joint probability being an highly
 combinatorial problem, which is yet another argument in favor of using PR
 rather than subjective heuristics.
 
+\subsubsection{Bayes' and data streams}
+
 In practical ML applications, it is often the case that there is an
 incoming stream of new data, rather than one-time batch calculations.
 BR can accomodate this way of thinking, which A. Downey called diachronic
@@ -194,6 +200,8 @@ Under this interpretation, you may continuously feed data into the model and see
 the probabilities getting updated. We will see more practical examples of this
 in section \ref{sec:pp}.
 
+\subsubsection{Beyond Bayesian Graphical Model}
+
 At first glance, someone who is learning for the first time about PR applied
 to ML, may think that graphical models such as the one presented in Figure
 \ref{fig:beliefnet} are the best there can be done in terms of using a graphical
@@ -206,12 +214,12 @@ with that capability (including an R package \cite{Højsgaard2013} or
 standalone tools \cite{msbn}).
 
 However, not all PR can be done via Bayesian Networks and not all graphical models
-are enough for PR \cite{intpp}. PP are the largest class of models available, and there are
+are enough for complete PR \cite{intpp}. PP are the largest class of models available, and there are
 also more algorithms for inference than just the calculation of joint
 probabilities (like we did in the alarm example), as we will discuss in Section
 \ref{sec:pp}.
 
-Bayesian Networks are not the only kind of graphical model, another one is
+Bayesian Networks are not the only kind of graphical model. Another one would be
 Markov Chains, which is yet another example of a model which is not able to
 represent all PR problems. This is clear when we realize that, while PPLs
 support a large number of different distributions (such as Normal, Laplace,
@@ -230,15 +238,17 @@ We can see an example of such a translation in Figure \ref{fig:mppl}.
 
 <---- rever com base em prob inference for graphical models
 
-\subsubsection{Probabilistic Programming Languages}
+\subsection{Probabilistic Programming Languages}
 \label{sec:pp}
+
+\subsubsection{The Probabilistic Program-Model duality}
 
 A probabilistic program (PP) is an ordinary program (that can be written in
 mainstream languages such as C, Java or Haskell) whose purpose is to specify
 a probability distribution of its variables. This is done by sampling over
 several executions of the program. The only needed construct the language
 has to support, in order to be able to write a PP, is having a random number
-generator \cite{Duvenaud}. This whole notion couldn't be better explained than in this text by Freer and
+generator \cite{Duvenaud}. This whole concept couldn't be better explained than in this text by Freer and
 Roy, regarding Church (a PPL, which we describe in Section \ref{sec:church})
 but common to any PP:
 
@@ -274,10 +284,12 @@ knowledge but not enough expertise in probability theory or machine learning.
   \end{center}
 \end{figure}
 
+\subsubsection{PPLs vs regular PLs}
+
 What is then, a Probabilistic Programming Language (PPL)? First of all, it can
 be a standalone language or an extension to a general purpose programming languag.
 We'll be analyzing examples of languages from either these categories in Section
-\ref{art}, but many more exist, such as as Figaro \cite{figaro} (hosted in Scala),
+\ref{sec:art}, but many more exist, such as as Figaro \cite{figaro} (hosted in Scala),
 webppl \cite{dippl} (embedded in Javascript) or Dimple
 \cite{DBLP:journals/corr/abs-1212-2991} (has both a Java and a MATLAB API).
 The key difference between these languages and a PPL is the latter has
@@ -302,6 +314,8 @@ probability distribution of the posterior on the bottom graphic.
     \label{fig:truskill}
   \end{center}
 \end{figure}
+
+\subsubsection{Inference}
 
 We said that a PPL empowers the user to formalize a model and then query for the
 probability distribution of its variables, which is automatically done via
@@ -365,17 +379,25 @@ solution as the calculation of the joint probabilities we did in Section
 takes time exponential in the number of variables to run, even if we have smarter
 algorithms than the naive calculations we did \cite{Zhang1994}.
 
+\subsubsection{Openbox models}
+
 When compared to traditional machine learning methods (such as random forests, neural
 networks or linear regression), which take homogeneous data as input (requiring
 the user to separate their domain into different models), probabilistic
 programming is used to leverage the data’s original structure. This is done by
-empowering the user to write his own models. Rather than using most of his
+empowering the user to write his own models while taking advantage of a re-usable
+inference engine. Olivier Grisel called this combination "Openbox models,
+blackbox inference engine"\cite{SciPy}.
+
+Rather than using most of his
 time performing feature engineering (that is, trying to fit the problem and the
 data into an existing model), the user will have the tool necessary to design
 the model that best fits the domain he is working on.
 Plus, it provides full probability distributions over both the predictions and parameters of the
 model, whereas ML methods can mostly only give the user a certain degree of confidence
 on the predictions.
+
+\subsection{Conclusion}
 
 Summarizing, PPLs are a step forward in using PR to solve ML problems since
 it helps overcome the difficulties in using PR in real world problems. This is
@@ -392,38 +414,38 @@ However, using a full fleged programming language might still be an entry
 barrier. We want to help statisticians and data scientists alike to learn
 faster and be more productive using a PPL in a way similar to the tools they
 are accostumed to. In order to do so, we'll be combining a PPL with Visual
-Programming (Section \ref{vp}).
+Programming (Section \ref{sec:vp}).
 
-\subsection{Visual Programming}
-\label{vp}
+\section{Visual Programming}
+\label{sec:vp}
 
-\subsubsection{Visual Dataflow Programming}
+\subsection{Visual Dataflow Programming}
 
-\subsection{State of the Art}
-\label{art}
+\section{State of the Art}
+\label{sec:art}
 
-\subsubsection{Stan}
+\subsection{Stan}
 
-\subsubsection{WinBUGS}
+\subsection{WinBUGS}
 \label{sec:wbugs}
 
-\subsubsection{Church}
+\subsection{Church}
 \label{sec:church}
 
-\subsubsection{Infer.NET}
+\subsection{Infer.NET}
 
-\subsubsection{PyMC}
+\subsection{PyMC}
 
-\subsubsection{VIBES}
+\subsection{VIBES}
 
-\subsubsection{NoFlo}
+\subsection{NoFlo}
 
-\subsubsection{RapidMiner}
+\subsection{RapidMiner}
 
-\subsubsection{Weka Knowledge FLow}
+\subsection{Weka Knowledge FLow}
 
-\subsubsection{GoJS}
+\subsection{GoJS}
 
-\subsubsection{Blockly}
+\subsection{Blockly}
 
 \section{Conclusions}
