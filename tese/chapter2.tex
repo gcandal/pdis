@@ -10,7 +10,7 @@ on one of these concepts.
 
 \section{Machine learning}
 
-Machine learning is a field which can be seen as a subfield of artifical
+Machine learning (ML) is a field which can be seen as a subfield of artifical
 intelligence that incorporates mathematics and statistics and is concerned
 with conceiving algorithms that learn autonomously, that is, without human
 interventation \cite{mlbrit}\cite{mlnot}.
@@ -28,7 +28,7 @@ future events or important alterations \cite{mapt}.
 
 \section{Probabilistic Reasoning}
 
-Probabilistic reasoning is the formation of probability judgments and of
+Probabilistic reasoning (PR) is the formation of probability judgments and of
 subjective beliefs about the likelihoods of outcomes and the frequencies of
 events \cite{probr}, it is a way to combine our knowledge of a situation
 with the laws of probability. There are subjective belifs because, in non-trivial
@@ -419,7 +419,144 @@ Programming (Section \ref{sec:vp}).
 \section{Visual Programming}
 \label{sec:vp}
 
+Visual Programming (VP) can be defined as "any system that allows users to
+represent "any system that allows the user to specify a program in a
+two-(or more)-dimensional fashion." \cite{Myers1986}.
+In a textual programming language, even though there are two dimensions (one
+being the text itself, and the other the optional line-breaking characters),
+only one of them has semantics, as the compiler processes text as a
+one-dimensional stream.
+
+Examples of systems with aditional dimentions are ones that allow the use of
+multidimensional objects, the use of spatial relationships, or the use of the
+time dimension to specify “before-after” semantic relationships \cite{Burnett1999}.
+
+Research has identified several advantages in the use of VP, such as natural
+expressibility, easy readability and interaction, language independence (though
+this is not applicable to the work of this thesis, as detailed in \ref{sec:vpe}),
+programming at higher levels of abstraction or rapid prototyping \cite{JamalRahmanandWenzel2014},
+which is achieved by providing immediate visual feedback \cite{Shu1988}.
+
+The advantages of programming at highers levels of abstraction are known, and
+one of them is it exposes users who are not used completely fluent in programming
+to a reduced number of concepts \cite{Shu1988}, while decreasing the verbosity of
+programs, which can even be useful for seasoned programmers \cite{Myers1990}.
+It also reduces the importance of being familiar with syntax, a common cause
+of difficulty of adaptation among less experienced programmers when learning
+a new language \cite{cunniff1986does}.
+
+The point of using a VP tool to aid in programming is to overcome the
+difficulties that many people have when learning a conventional language
+\cite{Lewis1987}. It has been shown this approach can help users without prior, or little,
+programming experience to create fairly complex programs \cite{Halbert1984}.
+Excel-like (spreadsheet) tools are a prime example of this, where the following
+benefits were identified \cite{ambler1987forms}\cite{empstud}:
+
+\begin{itemize}
+  \item The graphics on the screen use a familiar, concrete, and visible representation which
+directly maps to the user’s natural model of the data
+  \item They are non-modal and interpretive and therefore provide immediate feedback
+  \item They supply aggregate and high-level operations
+  \item They avoid the notion of variables (all data is visible)
+  \item The inner world of computation is suppressed
+  \item Each cell typically has a single value throughout the computation
+  \item They are non-declarative and typeless
+  \item Consistency is automatically maintained
+  \item The order of evaluation (flow of control) is entirely derived from the declared cell dependencies
+\end{itemize}
+
+All the aforementioned advantages can be explained by how graphical programming is closer
+to our mental representation of problems when compared to a textual interface
+\cite{Clarisse1986}.
+
+The human visual system and human visual information processing are clearly optimzed
+for multi-dimensional data. Computer programs, however, are conventionally presented in
+a one-dimensional textual form, not utilizing the full power of the brain. Two-dimensional
+displays for programs, such as flowcharts and even the indenting of block structured programs, have long been known to be helpful aids in program understanding
+
+Taxonomies
+
+lowering the barriers for programming
+
+Raptor->
+
+\subsection{Visual Programming Environment}
+\label{sec:vpe}
+
+Visual programming, Burnett
+
+<-Raptor
+
+Vantagens: mais controlo low-level (se preciso), escalavel (performance e desenvolvimento) e integravel
+
 \subsection{Visual Dataflow Programming}
+
+Apesar de usar VPE, tem que ter representacao na mesma
+
+Anjaneyeulu 92
+TB Sousa
+
+\subsection{Assessing the impact}
+
+Visual Programming:
+The Outlook from Academia and Industry K.
+
+A estudar impl ler ""
+
+\subsection{Challenges}
+
+Scaling up
+
+\subsection{Criticism}
+
+programming languages is the lack of visual abstraction mechanisms that are as = effective as those offered by text?based languages
+Thus, it is generally considered that traditional programming languages are better suited for developing large applications
+
+an integrated graphical user interface promote the iterative design and interactive prototyping,
+often including simulation in early stages of development.
+This melding of development and execution can be considered as one of the major
+benefits of a graphical programming environment,
+where the edit/compile/link/run sequence of traditional programming languages is replaced by the draw/run cycle.
+In addition, it has been shown that the richness of the visual paradigm
+introduces new ways of approaching programming problems, particularly for
+those not trained in traditional software development methods
+
+(resposta: An early effort that was not based on flowcharts was the AMBIT/G [25] and AMBIT/L [26] graphical languages. They supported symbolic manipulation programming using pictures.
+Both the programs and data were represented diagrammatically as directed graphs, and the programming operated by pattern matching. Fairly complicated algorithms, such as garbage col- lection, could be described graphically as local transformations on graphs.
+\cite{Myers1990})
+\cite{JamalRahmanandWenzel2014}
+
+(i) Is VP any good? Although lab studies have not produced much evidence in its favour, some people like and use VPLs. Visual tracers likewise. So the lab studies have missed something. What? (Maybe it’s fun, like a video game.)
+(ii) Does the visual component really contribute anything extra? Sometimes ‘visual’ systems do nothing that can’t be done as well or better with straight text; perhaps the real issues are how layout and locality can be used to convey meaning [
+\cite{Shu1988}
+
+A favorite subject for PhD dissertations in software engineering is graphical, or visual,
+programming—the application of computer graphics to software design....
+Nothing even convincing, much less exciting, has yet emerged from such efforts. I am persuaded that nothing will. In
+the first place, ... the flowchart is a very poor abstraction of software structure....
+It has proved to be useless as a design tool.... Second, the screens of today are too small, in pixels, to show both
+the scope and the resolution of any seriously detailed software diagram.... More fundamentally, ...
+software is very difficult to visualize. Whether one diagrams control flow, variable-scope nesting,
+variable cross-references, dataflow, hierarchical data structures, or whatever, one feels only one
+dimension of the intricately interlocked software elephant.
+\cite{Brooks1986}
+
+I was recently exposed to ... what ... pretended to be educational software for an introductory programming course.
+With its ‘‘visualizations’’ on the screen, it was ... an obvious case of curriculum
+infantilization.... We must expect from that system permanent mental damage for most students
+exposed to it.
+\cite{dijkstra1989cruelty}
+
+Visual Languages are new paradigms for programming, and clearly the existing systems have
+not been completely convincing. The challenge clearly is to demonstrate that Visual Programing
+and Program Visualization can help with real-world problems. The key to this, in my
+opinion, is to find appropriate domains and new domains to apply these technologies to.
+
+successful so far: allowing non-programmers to enter information in limited domains
+
+problems:
+
+\cite{Myers1990}
 
 \section{State of the Art}
 \label{sec:art}
