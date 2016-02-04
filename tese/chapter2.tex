@@ -443,12 +443,18 @@ to a reduced number of concepts \cite{Shu1988}, while decreasing the verbosity o
 programs, which can even be useful for seasoned programmers \cite{Myers1990}.
 It also reduces the importance of being familiar with syntax, a common cause
 of difficulty of adaptation among less experienced programmers when learning
-a new language \cite{cunniff1986does}.
+a new language \cite{cunniff1986does}\cite{Carlisle2005}. This difficulty of translating ideas
+into syntactictically correct statements can also be solved by finding alternative
+ways to communicate instructions to the computer \cite{Kelleher2005}.
 
-The point of using a VP tool to aid in programming is to overcome the
+So, the point of using a VP tool to aid in programming is to overcome the
 difficulties that many people have when learning a conventional language
 \cite{Lewis1987}. It has been shown this approach can help users without prior, or little,
 programming experience to create fairly complex programs \cite{Halbert1984}.
+This is specially true within certain small domains, where the language can be
+tailored for a subset of tasks rather than trying to be suitable for all kinds
+of applications \cite{Kelleher2005}. An example of such domain would be
+developing ML applications resorting to probabilistic programming.
 Excel-like (spreadsheet) tools are a prime example of this, where the following
 benefits were identified \cite{ambler1987forms}\cite{empstud}:
 
@@ -465,49 +471,78 @@ directly maps to the user’s natural model of the data
   \item The order of evaluation (flow of control) is entirely derived from the declared cell dependencies
 \end{itemize}
 
-All the aforementioned advantages can be explained by how graphical programming is closer
+Smith and other authors claim that the human thought process is clearly optimzed
+for multi-dimensional data \cite{smith1977pygmalion}\cite{Clarisse1986},
+so all the aforementioned advantages can be explained by how graphical programming is closer
 to our mental representation of problems when compared to a textual interface
-\cite{Clarisse1986}.
+\cite{Cardellini2002}. As said by Fischer, Giaccardi, Sutcliffe and Mehandjiev:
 
-The human visual system and human visual information processing are clearly optimzed
-for multi-dimensional data. Computer programs, however, are conventionally presented in
-a one-dimensional textual form, not utilizing the full power of the brain. Two-dimensional
-displays for programs, such as flowcharts and even the indenting of block structured programs, have long been known to be helpful aids in program understanding
+\begin{quote}
+  ``Text-based languages tend to be more complex because the syntax and lexicon
+  (terminology) must be learned from scratch, as with any human language.
+  Consequently, languages designed specifically for end users represent the
+  programmable world as graphical metaphors ... (\textit{aim to}) reduce the cognitive
+  burden of learning by shrinking the conceptual distance between actions in
+  the real world and programming.'' \cite{G2004}
+\end{quote}
 
-Taxonomies
-
-lowering the barriers for programming
-
-Raptor->
+This idea as been tested in an empirical study:
+in a algorithms course of the United States Air Force academy,
+students consistently show a preference for solving problems visually,
+while it also seems that doing so helped them achieving better
+scores in problem-solving exercises and overperform their colleagues who used
+a regular programming language \cite{Cardellini2002}. However, shortcomes of
+using VP were also identified, as we will discuss in \ref{sec:crit}.
 
 \subsection{Visual Programming Environment}
 \label{sec:vpe}
 
-Visual programming, Burnett
+Boshernitsan proposed a classification scheme for VPLs \cite{Boshernitsan2004}
+that divided VPLs in purely visual languages (PVLs), hybrid text and visual systems,
+programming-by-example systems, constraint-oriented systems and form-based systems.
 
-<-Raptor
+In the context of this dissertation, as we want to leverage the advantages of
+both a VPL and a PPL while avoiding implementing a PPL, there is no other choice
+than using an hybrid text and visual system. We will be calling this system a
+visual programming environment (VPE). The difference between a VPE and a purely visual language (PVL)
+is that, while a PVL is a language \textit{per se} (meaning that it there
+is a direct mapping between graphics and execution), VPEs offer a middle ground
+between regular textual languages and PVLs: they provide a graphical interface
+that can be used to generate code for a target language \cite{Burnett1999}.
+An example of a PVL would be MIT's Scratch \cite{resnick2009scratch} and one for
+a VPE is the Eclipse IDE plug-in WindowBuilder \cite{winbuild}.
 
-Vantagens: mais controlo low-level (se preciso), escalavel (performance e desenvolvimento) e integravel
+If applied
+correctly, VPEs can help addressing some of the issues raised by critics of VP (detailed in section \ref{sec:crit}),
+such as VP's inhability to solve real-world, large-scale problems. This is done
+by applying VP to only a subset of the program, making it possible to combine
+a general-purpose programming language with the advantages of VP \cite{Burnett1999},
+since the code generated by a VPE can be seseamlessly integrated in any project
+built with its target language.
 
-\subsection{Visual Dataflow Programming}
-
-Apesar de usar VPE, tem que ter representacao na mesma
-
-Anjaneyeulu 92
-TB Sousa
+Concretely, VPEs are able to overcome the tradeoff of control for simplicity
+commonly made by VPLs: even if a certain idiom cannot be represented by its
+graphical form, the user can later edit the generated code to include it. This
+makes it possible to design scalable programs, both in terms of performance
+(since the user can still access all the target language's features) and development
+(because all the advantages of programming visually are still present).
 
 \subsection{Assessing the impact}
+
+Na teoria \cite{Burnett1999}
+Na pratica \cite{Whitley1997}
 
 Visual Programming:
 The Outlook from Academia and Industry K.
 
-A estudar impl ler ""
+A estudar impl ler "controlled dataflow vpl"
 
 \subsection{Challenges}
 
 Scaling up
 
 \subsection{Criticism}
+\label{sec:crit}
 
 programming languages is the lack of visual abstraction mechanisms that are as = effective as those offered by text?based languages
 Thus, it is generally considered that traditional programming languages are better suited for developing large applications
@@ -555,8 +590,67 @@ opinion, is to find appropriate domains and new domains to apply these technolog
 successful so far: allowing non-programmers to enter information in limited domains
 
 problems:
+\begin{itemize}
+  \item Difficulty with large programs or large data. Almost all visual representations are physi-
+cally larger than the text they replace, so there is often a problem that too little will fit on
+the screen. This problem is alleviated to some extent by scrolling and various abstraction mechanisms.
+  \item Need for automatic layout. When the program or data gets to be large, it can be very tedi-
+ous for the user to have to place each component, so the system should lay out the
+picture automatically. Unfortunately, for many graphical representations, generating an
+attractive layout can be difficult, and generating a perfect layout may be intractable. For
+example, generating an optimal layout of graphs and trees is NP-Complete [95]. More
+research is needed, therefore, on fast layout algorithms for graphs that have good user
+interface characteristics, such as avoiding large scale changes to the display after a small
+edit.
+  \item Lack of formal specification. Currently, there is no formal way to describe a Visual
+Language. Something equivalent to the BNFs used for textual languages is needed. This
+would provide the field with a ‘‘hard science’’ foundation, and may allow tools to be
+created that will make the construction of editors and compilers for Visual Languages
+easier. Chang [49] [96], Glinert [97] and Selker [98] have made attempts in this
+direction, but much more work is needed.
+  \item Tremendous difficulty in building editors and environments. Most Visual Languages
+require a specialized editor, compiler, and debugger to be created to allow the user to use
+the language. With textual languages, conventional, existing text editors can be used and
+only a compiler and possibly a debugger needs to be written. Currently, each graphical
+language requires its own editor and environment, since there are no general purpose
+Visual Language editors. These editors are hard to create because there are no ‘‘editor-
+compilers’’ or other similar tools to help. The ‘‘compiler-compiler’’ tools used to build
+compilers for textual languages are also rarely useful for building compilers and
+interpreters for Visual Languages. In addition, the language designer must create a system to
+display the pictures from the language, which usually requires low-level graphics
+programming. Other tools that traditionally exist for textual languages must also be created,
+including pretty-printers, hard-copy facilities, program checkers, indexers,
+cross-referencers, pattern matching and searching (e.g., ‘‘grep’’ in Unix), etc.
+These problems are made worse by the historical lack of portability of most graphics programs.
 
+  \item Lack of evidence of their worth. There are not many Visual Languages that would be
+  generally agreed are ‘‘successful,’’ and there is little in the way of formal experiments or
+informal experience that shows that Visual Languages are good. It would be interesting
+to see experimental results that demonstrated that visual programming techniques or
+iconic languages were better than good textual methods for performing the same tasks.
+Metrics might include learning time, execution speed, retention, etc. Fortunately, prelim-
+inary results are appearing for the advantages of using graphics for teaching students how
+to program [36].
+  \item Poor representations. Many visual representations are simply not very good. Programs are
+hard to understand once created and difficult to debug and edit. This is especially true
+once the programs get to be a non-trivial size.
+  \item Lack of Portability of Programs. A program written in a textual language can be sent
+through electronic mail, and used, read and edited by anybody. Graphical languages
+require special software to view and edit; otherwise they can only be viewed on hard-copy
+\end{itemize}
 \cite{Myers1990}
+
+Of note here is the observation that this conclusion did not extend to the use of arrays in problem solving.
+In fact, the first semester with RAPTOR students performed statistically significantly worse on the array question.
+This would suggest that array handling in RAPTOR might be an area for future improvements.
+\cite{Cardellini2002}
+
+solução: para ultrapassar problemas comuns de VP em sistemas reais, larga-escala,
+usar apenas VP em partes especificas do projeto onde VP possa ser utilizado com
+sucesso. usar para desenhar GUIs foi um sucesso (android, windowbuilder)
+
+fazer programar mais facil para audiencia especifica
+\cite{Burnett1999}
 
 \section{State of the Art}
 \label{sec:art}
