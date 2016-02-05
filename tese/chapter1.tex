@@ -20,15 +20,16 @@ context-driven information retrieval, Facebook's studies of how information
 spreads across a network or UC Berkeley's AMPLab contributions towards Amazon
 Web Service and SAP's products \cite{Broder:2015:BDN:2684822.2697027}.
 
-Typically, there are two approaches for this class of problems): either use an
+Typically, there are two alternatives for solving this class of problems: either use an
 existing machine learning model (such as KNN, neural networks or similar) \cite{mlnot} and
 try to fit your data into the model, or build a probabilistic model for your
-particular problem so you can leverage domain knowledge \cite{SciPy}.
+own particular problem so you can better leverage domain knowledge \cite{SciPy}.
 
-In the second approach one common way to tackle it is to use bayesian reasoning,
+In the second alternativa one common way to approach0 it is by using bayesian reasoning,
 where you model unknown causes with random variables, feed the model the data you
-have gathered and then perform inference to reverse the story and query for the
-desired variables \cite{thbay}. The tricky issue is this last step, since it is non-trivial
+have gathered and then perform inference to query for the
+desired, and previously unknown, variables \cite{thbay}. The problem in choosing
+this method is this last step, since it is non-trivial
 to write an inference method \cite{Duvenaud}.
 
 The solution to this has been building generic inference engines for graphical
@@ -69,7 +70,8 @@ graphically-interactable.
 
 \section{Motivation and Goals} \label{sec:goals}
 
-The Defense Advanced Research Projects Agency (DARPA), one of the funders behind PPLs' research, has recognized some of the problems
+The Defense Advanced Research Projects Agency (DARPA), one of the funders behind
+PPLs' research, has recognized some of the problems
 identified by Wagstaff and started a program called Probabilistic Programming
 for Advancing Machine Learning (PPAML) to address the shortcomings of
 current ML methods \cite{darpa}. It identifies five strategic goals:
