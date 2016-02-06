@@ -3,7 +3,74 @@
 
 \section{The problem it solves}
 
-% Statement + contribuição
+As already described in Section \ref{sec:goals}, this dissertation aims to solve
+the problem of PPLs having too much of a steep learning curve for someone who
+is unexperienced in programming, even if that person would've enough knowledge
+in statistics to leverage PPLs' power in applied machine learning. We propose
+to do so by developing a visual programming environment for a PPL that is user-friendly
+and yet flexible enough to be able to program solutions for non-trivial problems.
+
+Since the existing work joining VP with PP is still nonexistent, the notable exception
+being VIBES (even if it has its shortcomins, as described in \ref{sec:vibes}),
+we have identified margin for improvement.
+
+VPEs have been successfuly
+applied to other domains, and considering previous studies in VP that suggest it is
+well suited for both limited domains and unexperienced programmers, it is the
+author's belief that development in PPLs would also benefit from such a tool.
+Therefore, we intend to validate the following hypotehsis:
+
+\begin{quote}
+  ``When a user instead of specifying a model textually,
+  produces the model via a graphical representation that automatically translates
+  itself into executable code, he will do so in a shorter amount of time, make
+  fewer errors (both during development and regarding the final solution) and
+  will reach a final representation that is more understandable and thus
+  easier to maintain.''
+\end{quote}
+
+Because there isn't a standard method for evaluating if a language is easier
+to work with than another, the question arises on how to evaluate success.
+
+\subsection{Measuring efficiency and efficacy}
+
+The way we're planning on validating the hypothesis is through an empirical study
+where we compare how fast an user can define a model for a given set of problems
+when using a VPL in a regualr way or through our graphical interface. We'll also
+count the number of syntax and type erros done with each representation. By
+selecting users who never used the given PPL, we can not only measure execution
+speed but learning time.
+
+It is valuable to assess, not only how fast can someone develop with either
+of the alternatives, but also the quality of the output. We plan to do so in two
+steps: starting by verifying if the program correctly models the problem and
+asking the participants in the study if they believe the model they
+have developed graphically is easier to understand than its textual counterpart (and
+vice-versa).
+Although subjetive, we believe getting the participants' opinion
+regarding the output quality could provide valuable insights in order to understand if VP can
+really enhance an user's experience when using a PPL. Another method we will use
+to help us make an assessment of the validity of the hypothesis is asking
+participants questions regarding usability. Even if it may seem redundant, since
+we would already have the time measurements, it is a way of strenghts and
+weaknesses.
+
+\subsection{Target audience}
+
+Both the study and the tool are aimed at people with knowledge in statistics
+who are unexperienced programmers. This may include data scientists, researchers,
+mathematicians or staticians. In short, anyone who would apply PP to problem
+solving but are not fluent in programming.
+
+\subsection{Expected contributions}
+
+By the end of this work, we would expect to have built a VPE for PPLs that can
+be extended with more PPLs, even if we are only implementing the adapter for one.
+By doing so we will: have a platform that enables other people to experiment
+and make usability research on, define a visual language that can be applied to PP in general,
+identifying what works and what to avoid,
+and ultimately assessing the viability of applying VP to PP to enhance end-user's
+productivity.
 
 \section{Outline}
 
