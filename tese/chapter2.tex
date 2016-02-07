@@ -526,10 +526,12 @@ makes it possible to design scalable programs, both in terms of performance
 (since the user can still access all the target language's low-level features) and development
 (because all the advantages of programming visually are still present).
 
+\subsection{Visual Dataflow Programming}
+
 \subsection{Evaluation}
 \label{sec:eval}
 
-Even if the goal os VP is clear (to make programming more understandable, ensure
+Even if the goal of VP is clear (to make programming more understandable, ensure
 correction and be faster to do) the best way to achieve it is still a matter of
 discussion. Like in the design of any programming language, there are some
 best practices to guide the design of a VPL, some of which have been identified
@@ -701,35 +703,325 @@ edit the generated code, where he has access to all the language's features.
 The purpose of this section is to try giving an overview over the existing tools
 currently used in either VP (purely visual VPLs or VPEs) or PPLs.
 
-\subsection{Stan}
+\subsection{PPLs}
 
-\subsection{WinBUGS}
-\label{sec:wbugs}
+\subsubsection{WebPPL}
+\cite{dippl}
 
-\subsection{Church}
+\subsubsection{Church}
 \label{sec:church}
 
-\subsection{Infer.NET}
+\cite{chater2006probabilistic}
 
-\subsection{PyMC}
+\subsubsection{Infer.NET}
 
-\subsection{NoFlo}
+\subsubsection{PyMC}
 
-\subsection{RapidMiner}
+\subsubsection{Figaro}
+\cite{Figaro}
 
-\subsection{Weka Knowledge FLow}
+\subsection{Tools using VDP}
 
-\subsection{GoJS}
+\subsubsection{NoFlo}
 
-\subsection{Blockly}
+NoFlo is a visual open-source implementation in JavaScript of Flow-Based Programming \cite{noflo}
+(which is a form of dataflow programming) and was designed for general-purpose
+programming, even if it is more suitable for web programming (being written in
+JavaScript it has easy access to DOM manipulation capabilities), there are
+examples of it even being used for controlling a drone.
 
-\subsection{Viskell}
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{noflo}
+    \caption{Example of node expansion in NoFlo \cite{noflo}}
+    \label{fig:noflo}
+  \end{center}
+\end{figure}
 
-\subsection{Eclispe Android UI Plugin}
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{noflo2}
+    \caption{NoFlo node search and minimap navigator \cite{noflo}}
+    \label{fig:noflo2}
+  \end{center}
+\end{figure}
 
-\subsection{Eclipse Window Builder Plugin}
+From experimenting with the tool, we found some characteristcs that serve as a
+lesson of what works well and what doesn't:
+
+\begin{itemize}
+  \item A node has the least information possible, yet it can be clicked to
+show details, such as some usage notes or seeing some inputs or parameters.
+An example of a common NoFlo layout with a node expanded can be seen in Figure
+\ref{fig:noflo}. This helps saving space in the layout while maintaining
+flexibility.
+  \item You can search for a block by its name (see Figure \ref{fig:noflo2}).
+  \item There is a minimap that helps navigating the screen, so we can have
+an higher level view of the layout \ref{fig:noflo2}).
+  \item Weak typing makes it confuse to use some of the nodes, it is unclear
+when we can connect input and outputs with mismatching labels, because sometimes
+they are compatible and other times they aren't.
+  \item Sometimes errors appear immediately, others we can just see them in
+runtime. This would be fine as long as it was clear that there was an error,
+but that is not the case because the messages blend in with the UI and are
+not easily noticeable.
+  \item When choosing new blocks, it is often hard to understand what is their
+functionality because most nodes have no description other than their name.
+  \item Blocks have icons, which presumably provide some visual information
+about their functionality (see Figure \ref{fig:noflo2}), but is hard to
+understand what the difference between the various icons is. What seems to be a
+good idea, to have icons in blocks to identify them by functionality, as the
+opposite effect and negatively affects usability.
+\end{itemize}
+
+The last four items can convice the reader of the following conclusion: in VPLs, explicit
+is better than implicit. Clarity can arguably make all the
+difference between a language that can be intuitively used and one that, despite
+all its virtues, could take some more time to master.
+
+\subsubsection{RapidMiner}
+
+According to the popular data mining portal KDnuggets' latest tool popularity
+poll \cite{kdn}, RapidMiner is the most popular visual tool to use in applied
+machine learning. It is also the most complete, featuring 1500 different blocks \cite{rapidminer}.
+
+The product has too many features to be able to deeply analyze each one of them,
+including cloud and repository capabilities for storing and sharing work,
+mechanisms for deploying models developed locally to a production server or
+an API for developing new blocks. RapidMiner is actually more of a suite rather
+than just a tool, so in our analysis we'll restrict ourselves to the design of
+a model.
+
+The most differentiating factor between RapidMiner and the other VPLs we studied
+is that it splits its view between process and results. In the first one, the
+user can design the model and then he must run it and go to results to see the output.
+Even if goes against the principle of providing immediate feedback to the user
+advocated by some VPLs' designers (as discussed in \ref{sec:vp}), it does seem to make
+sense in its use case. The reason for that is that production machine learning applications
+running batch jobs can take a reasonable amount of time to run, and the analysis
+of its results before changing the model can also take some time. This is
+different from people using 3D editors (like Blender), where they the trial and
+error cycle is much shorter, and users need to get feedback about their changes
+much more often.
+
+Having no need to be continuously looking at the output reduces the importance
+of it being shown in the same space as the program we're designing, and we can
+save space in the layout by moving it to a different tab. On the other hand,
+RapidMiner is flexible enough that allows the user to place both the process
+and the results windows side by side, so it really is up to the user to decide
+how important is it to be seeing everything at the same time. A tool which doesn't
+support moving windows and tabs must make a choice whether or not to have the
+output shown alongside with the program.
+
+Other strenghts of RapidMiner include having error indicators in each block
+and thorough descriptions of each
+node's functionality, input, output and parameters, including examples. It also
+provides visual clues about a node's functionality by using not only meaningful
+icons but also colors. This can be observer in Figure \ref{fig:rapidminer},
+where file reading nodes are grey, model-related ones green and those related
+with data preparation are in pink.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{rapidminer}
+    \caption{Classifier in Rapidminer \cite{rapidminer}}
+    \label{fig:rapidminer}
+  \end{center}
+\end{figure}
+
+Something that does seem to work particularly well for someone using the tool
+for the first time are the abbreviated labels in the ports. They are cryptic
+enough that an unexperienced user has to click the node and read the description
+to understand what they are. Maybe it would make sense to either write the full
+label for the sake of clarity, or just don't show anything at all.
+
+\subsubsection{Weka Knowledge FLow}
+
+Weka Knowledge Flow is yet another frontend (others being APIs and a GUI Explorer)
+to WEKA's core algorithms \cite{weka}.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{weka}
+    \caption{ROC curve in Weka Knowledge Flow \cite{weka}}
+    \label{fig:weka}
+  \end{center}
+\end{figure}
+
+In this tool, inputs are not connected to specific ports, but rather to a block.
+The semantics of the connection is expressed on the edge's label. This can save
+some space in the layout as the nodes can be smaller, but in order to understand
+a node's input, the user has to waste time following all the edges backwards
+until he finds the label, which doesn't seem a reasonable tradeoff.
+
+Weka Knowledge makes a good use of icons to differentiate between different node
+types. Not only is it easy to the user to distinguish between source, processing
+and sink nodes, but also between the different processing nodes' categories
+(such as filters, classifiers and clusterers).
+
+\subsubsection{Blender Composite Nodes}
+
+Blender Composite Nodes is part of the Blender open-source 3D computer graphics
+software and provides a way for the user to visually build (through a dataflow
+representation) a script that can be applied to images or Blender scenes \cite{blender}.
+
+It incorporates common VDP idioms such as source nodes (such as render layers or
+RGB), processing nodes (where you can apply blur, shift an RGB curve, etc) and
+sink nodes (it's the way to finalize a script and save, or display, the result).
+It is interesting to note that
+Blender Composite Nodes does not incorporate processing nodes with filter semantics
+\footnote{We mean by filter that the result is a subset of the input. Blender has
+graphical filters, which are analogous to a functional map operation.},
+which is an example of a VPL that intentionally did not incorporate a common
+idiom in VDP because it does not make sense for its domain.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{blender}
+    \caption{Script for texture transformation in Blender \cite{blender}}
+    \label{fig:blender}
+  \end{center}
+\end{figure}
+
+There are several interesting characteristics that are worthy highlighting:
+\begin{itemize}
+  \item Composite Nodes assigns a color to each type, so that the user can
+easily understand the type of each input or output (see Fig. \ref{fig:blender}).
+  \item Implicit conversions for some of the types. For instances,
+a conversion from a vector (which are always three-dimensional) to a value yields
+the mean of the vector's elements. In figure \ref{fig:blender} we can see that
+some values are connected to a different type (among others, the first input
+node's color is connected to a simple value named 'Fac'), which is valid behavior.
+  \item Incorporating a custom interface within each node. This helps reducing
+the space occupied by the program, since there is no need to create inputs for
+every single input in a processing node. It also simplifies the VPL's usage,
+because since some types can only exist within certain nodes, and by not being
+able to instantiate them outside those nodes, we reduce the possible choices
+for input nodes. An example would be the image type enumeration, that we can
+see in figure's \ref{fig:blender} input nodes.
+  \item Node groups which are essentially an encapsulation
+of a set of nodes, resulting in another node that can be re-used, help the user
+create his own set of abstractions. Our texture transformation example could
+be saved into a node group, so that we can use it in another script without
+needing to copy everything from one place to the other or cluttering the new
+script's interface with several new nodes. The concept is analogous to functions
+in programming.
+\end{itemize}
+
+\subsection{VPEs}
+
+In this section we'll be describing three visual programming environments. Meaning,
+tools where the user can express the program in a graphical manner that will
+later be translated into valid code.
+
+\subsubsection{Blockly}
+
+Blockly is more than a VPE, it actually is a library for building VPEs \cite{blockly}.
+It is fully open source, runs on the browser (client-side) and is completly extensible.
+
+Blockly does not adopt the VDP paradigm, it instead uses a system of blocks
+similar to a puzzle, as you can see in Figure \ref{fig:blockly}.
+Another useful feature is basic type checking,
+so that users can't connect blocks that wouldn't make sense, such as converting
+a number to uppercase. The way Blockly is built, it is impossible for the user
+to produce an invalid program.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{blockly}
+    \caption{Blockly example \cite{blockly}}
+    \label{fig:blockly}
+  \end{center}
+\end{figure}
+
+According to the authors, the reason why they didn't choose to adopt VDP is that
+they believe the generated code doesn't look like the VDP graph, making it harder
+from a user who later transitions from the tool to textutal programming to adapt.
+
+Tt is possible to define new blocks as well completly controlling
+how generated code will look like, as well as defining new types. These features
+seem to be enough that Blockly can be considered a framework complete enough to
+be suitable for building most VPEs and, because it is open-source, it can be
+unlimitedly extended.
+
+\subsubsection{Viskell}
+
+\subsubsection{WindowBuilder}
+
+One domain where VPLs have been successfuly applied is in UI design. Instead of
+going through the tedious task of writting boilerplate code (often having to
+memorize complicated function signatures) and needing to memorize APIs, users
+can just drag and drop elements on the screen.
+
+The Eclipse IDE provides several plugins on its marketplace, one of which is the
+WindowBuiler plugin \cite{winbuild} to build Java SWT/Swing UIs.
+
+WindowBuilder bi-directional and WISIWIG tool (What You See Is What You Get), meaning
+that it generates code that faithfully represents the drawn UI and it is also possible to
+directly edit the code and see the updated result back in the design view.
+
+Since defining UIs is a very different domain from PP there are not many features
+that we can use from WindowBuilder in our future VPE. The exception is the
+bi-directionality of code, which could be useful in certain scenarios.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{winbuild}
+    \caption{WindowBuilder's design view \cite{winbuild}}
+    \label{fig:winbuild}
+  \end{center}
+\end{figure}
 
 \subsection{VIBES}
 \label{sec:vibes}
+
+VIBES is a tool, developed by John Winn during his PhD, that allows variational
+inference to be performed automatically on a Bayesian network \cite{Winn2005}
+defined graphically.
+It was written to serve as proof of concept for the variational message passing (VMP)
+algorithm, so it has reduced focus on human-computer interaction. Other than its representation
+of determinisc inputs with a different edge style than undeterminisc ones and
+usage of plates to represent loops, from a usability point of view it's not very interesting.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{vibes}
+    \caption{Example of a model using VIBES \cite{Winn2005}}
+    \label{fig:vibes}
+  \end{center}
+\end{figure}
+
+\subsubsection{WinBUGS}
+\label{sec:wbugs}
+
+Similarly to VIBES (described in \ref{sec:vibes}), WinBUGS is a framework with a graphical
+component which s part of the Bayesian inference Using Gibbs Sampling (BUGS) project.
+It allows the user to, graphically or textually, define a model and automatically perform inference
+on it (unlike VIBES, the inference algorithm is Markov chain Monte Carlo) \cite{Lunn2000}.
+Its interface is very similar to VIBES and the only difference between them,
+besides the algorithm used, is that WinBUGS provides a bi-direcitonal conversion
+between graphical and textual representations.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{winbugs}
+    \caption{Example of a model translated to WinBUGS textual form \cite{winbugs}}
+    \label{fig:winbugs}
+  \end{center}
+\end{figure}
+
+In Figure \ref{fig:winbugs}, we can see that WinBUG's textual representation of
+a simple model can already be harder to understand than the mathematical
+formalism it represents. This is exactly the problem we want think it can be
+solved with a proper VPE.
 
 \section{Conclusions}
