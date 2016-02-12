@@ -11,7 +11,7 @@ to do so by developing a visual programming environment for a PPL that is user-f
 and yet flexible enough to be able to program solutions for non-trivial problems.
 
 Since the existing work joining VP with PP is still nonexistent, the notable exception
-being VIBES (even if it has its shortcomins, as described in \ref{sec:vibes}),
+being VIBES and WinBUGS (even if it has its shortcomings, as described in \ref{sec:vibes}),
 we have identified margin for improvement.
 
 VPEs have been successfuly
@@ -31,33 +31,42 @@ Therefore, we intend to validate the following hypotehsis:
 
 Because there isn't a standard method for evaluating if a language is easier
 to work with than another, the question arises on how to evaluate success.
+The optimal way to do so would be to make an empiral
+study. However, this requires having a tool mature and stable enough so that the
+study's results can be considered reliable. The goal of this dissertation is to
+assess several ways how such a tool could be built, resulting in a prototype;
+it is not to develop production-grade software.
 
-\subsection{Measuring efficiency and efficacy}
+An alternative is to gather examples of probabilistic programs expressed in a
+PPL (either the one who chose to serve as backend, or another with similar
+capabilities) in its traditional textual form, translate them into our graphical
+language, and compare the two forms. This what we will be doing.
 
-The way we're planning on validating the hypothesis is through an empirical study
-where we compare how fast an user can define a model for a given set of problems
-when using a VPL in a regualr way or through our graphical interface. We'll also
+\subsection{An empirical study}
+
+The way the study would work would be by compare how fast an user can define a model for a given set of problems
+when using a VPL in a regualr way or through our graphical interface. We'd then
 count the number of syntax and type erros done with each representation. By
-selecting users who never used the given PPL, we can not only measure execution
+selecting users who never used the given PPL, we could not only measure execution
 speed but learning time.
 
-It is valuable to assess, not only how fast can someone develop with either
-of the alternatives, but also the quality of the output. We plan to do so in two
-steps: starting by verifying if the program correctly models the problem and
+It would also be valuable to assess, not only how fast can someone develop with either
+of the alternatives, but also the quality of the output. That could be done in two
+steps: starting by verifying if the program correctly models the problem and then
 asking the participants in the study if they believe the model they
 have developed graphically is easier to understand than its textual counterpart (and
 vice-versa).
 Although subjetive, we believe getting the participants' opinion
 regarding the output quality could provide valuable insights in order to understand if VP can
-really enhance an user's experience when using a PPL. Another method we will use
-to help us make an assessment of the validity of the hypothesis is asking
+really enhance an user's experience when using a PPL. Another method we could use
+to help us make an assessment of the validity of the hypothesis would be asking
 participants questions regarding usability. Even if it may seem redundant, since
-we would already have the time measurements, it is a way of strenghts and
-weaknesses.
+we would already have the time measurements, it is a way of identifying strenghts and
+weaknesses with reduced granularity.
 
 \subsection{Target audience}
 
-Both the study and the tool are aimed at people with knowledge in statistics
+The resulting tool is aimed at people with knowledge in statistics
 who are unexperienced programmers. This may include data scientists, researchers,
 mathematicians or staticians. In short, anyone who would apply PP to problem
 solving but are not fluent in programming.
