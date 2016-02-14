@@ -236,7 +236,7 @@ We can see an example of such a translation in Figure \ref{fig:mppl}.
   \end{center}
 \end{figure}
 
-<---- rever com base em prob inference for graphical models
+% <---- TODO rever com base em prob inference for graphical models
 
 \subsection{Probabilistic Programming Languages}
 \label{sec:pp}
@@ -290,7 +290,7 @@ What is then, a Probabilistic Programming Language (PPL)? First of all, it can
 be a standalone language or an extension to a general purpose programming languag.
 We'll be analyzing examples of languages from either these categories in Section
 \ref{sec:art}, but many more exist, such as as Figaro \cite{figaro} (hosted in Scala),
-webppl \cite{dippl} (embedded in Javascript) or Dimple
+webppl \cite{dippl} (embedded in javascript) or Dimple
 \cite{DBLP:journals/corr/abs-1212-2991} (has both a Java and a MATLAB API).
 The key difference between these languages and a PPL is the latter has
 the added capability of performing conditioning and inference \cite{Andrieu2003}.
@@ -452,10 +452,8 @@ difficulties that many people have when learning a conventional language
 programming experience to create fairly complex programs \cite{Halbert1984}.
 This is specially true within certain small domains, where the language can be
 tailored for a subset of tasks rather than trying to be suitable for all kinds
-of applications \cite{Kelleher2005}. An example of such domain would be
-developing ML applications resorting to probabilistic programming.
-Excel-like (spreadsheet) tools are a prime example of this, where the following
-benefits were identified \cite{ambler1987forms}\cite{empstud}:
+of applications \cite{Kelleher2005}. Excel-like (spreadsheet) tools are a prime example of this, where the following
+benefits were identified \cite{ambler1987forms}\cite{Lewis1987}:
 
 \begin{itemize}
   \item The graphics on the screen use a familiar, concrete, and visible representation which
@@ -469,6 +467,9 @@ directly maps to the user’s natural model of the data
   \item Consistency is automatically maintained
   \item The order of evaluation (flow of control) is entirely derived from the declared cell dependencies
 \end{itemize}
+
+Another example of such a domain would be
+developing ML applications resorting to probabilistic programming.
 
 Smith and other authors claim that the human thought process is clearly optimzed
 for multi-dimensional data \cite{smith1977pygmalion}\cite{Clarisse1986},
@@ -540,16 +541,21 @@ by Burnett \cite{Burnett1999} and are listed below.
 \begin{itemize}
   \item Concreteness - it's oposite of abstractness. The program express values
 and instances of values rather than meta-information such as types or classes.
-  \item Directness -
+  \item Directness - work with concrete values rather than possible ones.
   \item Explicitness - everything that there is to be known about the program
 can be easily understood by looking at the graphical representation, the
-user does not need to infer semantics by himself
+user does not need to infer semantics by himself.
   \item Immediate visual feedback - every change to the program should be
 immediately propagate to change in the affected output. Spreadsheets are an example of
 this.
 \end{itemize}
 
 However, these are just guidelines and do not guarantee the efficacy of a VPL.
+Some VPEs sacrifice some of these principles for the sake of completeness:
+Viskell (described in \ref{sec:viskell}) violates directness by allowing to
+work with the option monad, or concreteness by placing a great emphasis on type
+definition.
+
 Whitley and Blackwell \cite{Whitley1997} said that, because the design decisions
 in a VPL lack formal basis, the only way to assess if they really contribute
 to facilitate the programmer's cognitive processes while programming is through
@@ -611,7 +617,7 @@ software is hard to visualize, backed by Dijkstra's letter where he states that
 With its ‘‘visualizations’’ on the screen, it was ... an obvious case of curriculum
 infantilization.... We must expect from that system permanent mental damage for most students
 exposed to it."} \cite{dijkstra1989cruelty}, is contrary to many studies done in cognitive science
-\cite{empstud}\cite{cunniff1986does}\cite{Carlisle2005}.
+\cite{Lewis1987}\cite{cunniff1986does}\cite{Carlisle2005}.
 
 Myers admitted that the key for a successful application of VP to a real-world
 problem was to identify "appropriate domains and new domains to apply these
@@ -705,17 +711,52 @@ currently used in either VP (purely visual VPLs or VPEs) or PPLs.
 
 \subsection{PPLs}
 
+There is a great number of PPLs, so our criteria to pick which of them to analyze
+was popularity. At the same time, we tried to pick languages from different
+ends of the spectrum: functional/imperative/object-oriented, statically/dinamically
+typed, one that runs in the JVM, one from the .NET stack and another one written
+in javascript which runs in the browser.
+
+One advantage of the languages that do not have an ahead-of-time compilation step
+(such as WebPPL, Church and Figaro) is that we can display results to the user
+as soon as they're available, without having to re-compile every time we changed
+the model, making it as close to immediate visual feedback as possible.
+
 \subsubsection{WebPPL}
-\cite{dippl}
+\label{sec:webppl}
+
+WebPPL was written as part of a course on PP and inference in PPLs \cite{dippls}.
+Therefore it serves more as an educational tool rather than a language that aims
+to be production-ready, despite including several inference algorithms (such as
+MCMC and variational). It is hosted in javascript, meaning that it extends
+the language's capabilities and is totally cross-compatible; in short, it acts
+as a library.
+
+Its main advantage and the reason why it would be interesting
+to be the target of our VPE is that, because it was written in javascript, it runs
+in the browser. The advantage behind that is that is makes the language compatible
+across most mainstream platforms, not only computers but also smartphones.
 
 \subsubsection{Church}
 \label{sec:church}
 
-\cite{chater2006probabilistic}
+We started by looking into Church because it is based on pure Lisp (therefore
+it is also based on lambda calculus and purely functional) \cite{Goodman2008} and believed it could
+be more expressible (in the sense that we could express equally complex models
+with less code than) than its non-functional counterparts. While maintaining the same syntax,
+it also has an implementation in javascript called webchurch \cite{chater2006probabilistic},
+with all the associated advantages (described in \ref{sec:webppl}).
+
+The Church language is being replaced by VentureScript, a language that is part
+of the Venture platform for PP and that can be written both in a Church or javascript-like
+syntax \cite{probcomp}. Having been written by the same authors as WebPPL but
+with the purpose of being used to solve real problems instead of just acting as
+an educational tool, if we were to chose a PPL hosted in javascript to support
+in our VPE, the natural choice would be VentureScript.
 
 \subsubsection{Infer.NET}
 
-\subsubsection{PyMC}
+
 
 \subsubsection{Figaro}
 \cite{Figaro}
@@ -951,6 +992,7 @@ be suitable for building most VPEs and, because it is open-source, it can be
 unlimitedly extended.
 
 \subsubsection{Viskell}
+\label{sec:viskell}
 
 \subsubsection{WindowBuilder}
 
