@@ -529,6 +529,58 @@ makes it possible to design scalable programs, both in terms of performance
 
 \subsection{Visual Dataflow Programming}
 
+A Dataflow Programming Language (DPL) is built upon the notion that data flows
+from one node to another. Therefore, in this paradigm a program is internally
+represented as a direct graph \cite{Hils1992}. This graph is constituted by
+three kinds of nodes (also called blocks): sources (take no input and produce
+output), processing/transformation (take an input and produce an output based
+on it) and sinks (only take input and don't produce output) \cite{Sousa2012}.
+
+The edges behave like unbounded in-order queues and define the data dependencies
+between nodes \cite{Johnston2004}, connecting input ports to output ports. Nodes process data asynchronously, as soon
+as all of its inputs are available. There are at least two ways a dataflow program
+can operate: either from left to right (from higher topological order to lower,
+also called data-driven or push-based) or right to left (in inverse topological order, called
+demand driven or pull-based) \cite{Johnston2004}.
+
+Some authors have identified features which are important in a DPL
+\cite{ackerman1982data}\cite{wail1995can}:
+
+\begin{itemize}
+  \item Freedom from side-effects: a block can't do more than producing an
+output based on inputs, being it I/O or variable re-assignment, for instances.
+  \item Locality of effect: this means having well-defined and small scopes. A
+variable should not be used in more than one block (the one it is connected) to
+via input port.
+  \item Data dependencies equivalent to scheduling: there is no notion
+of time in a DPL. However, a block will only run as soon as its inputs are ready,
+creating an implicit scheduling.
+  \item Lack of history sensitivity in procedures: no global variables. A node
+can only access its input ports.
+\end{itemize}
+
+Looking at these features, the reader can realize that in a language where all
+these rules are followed it is also possible to achieve implicit concurrency.
+Meaning that, once a program is specified, the user gets out-of-the-box concurrency
+without manually having to program it \cite{Sousa2012}.
+
+As we will see in \ref{sec:art}, there are several VPL and VPE that resort to the
+dataflow paradigm. This could be explained by how easily DPL map to
+a visual representation \cite{Johnston2004}. This kind of tool can be described
+as Visual Dataflow Programming (VDP).
+
+VDP shares the same challenges as other VP paradigms: achieve the right level
+of granularity (abstract neither too much so that the users can't express everything
+he needs to nor too little, making the representation as complex as its textual
+counterpart).
+
+A big challenge in VDP that is not present in other VPL paradigms
+is not how to transpose the dataflow graph to a graphical
+representation but rather representing control flow semantics within dataflow
+\cite{Cox2011}. Several solutions have been proposed, some of which violate
+the pure DFP principles by not being completely stateless while others introduce
+cycles in the graph \cite{Mosconi2000}.
+
 \subsection{Evaluation}
 \label{sec:eval}
 
@@ -1024,6 +1076,62 @@ unlimitedly extended.
 
 \subsubsection{Viskell}
 \label{sec:viskell}
+
+Viskell is \textit{"an experimental visual programming environment for a typed
+(Haskell-like) functional programming language"} \cite{viskell}. Its authors
+assume their main goals are, among others, to create a readable and compact
+visualisations for functional programming and addressing the scalability issues
+of larger visual programs. They state that, in order to achieve the latter goal
+and being able to scale up, Viskell should combine a simple core language with
+a good type system.
+
+This VPL does not resemble the most popular ones, having some main differences:
+the program is designed from top to bottom rather than left to right, blocks
+don't have icons but explicit names and all ports have explicit types. This class
+of design choices don't seem to be clearly superior to other state of the art tools,
+so probably we won't be including them in our VPE.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{viskell}
+    \caption{Viskell example \cite{viskell}}
+    \label{fig:viskell}
+  \end{center}
+\end{figure}
+
+Nevertheless, there are other interesting features in Viskell, many of which
+are tighly coupled to functional programming (such as how it supports currying,
+anonymous functions or case expressions). The exception is the capability to
+have an incomplete graph and allowing the user to textually insert code to fill
+in the gaps (see the blue areas in Figure \ref{fig:viskell}).
+
+Being a work in progress, its authors have sketched ideas of how to deal with
+increased program complexity that they have still not implemented in the language.
+Some of them are shown in Figure \ref{fig:viskell2} and outlined below:
+
+\begin{itemize}
+  \item Vertical composition of blocks: in the example it is extensively used
+in the last ("concatMap") block.
+  \item Inline display of constants: as seen in the first block "enumFrom",
+where 1 is written inline rather than being a separate source block. It is a form
+of horizontal composition.
+  \item Functions as constants to higher order functions: represented by the
+right-hand side of the 3 blocks in the middle ("map", "groupOn" and "concatMap").
+\end{itemize}
+
+This way, we eliminated most of the connections between nodes and achieved a
+more compact (we have 4 arcs in a representation that would use more than 20 in
+its original format) and readable representation.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{viskell2}
+    \caption{Compressed visual representation example \cite{viskell2}}
+    \label{fig:viskell2}
+  \end{center}
+\end{figure}
 
 \subsubsection{WindowBuilder}
 
