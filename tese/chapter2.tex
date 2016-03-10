@@ -762,9 +762,12 @@ The purpose of this section is to try giving an overview over the existing tools
 currently used in either VP (purely visual VPLs or VPEs) or PPLs.
 
 \subsection{PPLs}
+\label{sec:ppls}
 
 There is a great number of PPLs, so our criteria to pick which of them to analyze
-was popularity. At the same time, we tried to pick languages from different
+was popularity, which we assessed based on a rough estimate of the number of papers
+that referenced each language.
+At the same time, we tried to pick languages from different
 ends of the spectrum: functional/imperative/object-oriented, statically/dinamically
 typed, one that runs in the JVM, one from the .NET stack and another one written
 in javascript which runs in the browser.
@@ -802,7 +805,7 @@ We started by looking into Church because it is based on pure Lisp (therefore
 it is also based on lambda calculus and purely functional) \cite{Goodman2008} and believed it could
 be more expressible (in the sense that we could express equally complex models
 with less code than) than its non-functional counterparts. While maintaining the same syntax,
-it also has an implementation in javascript called webchurch \cite{chater2006probabilistic},
+it also has an implementation in javascript called webchurch \cite{church},
 with all the associated advantages (described in \ref{sec:webppl}).
 
 The Church language is being replaced by VentureScript, a language that is part
