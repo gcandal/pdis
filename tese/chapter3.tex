@@ -195,9 +195,77 @@ programs written on it publicly available.
 
 \subsection{Picking a front-end}
 
+After knowing which would be the language we would be targeting, there was still
+the need to define both the visual paradigm and the framework, if any, that we
+would use to develop the front-end (visual interface) of our VPE.
+
+Regarding the paradigms the two competing alternatives are VDP and the one offered
+by Blockly. While the first approach is what we typically see in similar tools,
+such as RapidMiner or NoFlo, the second one is a fairly new approach, unseen
+in tools other than those which were built using Blockly. It is not trivial to
+assess the suitability of either of the options because there was never a study
+directly comparing the merits of each of them, so we will try to make our own
+analysis by comparing their strenghts and weaknesses while assessing what is
+more valuable in the context of a VPE for a PPL.
+
 \subsubsection{Blockly}
 
+Similarly to what happens with VP and VPEs, there are plenty of references
+in the literature that Blockly-based tools boost productivity \cite{Marron2012} and ease the process
+of learning how to program \cite{Junior2006}.
+
+When compared with tools that are
+based in a VDP approach, it has a representation that is more similar to how code
+is written \cite{blockly}, which can be an advantage in a tool that aims to serve as a visual
+interface that generates code in a textual format, such as the one we're developing.
+This can be seen as an advantage because, not only does it facilitate fully transitioning
+to a textual format as soon as the user is comfortable enough at programming,
+but it is also makes it easier to textually fine-tune a code that was developed
+using the VPE.
+
+Among the features we analyzed in Section \ref{sec:sotavdp} that deal with
+helping the user achieving program correction we saw syntax checking and type
+checking. Blockly addresses both situations by visually modeling the program
+as a puzzle where only compatible pieces fit together; this is an intuitive way
+to enforce correctness, since it maps to an activity the majority of people are
+familiarized with: assembling puzzles. This seems a better way to cope with errors
+rather than showing an error message at compile or run-time, because often it is
+not even clear that there is an error, as we have seen that happens with NoFlo in
+Section \ref{sec:noflo}.
+
+Another great advantage of Blockly is that, because it runs on the browser, it is
+compatible across devices and operating while not requiring any kind of setup.
+If the user choses to download Blockly, it can even work with it without internet
+connection. The same applies to our VPE if we chose to build it on top of Blockly.
+
+However, this VPE of VPEs lacks features that enable it to effectively scale up
+such as the ones we have seen with NoFlo or Blender Composite Nodes (Section \ref{sec:sotavdp}).
+Examples of this include being able to zoom in and out in the UI, searching for
+blocks by their name or create group blocks to encapsulate a certain group of
+nodes (a concept analogous to functions in regular programming). It enables the
+creation of vertically and horizontally compressed blocks, similarly to Viskell,
+by using block composition and dropdowns rather than requiring to plug-in extra blocks
+(see Figure \ref{fig:blocklycomp} for an example of each case).
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{blocklycomp}
+    \caption{Blockly example of horizontal and vertical compression \cite{blockly}}
+    \label{fig:blocklycomp}
+  \end{center}
+\end{figure}
+
+\subsubsection{Eclipse Toolset}
+
+EMF+GMF+Damos
+\cite{emf}
+\cite{gmf}
+\cite{damos}
+
 \subsubsection{GoJS}
+
+\cite{gojs}
 
 \subsubsection{Custom implementation}
 

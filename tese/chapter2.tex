@@ -264,7 +264,7 @@ but common to any PP:
 One way to think about this notion is by considering that the program itself
 is the model. An example of the relation between a model (expressed in a PPL)
 and the implied distribution over its variables (obtained using an inference
-method) can be seen in Figure \ref{distribution}, where a variable \textit{flip}
+method) can be seen in Figure \ref{fig:distribution}, where a variable \textit{flip}
 is set to be a Bernoulli distribution and \textit{x} is defined in terms of
 \textit{flip}. We can then see how the graphic of the inferred distributions
 of \textit{flip's} and \textit{x's} values looks like and confirm what was to
@@ -848,8 +848,10 @@ would require extra work converting examples from other languages to Figaro
 before developing them in a graphical manner.
 
 \subsection{Tools using VDP}
+\label{sec:sotavdp}
 
 \subsubsection{NoFlo}
+\label{sec:noflo}
 
 NoFlo is a visual open-source implementation in JavaScript of Flow-Based Programming \cite{noflo}
 (which is a form of dataflow programming) and was designed for general-purpose
@@ -1049,7 +1051,7 @@ later be translated into valid code.
 \subsubsection{Blockly}
 
 Blockly is more than a VPE, it actually is a library for building VPEs \cite{blockly}.
-It is fully open source, runs on the browser (client-side) and is completly extensible.
+It is fully open source, runs on the browser (being fully client-side) and is completly extensible.
 
 Blockly does not adopt the VDP paradigm, it instead uses a system of blocks
 similar to a puzzle, as you can see in Figure \ref{fig:blockly}.
