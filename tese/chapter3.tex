@@ -140,6 +140,7 @@ a rewriting in a textual form.
  the target PPL, the front-end framework or what features to include or not.
 
 \subsection{Picking a target PPL}
+\label{sec:tarppl}
 
 Perhaps one of the most important decisions we had to made concerns the PPL we
 would be offering a VPE to, since the visual programming concepts applied are
@@ -209,6 +210,7 @@ analysis by comparing their strenghts and weaknesses while assessing what is
 more valuable in the context of a VPE for a PPL.
 
 \subsubsection{Blockly}
+\label{sec:fblock}
 
 Similarly to what happens with VP and VPEs, there are plenty of references
 in the literature that Blockly-based tools boost productivity \cite{Marron2012} and ease the process
@@ -241,7 +243,7 @@ connection. The same applies to our VPE if we chose to build it on top of Blockl
 However, this VPE of VPEs lacks features that enable it to effectively scale up
 such as the ones we have seen with NoFlo or Blender Composite Nodes (Section \ref{sec:sotavdp}).
 Examples of this include being able to zoom in and out in the UI, searching for
-blocks by their name or create group blocks to encapsulate a certain group of
+blocks by their name, zoom in and out or create group blocks to encapsulate a certain group of
 nodes (a concept analogous to functions in regular programming). It enables the
 creation of vertically and horizontally compressed blocks, similarly to Viskell,
 by using block composition and dropdowns rather than requiring to plug-in extra blocks
@@ -258,28 +260,74 @@ by using block composition and dropdowns rather than requiring to plug-in extra 
 
 \subsubsection{Eclipse Toolset}
 
-EMF+GMF+Damos
-\cite{emf}
-\cite{gmf}
-\cite{damos}
+The Eclipse Foundation has some tools, which are accessible as plugins for the
+Eclipse IDE, that we thought that could serve as a foundation for the VPE we're
+aiming to develop.
 
-\subsubsection{GoJS}
+Damos \cite{damos}, a project still in the "Proposal" phase of the Eclipse
+Development Process, is a framework for building data-flow graphical languages
+and their respective code generator. It includes both graphical and textual editors,
+as well as support for continuous, synchronous and asynchronous computations.
+Even if it already includes enough blocks so it can be used by engineers and scientists
+as a replacement for tools like MATLAB/Simulink or LabVIEW, it was designed to
+be customizable and extensible with new blocks, so we could use it to build our VPE on.
 
-\cite{gojs}
+Damos uses another Eclipse tool as its graphical editor: the Graphical Modeling
+Framework (GMF). GMF can be used to build graphical editors for multiple visual
+languages \cite{gmf}, such as UML modeling, application interfaces such as the
+one described in Section \ref{sec:winb} or, eventually, a visual language for a
+PPL. GMF is often used in conjunction with the Eclipse Modeling Framework (EMF),
+"a modeling framework and code generation facility for building tools and other
+applications based on a structured data model" \cite{emf}.
+
+In spite of their advantages, all of these have two common problems. First, they require
+users to download both Eclipse and the used plugins and their dependencies
+which not only constitutes an entry barrier but hinders collaboration, because
+it makes it difficult to share the model among colleagues. And secondly, they
+were built to generate code to specific target languages (C for Damos and Java
+for EMF), neither of which has a PPL implementation with a strong community
+(Probabilistic-C \cite{Paige2014} serves as a proof of concept and we already explained
+in Section \ref{sec:tarppl} why we discarded Figaro). Even if we could eventually
+use the generated C or Java as an intermediary representation, we believe the
+extra burden (both in development time and in runtime performance) of having an
+extra transformation does not justify for the added benefits when compared with
+other front-ends.
 
 \subsubsection{Custom implementation}
 
-\subsection{Defining a Grammar}
+At this point the strongest candidate for a front-end was Blockly,
+but it would also be possible to fully develop a new front-end, instead of using
+a framework such as Blockly or the tools from the Eclipse toolset. The purpose of
+doing so would be overcoming Blockly's limitations that we refered earlier in
+Section \ref{sec:fblock}. In order to keep Blockly's portability, we would have an
+implementation targeting the browser, where the visual elements would be
+represented by DOM tree elements and drawn using the browser's render engine,
+just like a regular HTML page; for performance reasons, we could use the HTML
+\textit{canvas} element \cite{w3ccanvas}.
 
-\subsection{Handling Cycles and Conditionals}
+The reason why we won't be choosing this option is that we believe that this
+flexibility of implementing extra features, that essentially have to do with
+navigation and block filtering or selection, are not worth the risk of having
+a VPE that does not feel as fluid and as natural as Blockly or GMF implementation would, since all
+those aforementioned features are secondary when compared to the look and feel
+of the core VPE (by core we mean the workspace where we drag the blocks, edit
+their inline properties and connect them).
 
-\subsection{Handling objects and arrays}
+Examples of such core usability features, besides having a layout that has already been
+tested (proven to deliver the benefits of VP)
+that Blockly already provides include magnetic connections
+(you don't have to drag and drop a block to a stricly defined area, doing so near
+a valid connection highlights that connection and makes it possible to drop it there)
+and block mutations (a block may change when you connect certain blocks to it,
+this allows for horizontal and vertical compression).
+
+Using a third-party framework also has the advantage of automatically getting new
+features as soon as that framework is updated, such as the zoom in and out that
+Blockly is planning to deliver \cite{blockly}.
 
 \subsection{Inverse Compilation}
 
 \subsection{Instant visual results}
-
-\subsection{Opening to extension}
 
 \section{Tutorial}
 

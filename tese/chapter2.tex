@@ -679,14 +679,13 @@ non-programmers work in limited domains \cite{Myers1990}.
 We do believe that
 data mining can be one of those domains (as shown by the popularity of RapidMiner) \cite{kdn},
 so it would make sense to extend the current state of the art with a tool that
-combines VP and PP.
-
-solução: para ultrapassar problemas comuns de VP em sistemas reais, larga-escala,
-usar apenas VP em partes especificas do projeto onde VP possa ser utilizado com
-sucesso. usar para desenhar GUIs foi um sucesso (android, windowbuilder)
-
-fazer programar mais facil para audiencia especifica
-\cite{Burnett1999}
+combines VP and PP. This view is aligned with Burnett's claims that VP makes
+programming easier for specific audiences \cite{Burnett1999}. It is also our belief
+that, by only applying VP to a specific part of a larger system (in this case,
+the ML module that uses PP) we can overcome the problems that usually arise when
+scaling up VPL \cite{Burnett1995}; successful examples of such an approach
+include the design of GUIs via a VPE (such as WindowBuiler \cite{winbuild} or
+the Android Studio's layout editor \cite{layouted}).
 
 Myers also identified some of the problems that are yet to be solved
 regarding VP \cite{Myers1990}:
@@ -1133,12 +1132,13 @@ its original format) and readable representation.
   \begin{center}
     \leavevmode
     \includegraphics[width=0.86\textwidth]{viskell2}
-    \caption{Compressed visual representation example \cite{viskell2}}
+    \caption{Compressed visual representation example \cite{viskell}}
     \label{fig:viskell2}
   \end{center}
 \end{figure}
 
 \subsubsection{WindowBuilder}
+\label{sec:winb}
 
 One domain where VPLs have been successfuly applied is in UI design. Instead of
 going through the tedious task of writting boilerplate code (often having to
