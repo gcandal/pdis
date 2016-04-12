@@ -325,9 +325,86 @@ Using a third-party framework also has the advantage of automatically getting ne
 features as soon as that framework is updated, such as the zoom in and out that
 Blockly is planning to deliver \cite{blockly}.
 
+\section{Development steps}
+
+\subsection{Variable type checking}
+
+Every PPL has the concept of random variables, which are the building block of
+any PP. Some examples in Infer.NET are listed below.
+
+\begin{lstlisting}
+  			Variable<bool> firstCoin = Variable.Bernoulli(0.5).Named("firstCoin");
+        Variable<double> x = Variable.GaussianFromMeanAndVariance(0, 1).Named("x");
+        Variable<double> threshold = Variable.New<double>().Named("threshold");
+        Variable<double> precision = Variable.GammaFromShapeAndScale(1, 1).Named("precision");
+        VariableArray<double> x = Variable.Array<double>(dataRange).Named("x");
+        VariableArray<bool> y = Variable.Observed(willBuy).Named("y");
+\end{lstlisting}
+
+Because there are so many different types (we are showing 4, but there are more),
+we believe our VPE should help the user avoid mistakes related with using wrong
+types, such as trying to apply logical operators to numeric random variables or
+greater than comparisons between boolean variables.
+
+When choosing how to represent variables we had to take into account that
+Blockly was conceived to target dynamic languages, as it can be seen by the languages
+it targets: JavaScript, Python, PHP and Dart (which supports static type-checking,
+but it's not the default mode \cite{dart}). The negative consequence of this is that it's
+not ready to perform type checking on variables, meaning that an user can
+produce invalid programs when using variables (as seen in Figure \ref{fig:valid_blockly}, we have
+drawn a program that will produce a runtime exception, since we can't evalaute
+the square root of a text string), althought the same doesn't happen when
+directly connecting the blocks, since we can't connect text input blocks to the
+right connector of the square root block.
+
+There have been dicussions among open-source projects that rely on Blockly on how
+to incorporate type checking for variables (such as a VPE for Arduino \cite{bduino}
+or one for Kiwi.js \cite{gbl}, an HTML5 game framework) as well as in Blockly's
+dicussion forum \cite{gbl2}, but none reached a final proposal, let along a working
+implementation.
+
+Therefore, we have decided to extend Blockly in order to be able to support
+different types of variables with a similar type check to the one used in other
+kinds of blocks, meaning that if they don't type check, the pieces don't fit and the user
+can't connect them. This was done by adding an extra field to FieldVariable
+(the class Blockly class that represents variables) that identifies its type and
+modifying the behavior of each component that deals with variables to take that
+into account.
+
+This way, variables from different types are kept isolated, so that if the user
+declares a boolean variable named \textit{bool}, it won't appear in numeric
+variable's dropdowns or menus. This segregation between different variable types,
+besides allowing to have the aforementioned type checking at the block level, it
+also allows to have different colors and labels in the blocks for different types of variables
+(making it clearer to the user they should be used differently) and to declare
+explicit C# types in the generated code, rather than using
+the dynamic keyword to avoid static type-checking \cite{cdyn}. The advantage is that
+the generated code is closer to the one that would be written by a programmer,
+so it eases the transition from a VPE to a textual format, since both representations
+are similar.
+
+\begin{figure}[t]
+  \begin{center}
+    \leavevmode
+    \includegraphics[width=0.86\textwidth]{valid_blockly}
+    \caption{Blockly example of representable invalid program}
+    \label{fig:valid_blockly}
+  \end{center}
+\end{figure}
+
+\section{Limitations}
+
+In this section we will describe some limitations that our chosen toolset (using
+Blockly to represent Infer.NET C#) imposes in functionality, some of which could
+be circumvented with further work.
+
 \subsection{Inverse Compilation}
 
+n da mas tem XML
+
 \subsection{Instant visual results}
+
+na melhor das hipoteses mostra codigo
 
 \section{Tutorial}
 
