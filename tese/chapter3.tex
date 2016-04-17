@@ -327,6 +327,26 @@ Blockly is planning to deliver \cite{blockly}.
 
 \section{Development steps}
 
+The purpose of this section is to enumerate the difficulties encountered when
+developing a VPE that could support the design of programs similar in functionality
+to the ones the reader can find in Infer.NET's tutorials \cite{InferNET14t} and
+the solution we adopted to overcome them.
+
+\subsection{Generating basic C#}
+
+Since Infer.NET is hosted in C# but Blockly does not include a generator for
+the language, the first thing to do was to be able to provide code generation for
+Blockly's default blocks, that provide a language's most basic constructs such
+as variables, lists and control structures.
+
+We decided to adopt an open-source implementation to solve this issue \cite{csgen}
+but since it was not compatible with Blockly's versions since January 2016, it
+was necessary to work on making it compatible, so we could have the latest features
+available, such as zooming in and out, which we had previously identified as a
+major feature required in a VPE to be able to scale up programs visually.
+
+This work lead to the pull request #8 to that open-source project \cite{csgenpr}.
+
 \subsection{Variable type checking}
 
 Every PPL has the concept of random variables, which are the building block of
@@ -395,8 +415,7 @@ are similar.
 \section{Limitations}
 
 In this section we will describe some limitations that our chosen toolset (using
-Blockly to represent Infer.NET C#) imposes in functionality, some of which could
-be circumvented with further work.
+Blockly to represent Infer.NET C#) imposes in functionality.
 
 \subsection{Inverse Compilation}
 
