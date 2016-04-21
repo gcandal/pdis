@@ -490,18 +490,61 @@ are similar.
   \end{center}
 \end{figure}
 
+\subsection{Serialization}
+
+It is important in a VPE to be able to save and load programs, so the user can
+not only work on a given program at different points in time, but also share it
+with other users. Blockly makes it possible to do so by converting a graphical
+representation to XML, which can later be imported.
+
 \section{Limitations}
 
 In this section we will describe some limitations that our chosen toolset (using
 Blockly to represent Infer.NET C#) imposes in functionality.
 
-\subsection{Inverse Compilation}
+\subsection{Inverse compilation}
 
-n da mas tem XML
+By inverse compilation we mean the act of converting a program in a textual form
+to its Blockly representation. This could be useful because it would help users
+easily switch between representations, similarly to Window Builder (as discussed in Section \ref{sec:winb})
+and unlike what happens with our current approach.
+With our VPE, if you textually make a change in the program,
+and since that won't be reflected in the graphical representation, everytime
+the code is re-generated (which happens frequently and unexpectedly, in situations
+such as opening and closing menu tabs) your changes will be overriden.
+
+Even if parsing C# and converting it to an intermediate representation would be
+simple (Microsoft provides an EBNF grammar for the language \cite{ebnfcs}), there
+are a number of questions that should be answered before implementing this feature.
+For instances, our graphical representation guarantees type safety and a valid
+program so it would not make sense to allow specifying an invalid program that
+would be translated into a graphical form, it would break one of the most important
+guarantess, the one that makes it suitable for beginners in programming. In
+order to ensure a valid textual program, we would need to be able to either mimick
+the compiler's verifications or run the compiler itself; the first option is
+a big challenge while the second is incompatible with the VPE being browser-based
+(the compiler does not run, and cannot be easily converted to JavaScript).
 
 \subsection{Instant visual results}
 
-na melhor das hipoteses mostra codigo
+As we discussed before in several parts of this work, a big tradeoff we made was
+to sacrifice the flexibility of using any language needed in favor of the portability
+of a VPE that runs in the browser, which (as of this moment) only runs JavaScript.
+
+Perhaps the greatest limitation of this approach is not being able to run Infer.NET
+code, which makes it impossible not to violate the VP principle of instant visual results.
+The development cycle is greatly affected by forcing the user to copy the text
+into a location where a compiler can access and run it. A work around for this
+would be to adopt a client-server architecture where our server would run the code
+and send the results back to the user. Even if that creates a need for internet
+connection, which currently does not exist, we believe it to be a worthwhile tradeoff
+and something to pursue in future work.
+
+Currently we can only show the generated code in real time, but we took special
+care to have an interface where the user can see both representation simultaneously
+without having to perform any actions such as switching between tabs or pressing
+a \textit{'Generate code'} button, so we could minimize this possible as best as we could
+without adopting the client-server architecture.
 
 \subsection{Object-oriented programming}
 
