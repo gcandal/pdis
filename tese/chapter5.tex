@@ -1,43 +1,65 @@
-\chapter{Conclusions} \label{chap:concl}
+\chapter{Practical examples}\label{chap:chap4}
 
-\section*{}
+\section{First example}
 
-Since the start of PDIS we have gathered the needed background knowledge to
-understand both the PPL and VP domains, as well as analysing the state of the art
-of both topics. During this period we identified some usability features that
-we believe improve the end-users' productivity, as well as some shortcomings
-that we wish to overcome and mistakes to avoid. Furthermore, we have found some
-evidence in the VP literature
-that indicate that a VPE could enhance users' productivity when developing using
-a PPL.
+This first example is taken from Infer.NET's tutorial \cite{InferNET14t}, and we can see
+the resulting representation in Figure \ref{fig:firstExample}, which generates the following code:
 
-Having all of this into account we believe we have met the objectives proposed for
-this period and have planned the future work accordingly.
+\begin{lstlisting}
+  using System;
+  using System.Collections.Generic;
+  using System.Text;
+  using MicrosoftResearch.Infer.Models;
+  using MicrosoftResearch.Infer;
 
-\section{Future Work}
+  namespace Examples
+  {
+  	public class FirstExample
+  	{
+  		public void Run()
+  		{
+  			InferenceEngine engine = new InferenceEngine();
+  			engine.Algorithm = new ExpectationPropagation();
+        Variable<bool> firstCoin;
+  			Variable<bool> secondCoin;
+  			Variable<bool> bothHeads;
 
-In the time I'll be dedicated to accomplish what I have proposed to do, developing
-a visual programming environment and gathering knowledge of what works best in
-a visual representation and what doesn't, I'll be following the work plan presented
-in Figure \ref{fig:workplan}.
+  			firstCoin = Variable.Bernoulli(0.5).Named("firstCoin");
+        secondCoin = Variable.Bernoulli(0.5).Named("secondCoin");
+        bothHeads = (firstCoin & secondCoin).Named("bothHeads");
 
-During these nearly 5 months, the plan is to start weighting the pros and cons
-of using certain PPLs and picking one of them to be used. The next step would be
-picking an apropriate frontend, deciding between Blockly, a custom HTML+Javascript
-solution, or other alternative. Then, I'll start by gathering the fundamental
-language constructs that must be included, defining how they could be represented
-in the visual language and developing the frontend and code generation for those constructs.
-From this point onwards until the end, I've planned to make iterations: of choosing
-new language features to integrate, adapt the frontend and code generation for them,
-converting textual examples to the visual representation and studying the differences
-between the two representations. Finnally, there
-will be some time to make a tutorial on how to use the VPE.
+        if (!(ie.Algorithm is VariationalMessagePassing)) {
+  				Console.WriteLine(String.concat("Probability both coins are heads: ", ie.Infer(bothHeads));
+  				bothHeads.ObservedValue = false;
+  				Console.WriteLine(String.concat("Probability distribution over firstCoin: ", ie.Infer(firstCoin));
+  			} else {
+  				Console.WriteLine("This example does not run with Variational Message Passing");
+    		}
+  	}
+  }
+\end{lstlisting}
+
+The generated code is fairly similar to one that a human would
+write, with the exceptions of string concatenation (in this case it would be more natural
+to join the text with the inference result via the plus operator rather than
+using String.concat) and variables being declared and set in different lines.
+
+It is our belief that the graphical representation is clearar than its textual
+counterpart, mainly because parameters are named (it is clear that 0.5 is the
+probability of true when defining a Bernoulli distributions) and due to the use
+of colors: red for statements related with
+the inference engine, dark yellow for boolean distributions, green for text
+and I/O, blue for booleans and control structures and purple for numbers.
 
 \begin{figure}[t]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{workplan}
-    \caption{Work plan for the work of this dissertation}
-    \label{fig:workplan}
+    \includegraphics[width=0.86\textwidth]{firstExample}
+    \caption{First example of a PP with our Blockly-powered VPE.}
+    \label{fig:firstExample}
   \end{center}
 \end{figure}
+
+\section{Second and third examples}
+
+\section{Conclusions}

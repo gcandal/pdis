@@ -1,125 +1,85 @@
 \chapter*{Abstract}
 
-Here goes the abstract written in English.
+Probabilistic programming is a way to create systems that help us make decisions
+ in the face of uncertainty. Lots of everyday decisions involve judgment in
+determining relevant factors that we do not directly observe. Historically, one
+way to help make decisions under uncertainty has been to use a probabilistic
+reasoning system.
+Probabilistic reasoning combines our knowledge of a situation with the laws of
+probability to determine those unobserved factors that are critical to the
+decision. Typically, the way the several observations are combined is through
+the usage of bayesian statistics, due to its anachronistic interpretation where
+existing knowledge (priors) are combined with observations in order to gather
+evidence towards competing hypothesis.
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vehicula
-lorem commodo dui. Fusce mollis feugiat elit. Cum sociis natoque
-penatibus et magnis dis parturient montes, nascetur ridiculus
-mus. Donec eu quam. Aenean consectetuer odio quis nisi. Fusce molestie
-metus sed neque. Praesent nulla. Donec quis urna. Pellentesque
-hendrerit vulputate nunc. Donec id eros et leo ullamcorper
-placerat. Curabitur aliquam tellus et diam.
+When compared to other machine learning methods (such as random forests, neural
+networks or linear regression), which take homogeneous data as input (requiring
+the user to separate their domain into different models), probabilistic
+ programming is used to leverage the data’s original structure. Plus, it
+ provides full probability distributions over both the predictions and
+ parameters of the model, whereas ML methods can only give the user a certain
+ degree of confidence on the predictions.
 
-Ut tortor. Morbi eget elit. Maecenas nec risus. Sed ultricies. Sed
-scelerisque libero faucibus sem. Nullam molestie leo quis
-tellus. Donec ipsum. Nulla lobortis purus pharetra turpis. Nulla
-laoreet, arcu nec hendrerit vulputate, tortor elit eleifend turpis, et
-aliquam leo metus in dolor. Praesent sed nulla. Mauris ac augue. Cras
-ac orci. Etiam sed urna eget nulla sodales venenatis. Donec faucibus
-ante eget dui. Nam magna. Suspendisse sollicitudin est et mi.
+Until recently, probabilistic reasoning systems have been limited in scope, and
+have been hard to apply to many real world situations. Models are communicated
+using a mix of natural language, pseudo code, and mathematical formulae and
+solved using special purpose, one-off inference methods. Rather than precise
+specifications suitable for automatic inference, graphical models typically
+serve as coarse, high-level descriptions, eliding critical aspects such as
+fine-grained independence, abstraction and recursion.
 
-Fusce sed ipsum vel velit imperdiet dictum. Sed nisi purus, dapibus
-ut, iaculis ac, placerat id, purus. Integer aliquet elementum
-libero. Phasellus facilisis leo eget elit. Nullam nisi magna, ornare
-at, aliquet et, porta id, odio. Sed volutpat tellus consectetuer
-ligula. Phasellus turpis augue, malesuada et, placerat fringilla,
-ornare nec, eros. Class aptent taciti sociosqu ad litora torquent per
-conubia nostra, per inceptos himenaeos. Vivamus ornare quam nec sem
-mattis vulputate. Nullam porta, diam nec porta mollis, orci leo
-condimentum sapien, quis venenatis mi dolor a metus. Nullam
-mollis. Aenean metus massa, pellentesque sit amet, sagittis eget,
-tincidunt in, arcu. Vestibulum porta laoreet tortor. Nullam mollis
-elit nec justo. In nulla ligula, pellentesque sit amet, consequat sed,
-faucibus id, velit. Fusce purus. Quisque sagittis urna at quam. Ut eu
-lacus. Maecenas tortor nibh, ultricies nec, vestibulum varius, egestas
-id, sapien.
+Probabilistic programming is a new approach that makes probabilistic reasoning
+systems easier to build and more widely applicable. A probabilistic programming
+language (PPL) is a programming language designed to describe probabilistic
+models, in a such a way we can say that the program itself is the model, and
+then perform inference in those models. PPLs have seen recent interest from the
+artificial intelligence, programming languages, cognitive science, and natural
+languages communities. By empowering users with a common dialect in the form of
+a programming language, rather than requiring each one of them to the non-trivial
+and error-prone task of writing their own models and hand-tailored inference
+algorithms for the problem at hand, it encourages exploration, since different
+models require less time to setup and evaluate, and enables sharing knowledge
+in the form of best practices, patterns and tools such as optimized compilers
+or interpreters, debuggers, IDE’s, optimizers and profilers.
 
-Phasellus ullamcorper justo id risus. Nunc in leo. Mauris auctor
-lectus vitae est lacinia egestas. Nulla faucibus erat sit amet lectus
-varius semper. Praesent ultrices vehicula orci. Nam at metus. Aenean
-eget lorem nec purus feugiat molestie. Phasellus fringilla nulla ac
-risus. Aliquam elementum aliquam velit. Aenean nunc odio, lobortis id,
-dictum et, rutrum ac, ipsum.
+PPLs are closely related to graphical models and Bayesian networks, but are
+more expressive and flexible. One can easily realize this by looking at the
+re-usable components PPLs offer, being one of them the inference engine, which
+can be plugged in into different models. For instances, it is easy to replace
+the exact-solution traditional Bayesian networks inference, which requires time
+exponential in the number of variables to run, with approximation algorithms
+such as the Markov Chain Monte Carlo (MCMC) or Variational Message Passing
+(VMP), which make it possible to compute large hierarchical models by resorting
+to sampling and approximation. PPLs often extend from a basic language (i.e.,
+they are embedded in a host language like R, Java or Scala), although some PPLs
+such as WinBUGS and Stan offer a self-contained language, with no obvious origin
+in another language.
 
-Ut tortor. Morbi eget elit. Maecenas nec risus. Sed ultricies. Sed
-scelerisque libero faucibus sem. Nullam molestie leo quis
-tellus. Donec ipsum. Nulla lobortis purus pharetra turpis. Nulla
-laoreet, arcu nec hendrerit vulputate, tortor elit eleifend turpis, et
-aliquam leo metus in dolor. Praesent sed nulla. Mauris ac augue. Cras
-ac orci. Etiam sed urna eget nulla sodales venenatis. Donec faucibus
-ante eget dui. Nam magna. Suspendisse sollicitudin est et mi.
+There have been successful applications of visual programming among several
+domains, being it education (MIT’s Scratch and Microsoft’s VPL), general-purpose
+programming (NoFlo), 3D modeling (Blender) and data science (RapidMiner and Wek
+ Knowledge Flow). The latter, being popular products, have shown that there is
+ added value in providing a graphical representation for working with data.
+ However, as of today no tool provides a graphical representation for a PPL.
 
-Phasellus ullamcorper justo id risus. Nunc in leo. Mauris auctor
-lectus vitae est lacinia egestas. Nulla faucibus erat sit amet lectus
-varius semper. Praesent ultrices vehicula orci. Nam at metus. Aenean
-eget lorem nec purus feugiat molestie. Phasellus fringilla nulla ac
-risus. Aliquam elementum aliquam velit. Aenean nunc odio, lobortis id,
-dictum et, rutrum ac, ipsum.
+DARPA, the main funder behind PPLs’ research, considers one of the main key
+points of its Probabilistic Programming for Advancing Machine Learning program
+to make models easier to write (reducing development time, encouraging
+experimentation and reducing the level of expertise required to develop such
+models). The use of visual programming is suitable for this kind of objectives,
+so building upon the enormous flexibility of PPLs and the advantages of
+probabilistic models, we want to take advantage of the graphical intuition given
+by data visualization that data scientists are now accustomed to, and attempt
+to provide model and algorithmical visualization by rethinking how to capture
+the (usually textual) programmatic formalisms in a graphical manner.
 
-Ut tortor. Morbi eget elit. Maecenas nec risus. Sed ultricies. Sed
-scelerisque libero faucibus sem. Nullam molestie leo quis
-tellus. Donec ipsum.
+The goal of this dissertation is thus to explore graphical representations of a
+probabilistic programming language through the usage of node-based programming.
+The hypothesis under consideration is that graphical representations (not to be
+confused with bayesian graphical model), are more intuitive and easy to learn
+that full-blown PPLs.
 
-\chapter*{Resumo}
-
-O Resumo fornece ao leitor um sumário do conteúdo da dissertação.
-Deverá ser breve mas conter detalhe suficiente e, uma vez que é a porta
-de entrada para a dissertação, deverá dar ao leitor uma boa impressão
-inicial.
-
-Este texto inicial da dissertação é escrito no fim e resume numa
-página, sem referências externas, o tema e o contexto do trabalho, a
-motivação e os objectivos, as metodologias e técnicas empregues, os
-principais resultados alcançados e as conclusões.
-
-Este documento ilustra o formato a usar em dissertações na \Feup.
-São dados exemplos de margens, cabeçalhos, títulos, paginação, estilos
-de índices, etc.
-São ainda dados exemplos de formatação de citações, figuras e tabelas,
-equações, referências cruzadas, lista de referências e índices.
-%Este documento não pretende exemplificar conteúdos a usar.
-É usado texto descartável, \emph{Loren Ipsum}, para preencher a
-dissertação por forma a ilustrar os formatos.
-
-Seguem-se umas notas breves mas muito importantes sobre a versão
-provisória e a versão final do documento.
-A versão provisória, depois de verificada pelo orientador e de
-corrigida em contexto pelo autor, deve ser publicada na página
-pessoal de cada estudante/dissertação, juntamente com os dois
-resumos, em português e em inglês; deve manter a marca da água,
-assim como a numeração de linhas conforme aqui se demonstra.
-
-A versão definitiva, a produzir somente após a defesa, em versão
-impressa (dois exemplares com capas próprias FEUP) e em versão
-eletrónica (6 CDs com "rodela" própria FEUP), deve ser limpa da marca de
-água e da numeração de linhas e deve conter a identificação, na primeira
-página, dos elementos do júri respetivo.
-Deve ainda, se for o caso, ser corrigida de acordo com as instruções
-recebidas dos elementos júri.
-
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vehicula
-lorem commodo dui. Fusce mollis feugiat elit. Cum sociis natoque
-penatibus et magnis dis parturient montes, nascetur ridiculus
-mus. Donec eu quam. Aenean consectetuer odio quis nisi. Fusce molestie
-metus sed neque. Praesent nulla. Donec quis urna. Pellentesque
-hendrerit vulputate nunc. Donec id eros et leo ullamcorper
-placerat. Curabitur aliquam tellus et diam.
-
-Ut tortor. Morbi eget elit. Maecenas nec risus. Sed ultricies. Sed
-scelerisque libero faucibus sem. Nullam molestie leo quis
-tellus. Donec ipsum. Nulla lobortis purus pharetra turpis. Nulla
-laoreet, arcu nec hendrerit vulputate, tortor elit eleifend turpis, et
-aliquam leo metus in dolor. Praesent sed nulla. Mauris ac augue. Cras
-ac orci. Etiam sed urna eget nulla sodales venenatis. Donec faucibus
-ante eget dui. Nam magna. Suspendisse sollicitudin est et mi.
-
-Phasellus ullamcorper justo id risus. Nunc in leo. Mauris auctor
-lectus vitae est lacinia egestas. Nulla faucibus erat sit amet lectus
-varius semper. Praesent ultrices vehicula orci. Nam at metus. Aenean
-eget lorem nec purus feugiat molestie. Phasellus fringilla nulla ac
-risus. Aliquam elementum aliquam velit. Aenean nunc odio, lobortis id,
-dictum et, rutrum ac, ipsum.
-
-Ut tortor. Morbi eget elit. Maecenas nec risus. Sed ultricies. Sed
-scelerisque libero faucibus sem. Nullam molestie leo quis
-tellus. Donec ipsum.
+We intend to validate such hypothesis by ensuring that classical problems solved
+in the literature by PPLs are also supported by our graphical representation,
+and then measure how quickly a group of people trained in statistics would
+produce a viable model in both alternatives.
