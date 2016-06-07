@@ -6,15 +6,37 @@ Critical analysis: when to use or not, strengths and weaknesses.
 
 \section{Future Work}
 
+During the work of this thesis, we have certainly identified areas where there
+could be improvements. The first one is an addition to the validation process, while the
+second concerns a feature that could be added; we describe both below.
+
+Besides these two, the concepts we explore in this text could be further improved,
+and even extended, by continuing to perform the example modeling loop.
+Even if we feel that we have tackled the most significant
+challenges, and provided a decent number of examples, there is always still more
+work to be done in this area.
+
+Using examples from a different PPL could be interesting, even if the semantics
+are usually very similar, so we could access the generality of the concepts
+and transformation patterns we have been studying.
+
+Another feature that would highly value the VP tools for PP in respect to their
+textual counterparts would be to include more visual feedback. This includes
+not only graphics of the resulting distributions, but could even show progress
+while the model is running, so the user could debug their program.
+
 \subsection{An empirical study}
 
-As discussed in Chapter \ref{chap:chap3}, an interesting approach to validate
-the hypothesis that a
+As discussed in Chapter \ref{chap:chap3}, an interesting approach to further validate
+the hypothesis that a change in paradigm from traditional procedural or
+object-oriented PP to visual PP makes a certain class of users more productive
+would be to perform an empirical study whose participants would belong to the
+target audience we defined in Section \ref{sec:audience}.
 
 The way the study would work would be by compare how fast an user can define a model for a given set of problems
 when using a VPL in a regualr way or through our graphical interface. We'd then
 count the number of syntax and type erros done with each representation. By
-selecting users who never used the given PPL, we could not only measure execution
+selecting users who never used the chosen PPL, we could not only measure execution
 speed but learning time.
 
 It would also be valuable to assess, not only how fast can someone develop with either
@@ -29,10 +51,13 @@ really enhance an user's experience when using a PPL. Another method we could us
 to help us make an assessment of the validity of the hypothesis would be asking
 participants questions regarding usability. Even if it may seem redundant, since
 we would already have the time measurements, it is a way of identifying strenghts and
-weaknesses with reduced granularity.
+weaknesses of the visual representation.
 
 \subsection{Function blocks}
 
 A feature that was left out during development but could have a significant
 impact in the VPE's usability, mainly during the development of large models
-(scaling up) would be to be able to 
+(scaling up) would be to provide the user with the capability to create his own
+blocks, made up of smaller blocks. This is analogous to functions in regular
+programming and has been sucessfully applied to widely used VPE, as we have
+seen in \ref{chap:sota}.

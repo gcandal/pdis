@@ -346,12 +346,12 @@ Every PPL has the concept of random variables, which are the building block of
 any PP. Some examples in Infer.NET are listed below.
 
 \begin{lstlisting}
-  			Variable<bool> firstCoin = Variable.Bernoulli(0.5).Named("firstCoin");
-        Variable<double> x = Variable.GaussianFromMeanAndVariance(0, 1).Named("x");
-        Variable<double> threshold = Variable.New<double>().Named("threshold");
-        Variable<double> precision = Variable.GammaFromShapeAndScale(1, 1).Named("precision");
-        VariableArray<double> x = Variable.Array<double>(dataRange).Named("x");
-        VariableArray<bool> y = Variable.Observed(willBuy).Named("y");
+  			Variable<bool> firstCoin = Variable.Bernoulli(0.5);
+        Variable<double> x = Variable.GaussianFromMeanAndVariance(0, 1);
+        Variable<double> threshold = Variable.New<double>();
+        Variable<double> precision = Variable.GammaFromShapeAndScale(1, 1);
+        VariableArray<double> x = Variable.Array<double>(dataRange);
+        VariableArray<bool> y = Variable.Observed(willBuy);
 \end{lstlisting}
 
 Because there are so many different types (we are showing 4, but there are more),
