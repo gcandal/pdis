@@ -6,18 +6,26 @@ As already described in Section \ref{sec:goals}, this dissertation aims to solve
 the problem of PPLs having too much of a steep learning curve for someone who
 is unexperienced in programming, even if that person would've enough knowledge
 in statistics to leverage PPLs' power in applied machine learning. We propose
-to do so by showing how we can develop or extend an existing VPE so it can capture common PPL's
-semantics so that the final VPE is user-friendly
-and yet flexible enough to be able to program solutions for non-trivial problems.
-
-Since the existing work joining VP with PP is almost nonexistent, the notable exception
+to do so by showing how we can develop or extend an existing VPL (more specifically
+a VPE) so it can capture common PPL semantics so that it is user-friendly
+and yet flexible enough to be able to express solutions for non-trivial problems
+that could be solved via a PPL. Since the existing work joining VP with PP is almost nonexistent, the notable exception
 being VIBES and WinBUGS (even if it they have their shortcomings, as described in \ref{sec:vibes}),
 we have identified margin for improvement.
 
-VPEs have been successfuly
-applied to other domains, and considering previous studies in VP that suggest it is
-well suited for both limited domains and unexperienced programmers, it is the
-author's belief that development in PPLs would also benefit from such a tool.
+We will be comparing alternatives and proposing solutions to the common issues that
+arise when trying to create a VPL with PP semantics. However, this does not mean that
+the VPL must, or should, act as a mirror to the underlying PPL. The objective
+is not to have a VPL that can express all of the language's syntax, acting as
+a mirror or a complete interface for the textual format it represents, but rather
+to enable the change of paradigm from object-oriented, procedural or declarative programming
+to a visual one. Nontheless, if this scenario happens and we happen to be able
+to fully represent a PPL, that is not a problem by itself, but just a consequence
+of the choices made during the creation of the VPL.
+
+VPEs have been successfuly applied to other domains, and considering previous studies in VP that suggest they
+are well suited for both limited domains (such as PP) and unexperienced programmers, it is the
+author's belief that the PPL toolset would benefit from such a tool.
 Therefore, we intend to validate the following hypotehsis:
 
 \begin{quote}
@@ -29,12 +37,14 @@ Therefore, we intend to validate the following hypotehsis:
   easier to maintain.''
 \end{quote}
 
+\section{Validation Procedure}
+
 Because there isn't a standard method for evaluating if a language is easier
 to work with than another, the question arises on how to evaluate success.
 The optimal way to do so would be to make an empiral
-study. However, this requires finding a significate amount of people from the
-target audience (described below) willing to participate in the study, which
-is not an easy task, as well as having a tool mature and stable enough so that the
+study. However, this requires finding a significant amount of people from the
+target audience (described below) willing to participate in the study (which
+is not an easy task, because it is rare profile) as well as having a tool mature and stable enough so that the
 study's results could be considered reliable and representative of an underlying
 idea (in this case, that a VPE can boost user's performance when developing
 models with a PPL). The goal of this dissertation is to
@@ -44,11 +54,16 @@ a prototype; is is not to develop production-grade software.
 An alternative to this empirical evaluation is to gather examples of probabilistic programs expressed in a
 PPL (either the one who chose to serve as backend, or another with similar
 capabilities) in its traditional textual form, translate them into our graphical
-language, and compare the two. This is what we will be doing.
+language, and compare the two.
 
-O que: VPL -> PLL: explore VPL able to capture PLL semantics, but not PLL syntax (transformação mas não "espelho") => change in paradigm
-
-Processo: Vamos usar uma PLL exemplo para demonstrar (validation procedure, parte do problem statement) -> modelar numa VPL <=> consegui? mais exemplos : extender VPL
+As such, our validation procedure consists of a model-evaluate-extend loop where
+we start by trying to model a problem in our VPL and then look at the result:
+if we couldn't model the problem by lack of semantics, or the representation
+lacked essential characteristics (such as type safety), we extend the VPL;
+after this is done we continue to the next example. This iteration continues
+until we are able to represent a significant amount of examples, so that
+we can show how to extend a VPL to support a variety of PP constructs with different
+semantics.
 
 \section{Target audience}\label{sec:audience}
 
