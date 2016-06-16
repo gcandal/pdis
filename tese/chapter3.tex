@@ -4,7 +4,7 @@
 
 As already described in Section \ref{sec:goals}, this dissertation aims to solve
 the problem of PPLs having too much of a steep learning curve for someone who
-is unexperienced in programming, even if that person would've enough knowledge
+is inexperienced in programming, even if that person would've enough knowledge
 in statistics to leverage PPLs' power in applied machine learning. We propose
 to do so by showing how we can develop or extend an existing VPL (more specifically
 a VPE) so it can capture common PPL semantics so that it is user-friendly
@@ -19,14 +19,14 @@ the VPL must, or should, act as a mirror to the underlying PPL. The objective
 is not to have a VPL that can express all of the language's syntax, acting as
 a mirror or a complete interface for the textual format it represents, but rather
 to enable the change of paradigm from object-oriented, procedural or declarative programming
-to a visual one. Nontheless, if this scenario happens and we happen to be able
+to a visual one. nonetheless, if this scenario happens and we happen to be able
 to fully represent a PPL, that is not a problem by itself, but just a consequence
 of the choices made during the creation of the VPL.
 
-VPEs have been successfuly applied to other domains, and considering previous studies in VP that suggest they
-are well suited for both limited domains (such as PP) and unexperienced programmers, it is the
+VPEs have been successfully applied to other domains, and considering previous studies in VP that suggest they
+are well suited for both limited domains (such as PP) and inexperienced programmers, it is the
 author's belief that the PPL toolset would benefit from such a tool.
-Therefore, we intend to validate the following hypotehsis:
+Therefore, we intend to validate the following hypothesis:
 
 \begin{quote}
   ``When a user produces a probabilistic model via a graphical representation that automatically translates
@@ -41,7 +41,7 @@ Therefore, we intend to validate the following hypotehsis:
 
 Because there isn't a standard method for evaluating if a language is easier
 to work with than another, the question arises on how to evaluate success.
-The optimal way to do so would be to make an empiral
+The optimal way to do so would be to make an empirical
 study. However, this requires finding a significant amount of people from the
 target audience (described below) willing to participate in the study (which
 is not an easy task, because it is rare profile) as well as having a tool mature and stable enough so that the
@@ -54,7 +54,9 @@ a prototype; is is not to develop production-grade software.
 An alternative to this empirical evaluation is to gather examples of probabilistic programs expressed in a
 PPL (either the one who chose to serve as backend, or another with similar
 capabilities) in its traditional textual form, translate them into our graphical
-language, and compare the two.
+language, and compare the two regarding how easy would it be for someone other than
+the program's author to understand it and the safety nets provided for the programmer
+(runtime errors, compiler warnings or other forms of preventing errors).
 
 As such, our validation procedure consists of a model-evaluate-extend loop where
 we start by trying to model a problem in our VPL and then look at the result:
@@ -68,8 +70,8 @@ semantics.
 \section{Target audience}\label{sec:audience}
 
 The resulting tool is aimed at people with knowledge in statistics
-who are unexperienced programmers. This may include data scientists, researchers,
-mathematicians or staticians. In short, anyone who would apply PP to problem
+who are inexperienced programmers. This may include data scientists, researchers,
+mathematicians or statisticians. In short, anyone who would apply PP to problem
 solving but is not fluent in programming.
 
 \section{Expected contributions}

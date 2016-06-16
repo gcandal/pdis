@@ -10,10 +10,10 @@ on one of these concepts.
 
 \section{Machine learning}
 
-Machine learning (ML) is a field which can be seen as a subfield of artifical
+Machine learning (ML) is a field which can be seen as a sub field of artifical
 intelligence that incorporates mathematics and statistics and is concerned
 with conceiving algorithms that learn autonomously, that is, without human
-interventation \cite{mlbrit}\cite{mlnot}.
+intervention \cite{mlbrit}\cite{mlnot}.
 It has the potential to impact a wide spectrum of
 different areas such as biology, medicine, finance, astronomy
 \cite{Amatriain:2013:BDU:2541176.2514691}, computer vision, sales forecast,
@@ -31,7 +31,7 @@ future events or important alterations \cite{mapt}.
 Probabilistic reasoning (PR) is the formation of probability judgments and of
 subjective beliefs about the likelihoods of outcomes and the frequencies of
 events \cite{Lassiter2012}, it is a way to combine our knowledge of a situation
-with the laws of probability. There are subjective belifs because, in non-trivial
+with the laws of probability. There are subjective beliefs because, in non-trivial
 decision-making there are unobserved factors that are critical to the decision
 in conjunction with several sources of uncertainty \cite{reas}, such as:
 
@@ -77,14 +77,14 @@ There are at least two interpretations to the theorem and regarding how one may 
 about its results \cite{Fienberg2006}:
 
 \begin{itemize}
-  \item Frequentist interpreation: probabilities are defined by the relative
-frequency of events, given a natural sampling. Meaning, the probabiltiy of
+  \item Frequentist interpretation: probabilities are defined by the relative
+frequency of events, given a natural sampling. Meaning, the probability of
 obtaining 'Heads' when rolling a dice is equal to the number of 'Heads' obtained
 after rolling the dice a sufficient number of times relative to the total number
 of times the dice has been rolled.
-  \item Epistemological interpreation: probabilities represent a measure of
+  \item Epistemological interpretation: probabilities represent a measure of
 belief. It can either be a result logical combination of probabilities through
-the usage of axioms (it's closely related to Aristotlean logic)
+the usage of axioms (it's closely related to Aristotelian logic)
 or it can also reflect a personal belief (which is called a subjective view).
 \end{itemize}
 
@@ -130,7 +130,7 @@ model is called a Bayesian Network.
 
 \subsubsection{Bayesian Networks}
 
-We can extended our alarm example further, by considering not only a burglar
+We can extend our alarm example further, by considering not only a burglar
 can trigger the alarm, but an earthquake also can (while there can still be
 false positives). Also, consider that we have 2 neighbors (Mary and John) who
 may call us whether the alarm is ringing or not. This problem is represented in
@@ -161,7 +161,7 @@ This last example, for instances, would be calculated as: P(J, M, A, \neg B, \ne
 
 Notice how counter-intuitive this
 example is: the probability of there being an earthquake is about 32 times larger
-then there being an earthquake, the alarm ringing and the neighbors calling us,
+than there being an earthquake, the alarm ringing and the neighbors calling us,
 even if the conditional probabilities are reasonably high (0.95, 0.9 and 0.7).
 This is the result of the calculation of the joint probability being an highly
 combinatorial problem, which is yet another argument in favor of using PR
@@ -171,7 +171,7 @@ rather than subjective heuristics.
 
 In practical ML applications, it is often the case that there is an
 incoming stream of new data, rather than one-time batch calculations.
-BR can accomodate this way of thinking, which A. Downey called diachronic
+BR can accommodate this way of thinking, which A. Downey called diachronic
 interpretation \cite{thbay}, where diachronic means that something is happening
 over time (in this case the probability of the hypotheses, as new data arrives).
 In order to make sense of this definition, we may rewrite Bayes' rule as:
@@ -208,7 +208,7 @@ to ML, may think that graphical models such as the one presented in Figure
 interface for solving this kind of problems and that the only thing is missing
 is an automated way to make the calculations.
 
-While it is true we have never refered mentioned techniques or tools that
+While it is true we have still never mentioned techniques or tools that
 automatically do inference over a Bayesian Network, there are several tools
 with that capability (including an R package \cite{Højsgaard2013} or
 standalone tools \cite{msbn}).
@@ -222,7 +222,7 @@ probabilities (like we did in the alarm example), as we will discuss in Section
 Bayesian Networks are not the only kind of graphical model. Another one would be
 Markov Chains, which is yet another example of a model which is not able to
 represent all PR problems. This is clear when we realize that, while PPLs
-support a large number of different distributions (such as Normal, Laplace,
+support numerous distributions (such as Normal, Laplace,
 Gamma, Half-Cauchy or \textit{t}), all Bayesian Networks and Markov Chain
 can be represented in a PPL by just using Bernoulli distributions \cite{PPm}.
 We can see an example of such a translation in Figure \ref{fig:mppl}.
@@ -269,7 +269,7 @@ is set to be a Bernoulli distribution and \textit{x} is defined in terms of
 \textit{flip}. We can then see how the graphic of the inferred distributions
 of \textit{flip's} and \textit{x's} values looks like and confirm what was to
 be expected: for \textit{flip's} values lower than 0.5 we see \textit{x} follows
-a normal distributon, whereas for values greater than 0.5 it follows a gamma
+a normal distribution, whereas for values greater than 0.5 it follows a gamma
 distribution instead.
  The goal of PP is to enable PR and ML to be accessible to
 most programmers and data scientists who have enough domain and programming
@@ -287,7 +287,7 @@ knowledge but not enough expertise in probability theory or machine learning.
 \subsubsection{PPLs vs regular PLs}
 
 What is then, a Probabilistic Programming Language (PPL)? First of all, it can
-be a standalone language or an extension to a general purpose programming languag.
+be a standalone language or an extension to a general purpose programming language.
 We'll be analyzing examples of languages from either these categories in Section
 \ref{sec:art}, but many more exist, such as as Figaro \cite{figaro} (hosted in Scala),
 webppl \cite{dippl} (embedded in javascript) or Dimple
@@ -326,14 +326,14 @@ ship with an inference engine suited to most PP programs you can write
 
 An inference engine of a PPL acts similarly to a compiler in a traditional
 language: rather than requiring each user to engineer its own, which requires
-significant expertise and is a non-trivial and error-prone endeavour, every PPL
+significant expertise and is a non-trivial and error-prone endeavor, every PPL
 has one incorporated. Olivier Grisel called this separation of concerns
 between the language and its inference engine "openbox models, blackbox
 inference engine" \cite{SciPy}.
 
 Having the engine work as a separate model opens up a myriad of new
 possibilities, mainly in the form of knowledge and tool sharing, as we have
-seen in the past in the compiler space. Examples of this would be new compiler
+seen in the past in the compiler space. Examples of this would be new
 compiler and interpreter techniques (such as working towards scalability or
 parallelization), optimizers, profilers or debuggers.
 
@@ -355,12 +355,12 @@ Microsoft's Infer.NET provides three inference algorithms \cite{msalg}:
 
 \begin{itemize}
   \item Expectation Propagation - deterministic, provides exact solutions only
-in some cases, is not guaranteed to converge and is labelled as "reasonably
+in some cases, is not guaranteed to converge and is labeled as "reasonably
 efficient".
   \item Variational Message Passing - also deterministic, but always gives
 approximates results and is guaranteed to converge. It's considered to be the
 most efficient of the three for most cases.
-  \item Gibbs sampling - non-determinisc, may be able to reach exact result
+  \item Gibbs sampling - non-deterministic, may be able to reach exact result
 if given enough time to run, has guaranteed convergence and is regarded as
 not-so-efficient as the other two.
 \end{itemize}
@@ -410,10 +410,10 @@ This encourages exploration, since
 different models require less time to setup and evaluate, and enables sharing
 knowledge in the form of best practices and design and development patterns.
 
-However, using a full fleged programming language might still be an entry
+However, using a full fledged programming language might still be an entry
 barrier. We want to help statisticians and data scientists alike to learn
 faster and be more productive using a PPL in a way similar to the tools they
-are accostumed to. In order to do so, we'll be combining a PPL with Visual
+are accustomed to. In order to do so, we'll be combining a PPL with Visual
 Programming (Section \ref{sec:vp}).
 
 \section{Visual Programming}
@@ -426,24 +426,24 @@ being the text itself, and the other the optional line-breaking characters),
 only one of them has semantics, as the compiler processes text as a
 one-dimensional stream.
 
-Examples of systems with aditional dimentions are ones that allow the use of
+Examples of systems with additional dimensions are ones that allow the use of
 multidimensional objects, the use of spatial relationships, or the use of the
 time dimension to specify “before-after” semantic relationships \cite{Burnett1999}.
 
-Research has identified several advantages in the use of VP, such as natural
-expressibility, easy readability and interaction, language independence (though
+Research has identified several advantages in the use of VP, such as a natural
+way of expressing semantics, good readability, easy interaction, language independence (though
 this is not applicable to the work of this thesis, as detailed in \ref{sec:vpe}),
 programming at higher levels of abstraction or rapid prototyping \cite{JamalRahmanandWenzel2014},
 which is achieved by providing immediate visual feedback \cite{Shu1988}.
 
-The advantages of programming at highers levels of abstraction are known, and
+The advantages of programming at higher levels of abstraction are known, and
 one of them is it exposes users who are not used completely fluent in programming
 to a reduced number of concepts \cite{Shu1988}, while decreasing the verbosity of
 programs, which can even be useful for seasoned programmers \cite{Myers1990}.
 It also reduces the importance of being familiar with syntax, a common cause
 of difficulty of adaptation among less experienced programmers when learning
 a new language \cite{cunniff1986does}\cite{Carlisle2005}. This difficulty of translating ideas
-into syntactictically correct statements can also be solved by finding alternative
+into syntactically correct statements can also be solved by finding alternative
 ways to communicate instructions to the computer \cite{Kelleher2005}.
 
 So, the point of using a VP tool to aid in programming is to overcome the
@@ -452,7 +452,7 @@ difficulties that many people have when learning a conventional language
 programming experience to create fairly complex programs \cite{Halbert1984}.
 This is specially true within certain small domains, where the language can be
 tailored for a subset of tasks rather than trying to be suitable for all kinds
-of applications \cite{Kelleher2005}. Excel-like (spreadsheet) tools are a prime example of this, where the following
+of applications \cite{Kelleher2005}. Tools similar to Excel (spreadsheets) are a prime example of this, where the following
 benefits were identified \cite{ambler1987forms}\cite{Lewis1987}:
 
 \begin{itemize}
@@ -471,7 +471,7 @@ directly maps to the user’s natural model of the data
 Another example of such a domain would be
 developing ML applications resorting to probabilistic programming.
 
-Smith and other authors claim that the human thought process is clearly optimzed
+Smith and other authors claim that the human thought process is clearly optimized
 for multi-dimensional data \cite{smith1977pygmalion}\cite{Clarisse1986},
 so all the aforementioned advantages can be explained by how graphical programming is closer
 to our mental representation of problems when compared to a textual interface
@@ -489,9 +489,9 @@ to our mental representation of problems when compared to a textual interface
 This idea as been tested in an empirical study:
 in a algorithms course of the United States Air Force academy,
 students consistently show a preference for solving problems visually,
-while it also seems that doing so helped them achieving better
+while it also seems that doing so helped them to achieve better
 scores in problem-solving exercises and overperform their colleagues who used
-a regular programming language \cite{Cardellini2002}. However, shortcomes of
+a regular programming language \cite{Cardellini2002}. However, shortcomings of
 using VP were also identified, as we will discuss in \ref{sec:crit}.
 
 \subsection{Visual Programming Environment}
@@ -514,10 +514,10 @@ a VPE is the Eclipse IDE plug-in WindowBuilder \cite{winbuild}.
 
 If applied
 correctly, VPEs can help addressing some of the issues raised by critics of VP (detailed in section \ref{sec:crit}),
-such as VP's inhability to solve real-world large-scale problems. This is done
+such as VP's inability to solve real-world large-scale problems. This is done
 by applying VP to only a subset of the program, making it possible to combine
 a general-purpose programming language with the advantages of VP \cite{Burnett1999},
-since the code generated by a VPE can be seseamlessly integrated in any project
+since the code generated by a VPE can be seamlessly integrated in any project
 built with its target language.
 
 Concretely, VPEs are able to overcome the tradeoff of control for simplicity
@@ -591,7 +591,7 @@ best practices to guide the design of a VPL, some of which have been identified
 by Burnett \cite{Burnett1999} and are listed below.
 
 \begin{itemize}
-  \item Concreteness - it's oposite of abstractness. The program express values
+  \item Concreteness - it's opposite of abstractness. The program express values
 and instances of values rather than meta-information such as types or classes.
   \item Directness - work with concrete values rather than possible ones.
   \item Explicitness - everything that there is to be known about the program
@@ -659,7 +659,7 @@ the first place, ... the flowchart is a very poor abstraction of software struct
 It has proved to be useless as a design tool.... Second, the screens of today are too small, in pixels, to show both
 the scope and the resolution of any seriously detailed software diagram.... More fundamentally, ...
 software is very difficult to visualize."} \cite{Brooks1986}. While one may be tempted
-to be conviced by Brooks' initial rethoric, what he wrote does not seem to apply
+to be convinced by Brooks' initial rhetoric, what he wrote does not seem to apply
 to the work of this thesis because: a) we won't be using executable flowcharts,
 but rather a dataflow VPE approach, as described in \ref{sec:vpe} and b) as time passes screens
 are getting bigger and with higher resolutions, a low-end screen by today's standards
@@ -736,7 +736,7 @@ such as Blockly \cite{blockly} or GoJS \cite{gojs}.
 
 This issue was discussed in section
 \ref{sec:eval}, and we conclude that within certain domains (such as VP applied
-to PP) and target users (unexperienced programmers), there may be benifits in
+to PP) and target users (inexperienced programmers), there may be benefits in
 productivity when using a VPE.
 \end{itemize}
 
@@ -767,7 +767,7 @@ There is a great number of PPLs, so our criteria to pick which of them to analyz
 was popularity, which we assessed based on a rough estimate of the number of papers
 that referenced each language.
 At the same time, we tried to pick languages from different
-ends of the spectrum: functional/imperative/object-oriented, statically/dinamically
+ends of the spectrum: functional/imperative/object-oriented, statically/dynamically
 typed, one that runs in the JVM, one from the .NET stack and another one written
 in javascript which runs in the browser.
 
@@ -811,7 +811,7 @@ The Church language is being replaced by VentureScript, a language that is part
 of the Venture platform for PP and that can be written both in a Church or javascript-like
 syntax \cite{probcomp}. Having been written by the same authors as WebPPL but
 with the purpose of being used to solve real problems instead of just acting as
-an educational tool, if we were to chose a PPL hosted in javascript to support
+an educational tool, if we were to choose a PPL hosted in javascript to support
 in our tool, the natural choice would be VentureScript.
 
 \subsubsection{Infer.NET}
@@ -876,18 +876,18 @@ examples of it even being used for controlling a drone.
   \end{center}
 \end{figure}
 
-From experimenting with the tool, we found some characteristcs that serve as a
+From experimenting with the tool, we found some characteristics that serve as a
 lesson of what works well and what doesn't:
 
 \begin{itemize}
   \item A node has the least information possible, yet it can be clicked to
 show details, such as some usage notes or seeing some inputs or parameters.
 An example of a common NoFlo layout with a node expanded can be seen in Figure
-\ref{fig:noflo}. This helps saving space in the layout while maintaining
+\ref{fig:noflo}. This contributes to saving space in the layout while maintaining
 flexibility.
   \item You can search for a block by its name (see Figure \ref{fig:noflo2}).
-  \item There is a minimap that helps navigating the screen, so we can have
-an higher level view of the layout \ref{fig:noflo2}).
+  \item There is a minimap that helps to navigate the screen, so we can have
+a higher level view of the layout \ref{fig:noflo2}).
   \item Weak typing makes it confuse to use some of the nodes, it is unclear
 when we can connect input and outputs with mismatching labels, because sometimes
 they are compatible and other times they aren't.
@@ -904,7 +904,7 @@ good idea, to have icons in blocks to identify them by functionality, as the
 opposite effect and negatively affects usability.
 \end{itemize}
 
-The last four items can convice the reader of the following conclusion: in VPLs, explicit
+The last four items can convince the reader of the following conclusion: in VPLs, explicit
 is better than implicit. Clarity can arguably make all the
 difference between a language that can be intuitively used and one that, despite
 all its virtues, could take some more time to master.
@@ -943,12 +943,12 @@ how important is it to be seeing everything at the same time. A tool which doesn
 support moving windows and tabs must make a choice whether or not to have the
 output shown alongside with the program.
 
-Other strenghts of RapidMiner include having error indicators in each block
+Other strengths of RapidMiner include having error indicators in each block
 and thorough descriptions of each
 node's functionality, input, output and parameters, including examples. It also
 provides visual clues about a node's functionality by using not only meaningful
 icons but also colors. This can be observer in Figure \ref{fig:rapidminer},
-where file reading nodes are grey, model-related ones green and those related
+where file reading nodes are gray, model-related ones green and those related
 with data preparation are in pink.
 
 \begin{figure}[t]
@@ -962,11 +962,11 @@ with data preparation are in pink.
 
 Something that does seem to work particularly well for someone using the tool
 for the first time are the abbreviated labels in the ports. They are cryptic
-enough that an unexperienced user has to click the node and read the description
+enough that an inexperienced user has to click the node and read the description
 to understand what they are. Maybe it would make sense to either write the full
 label for the sake of clarity, or just don't show anything at all.
 
-\subsubsection{Weka Knowledge FLow}
+\subsubsection{Weka Knowledge Flow}
 
 Weka Knowledge Flow is yet another frontend (others being APIs and a GUI Explorer)
 to WEKA's core algorithms \cite{weka}.
@@ -1025,7 +1025,7 @@ a conversion from a vector (which are always three-dimensional) to a value yield
 the mean of the vector's elements. In figure \ref{fig:blender} we can see that
 some values are connected to a different type (among others, the first input
 node's color is connected to a simple value named 'Fac'), which is valid behavior.
-  \item Incorporating a custom interface within each node. This helps reducing
+  \item Incorporating a custom interface within each node. This helps to reduce
 the space occupied by the program, since there is no need to create inputs for
 every single input in a processing node. It also simplifies the VPL's usage,
 because since some types can only exist within certain nodes, and by not being
@@ -1050,7 +1050,7 @@ later be translated into valid code.
 \subsubsection{Blockly}
 
 Blockly is more than a VPE, it actually is a library for building VPEs \cite{blockly}.
-It is fully open source, runs on the browser (being fully client-side) and is completly extensible.
+It is fully open source, runs on the browser (being fully client-side) and is completely extensible.
 
 Blockly does not adopt the VDP paradigm, it instead uses a system of blocks
 similar to a puzzle, as you can see in Figure \ref{fig:blockly}.
@@ -1070,9 +1070,9 @@ to produce an invalid program.
 
 According to the authors, the reason why they didn't choose to adopt VDP is that
 they believe the generated code doesn't look like the VDP graph, making it harder
-from a user who later transitions from the tool to textutal programming to adapt.
+from a user who later transitions from the tool to textual programming to adapt.
 
-Tt is possible to define new blocks as well completly controlling
+Tt is possible to define new blocks as well completely controlling
 how generated code will look like, as well as defining new types. These features
 seem to be enough that Blockly can be considered a framework complete enough to
 be suitable for building most VPEs and, because it is open-source, it can be
@@ -1084,7 +1084,7 @@ unlimitedly extended.
 Viskell is \textit{"an experimental visual programming environment for a typed
 (Haskell-like) functional programming language"} \cite{viskell}. Its authors
 assume their main goals are, among others, to create a readable and compact
-visualisations for functional programming and addressing the scalability issues
+visualizations for functional programming and addressing the scalability issues
 of larger visual programs. They state that, in order to achieve the latter goal
 and being able to scale up, Viskell should combine a simple core language with
 a good type system.
@@ -1105,7 +1105,7 @@ so probably we won't be including them in our VPE.
 \end{figure}
 
 Nevertheless, there are other interesting features in Viskell, many of which
-are tighly coupled to functional programming (such as how it supports currying,
+are tightly coupled to functional programming (such as how it supports currying,
 anonymous functions or case expressions). The exception is the capability to
 have an incomplete graph and allowing the user to textually insert code to fill
 in the gaps (see the blue areas in Figure \ref{fig:viskell}).
@@ -1140,8 +1140,8 @@ its original format) and readable representation.
 \subsubsection{WindowBuilder}
 \label{sec:winb}
 
-One domain where VPLs have been successfuly applied is in UI design. Instead of
-going through the tedious task of writting boilerplate code (often having to
+One domain where VPLs have been successfully applied is in UI design. Instead of
+going through the tedious task of writing boilerplate code (often having to
 memorize complicated function signatures) and needing to memorize APIs, users
 can just drag and drop elements on the screen.
 
@@ -1173,7 +1173,7 @@ inference to be performed automatically on a Bayesian network \cite{Winn2005}
 defined graphically.
 It was written to serve as proof of concept for the variational message passing (VMP)
 algorithm, so it has reduced focus on human-computer interaction. Other than its representation
-of determinisc inputs with a different edge style than undeterminisc ones and
+of deterministic inputs with a different edge style than undeterministic ones and
 usage of plates to represent loops, from a usability point of view it's not very interesting.
 
 \begin{figure}[t]
@@ -1193,7 +1193,7 @@ component which s part of the Bayesian inference Using Gibbs Sampling (BUGS) pro
 It allows the user to, graphically or textually, define a model and automatically perform inference
 on it (unlike VIBES, the inference algorithm is Markov chain Monte Carlo) \cite{Lunn2000}.
 Its interface is very similar to VIBES and the only difference between them,
-besides the algorithm used, is that WinBUGS provides a bi-direcitonal conversion
+besides the algorithm used, is that WinBUGS provides a bi-directional conversion
 between graphical and textual representations.
 
 \begin{figure}[t]

@@ -12,20 +12,20 @@ structure.
 
 There is, among several domains with interesting and relevant problems to solve
 (computer vision \cite{Kulkarni2015}, cryptography, biology, fraud detection,
-recommender systems \cite{intml}, …), the recurring necessity to be able to
+recommender systems \cite{intml}, ...), the recurring necessity to be able to
 make decisions in the face of uncertainty using machine learning (ML) methods.
 
 Successful ML applications include Google's personalized advertising and
 context-driven information retrieval, Facebook's studies of how information
 spreads across a network or UC Berkeley's AMPLab contributions towards Amazon
-Web Service and SAP's products \cite{Broder:2015:BDN:2684822.2697027}.
+Web Services and SAP's products \cite{Broder:2015:BDN:2684822.2697027}.
 
 Typically, there are two alternatives for solving this class of problems: either use an
 existing machine learning model (such as KNN, neural networks or similar) \cite{mlnot} and
 try to fit your data into the model, or build a probabilistic model for your
 own particular problem so you can better leverage domain knowledge \cite{SciPy}.
 
-In the second alternativa one common way to approach it is by using bayesian reasoning,
+In the second alternative one common way to approach it is by using bayesian reasoning,
 where you model unknown causes with random variables, feed the model the data you
 have gathered and then perform inference to query for the
 desired, and previously unknown, variables \cite{thbay}. The problem in choosing
@@ -56,7 +56,7 @@ among tech companies than other ML methods, such as neural networks or other
 supervised learning models. One factor which may be contributing to this lack of
 usage, despite PP's power and flexibility, is the difficulty for data scientists
 to adapt to the textual interface these languages provide, which lack the graphical
-intuiton provided by other tools they are accustomed to. In a poll made to find
+intuition provided by other tools they are accustomed to. In a poll made to find
 out the most popular data-mining tools among data scientists
 (see Figure \ref{fig:poll}), half of the top 10 tools are
 graphically-interactable.
@@ -72,7 +72,7 @@ graphically-interactable.
 
 \section{Motivation and Goals} \label{sec:goals}
 
-The Defense Advanced Research Projects Agency (DARPA), one of the funders behind
+The Defense Advanced Research Projects Agency (DARPA), one of the backers behind
 PPLs' research, has recognized some of the problems
 identified by Wagstaff and started a program called Probabilistic Programming
 for Advancing Machine Learning (PPAML) to address the shortcomings of
@@ -92,8 +92,8 @@ current ML methods \cite{darpa}. It identifies five strategic goals:
 
 The purpose of this work is to try addressing the first four. In order to do so we
 aim to overcome the difficulties in learning a new language, either for
-unexperienced developers or seasoned ones, such as learning yet another syntax
-or getting accostumed to the language's idioms. It is known that typical
+inexperienced developers or seasoned ones, such as learning yet another syntax
+or getting accustomed to the language's idioms. It is known that typical
 languages are difficult to learn and use \cite{Lewis1987} and that there are
 advantages in providing a language with a visual interface \cite{dfbeg}. Also,
 studies have shown that programmers and data scientists alike resort to mental
@@ -102,7 +102,7 @@ providing such an interface we can approximate how people think and how they
 use the language to solve the problem at hand.
 
 So, the goal of this dissertation will be to develop a Visual Programming
-Language (VPL) with probabilitics programming capabilities. The targeted
+Language (VPL) with probabilistic programming capabilities. The targeted
 audience are programmers and data scientists with background knowledge in
 statistics who aren't still comfortable
 with full blown PPLs, but wish to educate themselves in the topic so they can
