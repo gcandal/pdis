@@ -6,7 +6,7 @@ This chapter has two purposes: describing the foundations on which this work
 is built on, namely Machine Learning (ML), Probabilistic Reasoning (PR),
 Prograbilistic Programming (PP) and
 Visual Programming(VP) while enumerating different tools which are based
-on one of these concepts.
+on one or several of these concepts.
 
 \section{Machine learning}
 
@@ -29,23 +29,22 @@ future events or important alterations \cite{mapt}.
 \section{Probabilistic Reasoning}
 
 Probabilistic reasoning (PR) is the formation of probability judgments and of
-subjective beliefs about the likelihoods of outcomes and the frequencies of
+informed yet subjective beliefs about the likelihoods of outcomes and the frequencies of
 events \cite{Lassiter2012}, it is a way to combine our knowledge of a situation
-with the laws of probability. There are subjective beliefs because, in non-trivial
-decision-making there are unobserved factors that are critical to the decision
-in conjunction with several sources of uncertainty \cite{reas}, such as:
+with the laws of probability. There are subjective beliefs because in non-trivial
+decision-making there is a combination of unobserved factors that are critical to the decision
+and several sources of uncertainty \cite{reas}, such as:
 
 \begin{itemize}
-  \item Uncertain inputs, due to missing or noisy data
+  \item Uncertain inputs, due to missing or noisy data.
   \item Uncertain knowledge, where multiple causes lead to multiple effects,
   or there is an incomplete knowledge of conditions, effects and causality of the
   domain or simply because the effects are inherently stochastic.
 \end{itemize}
 
-So, probabilistic reasoning only gives probabilistic results.
-
-It is one way to
+So, probabilistic reasoning only gives probabilistic results and it is one way to
 overcome cognitive bias and be able to make rational decisions \cite{Sedlmeier2001}.
+
 A trial has been made \cite{christensen1982experience}
 where physicians were asked to estimate the probability that a
 woman with a positive mammogram actually has breast cancer, given a base rate of
@@ -53,7 +52,7 @@ woman with a positive mammogram actually has breast cancer, given a base rate of
 10\%. It reported that 95 of 100 physicians estimated the probability that she
 actually has breast cancer to be between 70\% and 80\%, whereas Bayes's rule
 gives a value of about 7.5\%. Such systematic deviations from Bayesian reasoning
-have been called "cognitive illusions,". We will describe both Bayes's rules
+have been called "cognitive illusions". We will describe both Bayes' rule
 and Bayesian reasoning in the next section.
 
 \subsection{Bayesian Reasoning}
@@ -147,7 +146,7 @@ figure \ref{fig:beliefnet}.
 
 Some interesting question we can ask, given this scenario are:
 
-\begin{itemsize}
+\begin{itemize}
   \item If John calls saying the alarm is ringing but Mary doesn't, what are the
 odds it really is ringing?
   \item If the alarm is ringing, was there an earthquake?
@@ -210,7 +209,7 @@ is an automated way to make the calculations.
 
 While it is true we have still never mentioned techniques or tools that
 automatically do inference over a Bayesian Network, there are several tools
-with that capability (including an R package \cite{Højsgaard2013} or
+with that capability (including an R package \cite{Hojsgaard2013} or
 standalone tools \cite{msbn}).
 
 However, not all PR can be done via Bayesian Networks and not all graphical models
@@ -271,7 +270,7 @@ of \textit{flip's} and \textit{x's} values looks like and confirm what was to
 be expected: for \textit{flip's} values lower than 0.5 we see \textit{x} follows
 a normal distribution, whereas for values greater than 0.5 it follows a gamma
 distribution instead.
- The goal of PP is to enable PR and ML to be accessible to
+ The goal of PP (via PPL) is to enable PR and ML to be accessible to
 most programmers and data scientists who have enough domain and programming
 knowledge but not enough expertise in probability theory or machine learning.
 
@@ -291,7 +290,7 @@ be a standalone language or an extension to a general purpose programming langua
 We'll be analyzing examples of languages from either these categories in Section
 \ref{sec:art}, but many more exist, such as as Figaro \cite{figaro} (hosted in Scala),
 webppl \cite{dippl} (embedded in javascript) or Dimple
-\cite{DBLP:journals/corr/abs-1212-2991} (has both a Java and a MATLAB API).
+\cite{DBLP:journals/corr/abs-1212-2991} (which has both a Java and a MATLAB API).
 The key difference between these languages and a PPL is the latter has
 the added capability of performing conditioning and inference \cite{Andrieu2003}.
 
@@ -327,25 +326,24 @@ ship with an inference engine suited to most PP programs you can write
 An inference engine of a PPL acts similarly to a compiler in a traditional
 language: rather than requiring each user to engineer its own, which requires
 significant expertise and is a non-trivial and error-prone endeavor, every PPL
-has one incorporated. Olivier Grisel called this separation of concerns
-between the language and its inference engine "openbox models, blackbox
-inference engine" \cite{SciPy}.
+has one incorporated.
 
-Having the engine work as a separate model opens up a myriad of new
-possibilities, mainly in the form of knowledge and tool sharing, as we have
+Having the inference engine work as a separate component, rather than being
+tighly coupled to each model, opens up a myriad of new
+possibilities mainly in the form of knowledge and tool sharing, as we have
 seen in the past in the compiler space. Examples of this would be new
 compiler and interpreter techniques (such as working towards scalability or
 parallelization), optimizers, profilers or debuggers.
 
 Another great advantage of having a modular inference engine is that we can
 try different inference algorithms and pick the one that best fits the problem
-at hand. When analyzing if algorithm suits a certain use case, there are certain
+at hand. When analyzing which algorithm is more suitable for a certain use case, there are certain
 characteristics worth noting \cite{Minka1999}:
 
 \begin{itemize}
   \item Determinism - in equal initial conditions, an algorithm always yields
 the same result.
-  \item Exact result or approximation
+  \item Exact result or approximation.
   \item Guaranteed convergence - an algorithm may or not be guaranteed to reach
 a result at some point in time. If not, it's possible that it will run forever.
   \item Efficiency - related to how fast can it reach a result.
@@ -458,7 +456,7 @@ benefits were identified \cite{ambler1987forms}\cite{Lewis1987}:
 \begin{itemize}
   \item The graphics on the screen use a familiar, concrete, and visible representation which
 directly maps to the user’s natural model of the data
-  \item They are non-modal and interpretive and therefore provide immediate feedback
+  \item They provide immediate feedback
   \item They supply aggregate and high-level operations
   \item They avoid the notion of variables (all data is visible)
   \item The inner world of computation is suppressed
@@ -481,14 +479,14 @@ to our mental representation of problems when compared to a textual interface
   ``Text-based languages tend to be more complex because the syntax and lexicon
   (terminology) must be learned from scratch, as with any human language.
   Consequently, languages designed specifically for end users represent the
-  programmable world as graphical metaphors ... (\textit{aim to}) reduce the cognitive
+  programmable world as graphical metaphors ... (\textit{such languages aim to}) reduce the cognitive
   burden of learning by shrinking the conceptual distance between actions in
   the real world and programming.'' \cite{G2004}
 \end{quote}
 
 This idea as been tested in an empirical study:
 in a algorithms course of the United States Air Force academy,
-students consistently show a preference for solving problems visually,
+students have consistently shown a preference for solving problems visually,
 while it also seems that doing so helped them to achieve better
 scores in problem-solving exercises and overperform their colleagues who used
 a regular programming language \cite{Cardellini2002}. However, shortcomings of
@@ -502,8 +500,8 @@ that divided VPLs in purely visual languages (PVLs), hybrid text and visual syst
 programming-by-example systems, constraint-oriented systems and form-based systems.
 
 In the context of this dissertation, as we want to leverage the advantages of
-both a VPL and a PPL while avoiding implementing a PPL, there is no other choice
-than using an hybrid text and visual system. We will be calling this system a
+both a VPL and a PPL while avoiding implementing a PPL, so the obvious choice
+is to use an hybrid text and visual system. We will be calling this system a
 visual programming environment (VPE). The difference between a VPE and a purely visual language (PVL)
 is that, while a PVL is a language \textit{per se} (meaning that it there
 is a direct mapping between graphics and execution), VPEs offer a middle ground
@@ -512,10 +510,10 @@ that can be used to generate code for a target language \cite{Burnett1999}.
 An example of a PVL would be MIT's Scratch \cite{resnick2009scratch} and one for
 a VPE is the Eclipse IDE plug-in WindowBuilder \cite{winbuild}.
 
-If applied
+If conceived
 correctly, VPEs can help addressing some of the issues raised by critics of VP (detailed in section \ref{sec:crit}),
 such as VP's inability to solve real-world large-scale problems. This is done
-by applying VP to only a subset of the program, making it possible to combine
+by applying VP to only subsets of entire systems, making it possible to combine
 a general-purpose programming language with the advantages of VP \cite{Burnett1999},
 since the code generated by a VPE can be seamlessly integrated in any project
 built with its target language.
@@ -584,8 +582,8 @@ cycles in the graph \cite{Mosconi2000}.
 \subsection{Evaluation}
 \label{sec:eval}
 
-Even if the goal of VP is clear (to make programming more understandable, ensure
-correction and be faster to do) the best way to achieve it is still a matter of
+Even if the goals of VP are clear (to make programming more understandable, ensure
+correction and be faster to develop in) the best way to achieve them is still a matter of
 discussion. Like in the design of any programming language, there are some
 best practices to guide the design of a VPL, some of which have been identified
 by Burnett \cite{Burnett1999} and are listed below.
@@ -612,7 +610,7 @@ Whitley and Blackwell \cite{Whitley1997} said that, because the design decisions
 in a VPL lack formal basis, the only way to assess if they really contribute
 to facilitate the programmer's cognitive processes while programming is through
 empirical studies. In their studies, they have found that while subjects
-cited ease of learning as a benefit of VPLs, they opinions differed when asked
+cited ease of learning as a benefit of VPLs, their opinions differed when asked
 if using a VPL had a positive impact in productivity during a project.
 
 They also claim that there is a gap between academia and industry programmers.
@@ -644,7 +642,7 @@ could be described graphically \cite{Myers1990}.
 
 Green also discusses, contrary to some other evidence we discussed before \cite{Cardellini2002}\cite{Burnett1999},
 how lab studies failed to collect evidence in favor of the productivity gain of
-VPLs, even though it admits user like and use them \cite{Shu1988}. He also points
+VPLs, even though he admits users like and use them \cite{Shu1988}. He also points
 how that VP systems "do nothing that can’t be done as well or better with straight text"
 and identifies the real issues as "how layout and locality can be used to convey meaning".
 According to our definition of VP, every system that allows the user to express
@@ -653,7 +651,7 @@ by Green), so it seems that the proposed alternative could be a VPL.
 
 In his \textit{"No silver bullet - essence and accidents of software engineering"} paper, Brooks
 says that \textit{"A favorite subject for PhD dissertations in software engineering is graphical, or visual,
-programming—the application of computer graphics to software design....
+programming—the application of computer graphics to software design ...
 Nothing even convincing, much less exciting, has yet emerged from such efforts. I am persuaded that nothing will. In
 the first place, ... the flowchart is a very poor abstraction of software structure....
 It has proved to be useless as a design tool.... Second, the screens of today are too small, in pixels, to show both
@@ -667,7 +665,7 @@ would be state of the art in 1986, when Brooks wrote that. The final claim that
 software is hard to visualize, backed by Dijkstra's letter where he states that
 \textit{"I was recently exposed to ... what ... pretended to be educational software for an introductory programming course.
 With its ‘‘visualizations’’ on the screen, it was ... an obvious case of curriculum
-infantilization.... We must expect from that system permanent mental damage for most students
+infantilization ... We must expect from that system permanent mental damage for most students
 exposed to it."} \cite{dijkstra1989cruelty}, is contrary to many studies done in cognitive science
 \cite{Lewis1987}\cite{cunniff1986does}\cite{Carlisle2005}.
 

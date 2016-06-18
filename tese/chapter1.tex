@@ -34,9 +34,10 @@ to write an inference method \cite{Duvenaud}.
 
 The solution to this has been building generic inference engines for graphical
 models, so that modeling and inference can be treated as separate concerns and
-people can focus on the modeling \cite{Jordan1996}. However, not all models can be represented as
+scientists can focus on the modeling \cite{Jordan1996}. However, not all models can be represented as
 graphical models, and that’s why we now have Probabilistic Programming Languages
-(PPLs). Probabilistic Programs let you write your model as a program and have
+(PPLs), which are able to represent a larger class of problems \cite{intpp}.
+Probabilistic Programs let you write your model as a program and have
 off-the-shelf inference \cite{Prekopa2003}.
 
 \section{Problem} \label{sec:proj}
@@ -59,7 +60,7 @@ to adapt to the textual interface these languages provide, which lack the graphi
 intuition provided by other tools they are accustomed to. In a poll made to find
 out the most popular data-mining tools among data scientists
 (see Figure \ref{fig:poll}), half of the top 10 tools are
-graphically-interactable.
+graphically interactive.
 
 \begin{figure}[t]
   \begin{center}
@@ -98,8 +99,9 @@ languages are difficult to learn and use \cite{Lewis1987} and that there are
 advantages in providing a language with a visual interface \cite{dfbeg}. Also,
 studies have shown that programmers and data scientists alike resort to mental
 imagery when solving problems \cite{Dastani2002}\cite{Petre1999}, so by
-providing such an interface we can approximate how people think and how they
-use the language to solve the problem at hand.
+providing a visual interface for a programming language
+we can tighten the gap between how users think and how they
+express themselves in the language they're using to solve a given problem.
 
 So, the goal of this dissertation will be to develop a Visual Programming
 Language (VPL) with probabilistic programming capabilities. The targeted
@@ -108,16 +110,17 @@ statistics who aren't still comfortable
 with full blown PPLs, but wish to educate themselves in the topic so they can
 eventually leverage the power of this novel machine learning approach.
 
-The way to do so would be developing a graphical node-based editor, similar to
-RapidMiner or Blender Composite Nodes, but that runs in the browser. The given
-editor would have the capability to compile its graph to the textual
+The way to do so would be developing a graphical editor, similar to
+RapidMiner or Blender Composite Nodes, that runs in the browser. The given
+editor would have the capability to compile the underlying representation beneath
+the graphical interface (which could be a graph, a tree, or any other data structure
+we believe to be fit) to the textual
 representation in the target PPL so that the user can run what he has designed,
-either as a standalone script or even by integrating it with his existing
-projects.
+either directly from the editor itself, as a standalone script or even by
+integrating it with his existing projects.
 
 The hypothesis under consideration is this graphical representation
 is more intuitive and easy to learn that a full-blown PPL.
 We intend to validate such hypothesis by ensuring that classical problems solved
 in the literature by PPLs are also supported by our graphical representation,
-and then measure how quickly a group of people trained in statistics would
-produce a viable model in both alternatives.
+and then compare the two regarding understandability and error prevention.
