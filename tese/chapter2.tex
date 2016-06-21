@@ -769,9 +769,9 @@ ends of the spectrum: functional/imperative/object-oriented, statically/dynamica
 typed, one that runs in the JVM, one from the .NET stack and another one written
 in javascript which runs in the browser.
 
-One advantage of the languages that do not have an ahead-of-time compilation step
-(such as WebPPL, Church or Figaro) is that we can display results to the user
-as soon as they're available, without having to re-compile every time we changed
+One advantage of the languages that do not require compilation
+(such as WebPPL or Church) is that we can display results to the user faster and
+without having to re-compile every time we change
 the model, making it as close to immediate visual feedback as possible.
 
 The way we're planning to validate this thesis hypothesis is by converting
@@ -786,22 +786,22 @@ it as a target for code generation in the tool we'll develop.
 WebPPL was written as part of a course on PP and inference in PPLs \cite{dippl}.
 Therefore it serves more as an educational tool rather than a language that aims
 to be production-ready, despite including several inference algorithms (such as
-MCMC and variational). It is hosted in javascript, meaning that it extends
+MCMC and variational ones). It is hosted in javascript, meaning that it extends
 the language's capabilities and is totally cross-compatible; in short, it acts
 as a library.
 
 Its main advantage and the reason why it would be interesting
-to be the target of our tool is that, because it was written in javascript, it runs
-in the browser, making it compatible
-across most mainstream platforms, not only computers but also smartphones.
+to be the target of our tool is that, because it is written in javascript, it runs
+in the browser without having to be ran externally, reducing the time between
+designing and getting visual feedback.
 
 \subsubsection{Church}
 \label{sec:church}
 
 We started by looking into Church because it is based on pure Lisp (therefore
-it is also based on lambda calculus and purely functional) \cite{Goodman2008} and believed it could
+it is also based on lambda calculus and purely functional programming) \cite{Goodman2008} and believed it could
 be more expressible (in the sense that we could express equally complex models
-with less code than) than its non-functional counterparts. While maintaining the same syntax,
+with less code) than its non-functional counterparts. While maintaining the same Lisp-like syntax,
 it also has an implementation in javascript called webchurch \cite{church},
 with all the associated advantages (described in \ref{sec:webppl}).
 
@@ -815,20 +815,20 @@ in our tool, the natural choice would be VentureScript.
 \subsubsection{Infer.NET}
 
 Infer.NET is being developed by Microsoft Research Cambridge and intends to
-empower .NET languages (not only C#, but all languages in the stack, including
-F#, Visual Basic and Iron Python) with PP capabilities \cite{InferNET14}.
+empower .NET languages (not only C\#, but all languages in the stack, including
+F\#, Visual Basic and Iron Python) with PP capabilities \cite{InferNET14}.
 
-Similarly to C#, it requires a compile step and is statically typed. Unlike
+Similarly to C\#, it requires a compile step and is statically typed. Unlike
 Church/VentureScript, it cannot represent all kinds of PR models, as it fails to handle
 non-parametric models.
 
-Even thought it is not as complete as VentureScript, it has other advantages
+It has several advantages
 that make it a prime candidate to be the target of this dissertation: extensive
 documentation (not only a reference manual of the API), several examples with
 various levels of complexity (which is very useful for our hypothesis validation's
 process) and an active community, with the contributors
 actively participating in a discussion forum and available to clear any doubts
-users might have. These motives, as well as being part of the popular .NET
+users might have. These reasons, as well as being part of the popular .NET
 stack, make Infer.NET a strong candidate to be used as the target language of our tool.
 
 \subsubsection{Figaro}
@@ -837,7 +837,7 @@ Figaro is similar to Infer.NET: a statically typed language that requires compil
 and runs a popular environment (in this case, the JVM, since Figaro is hosted in
 Scala) \cite{figarot}. It is used by Charles River Analytics in production, so
 in spite of being still under development it seems to be useful for end-users and
-is not restricted to research.
+is not restricted to research groups.
 
 Unlike Infer.NET, it can represent arbitrary models without restrictions, but
 examples using the language are scarce so using at as a basis for the thesis
@@ -903,7 +903,7 @@ opposite effect and negatively affects usability.
 \end{itemize}
 
 The last four items can convince the reader of the following conclusion: in VPLs, explicit
-is better than implicit. Clarity can arguably make all the
+is better than implicit. Clarity can undoubtedly make all the
 difference between a language that can be intuitively used and one that, despite
 all its virtues, could take some more time to master.
 
@@ -958,7 +958,7 @@ with data preparation are in pink.
   \end{center}
 \end{figure}
 
-Something that does seem to work particularly well for someone using the tool
+Something that doesn't seem to work particularly well for someone using the tool
 for the first time are the abbreviated labels in the ports. They are cryptic
 enough that an inexperienced user has to click the node and read the description
 to understand what they are. Maybe it would make sense to either write the full
@@ -966,7 +966,7 @@ label for the sake of clarity, or just don't show anything at all.
 
 \subsubsection{Weka Knowledge Flow}
 
-Weka Knowledge Flow is yet another frontend (others being APIs and a GUI Explorer)
+Weka Knowledge Flow is one of the available frontends (others being APIs and a GUI Explorer)
 to WEKA's core algorithms \cite{weka}.
 
 \begin{figure}[t]
@@ -1041,21 +1041,23 @@ in programming.
 
 \subsection{VPEs}
 
-In this section we'll be describing three visual programming environments. Meaning,
-tools where the user can express the program in a graphical manner that will
-later be translated into valid code.
+In this section we'll be describing three visual programming environments. By VPEs
+we mean tools where the user can express the program in a graphical manner that will
+later be translated into valid code, regardless of it being executable directly
+on the VPE or not.
 
 \subsubsection{Blockly}
 
 Blockly is more than a VPE, it actually is a library for building VPEs \cite{blockly}.
-It is fully open source, runs on the browser (being fully client-side) and is completely extensible.
+It is fully open source, runs on the browser (in a fully client-side manner) and
+was developed to be extensible.
 
 Blockly does not adopt the VDP paradigm, it instead uses a system of blocks
 similar to a puzzle, as you can see in Figure \ref{fig:blockly}.
 Another useful feature is basic type checking,
-so that users can't connect blocks that wouldn't make sense, such as converting
-a number to uppercase. The way Blockly is built, it is impossible for the user
-to produce an invalid program.
+so that users can't connect blocks that wouldn't make sense, such as applying an
+uppercase function to a number. The way Blockly is built, it is possible to stop the user
+from producing an invalid program.
 
 \begin{figure}[t]
   \begin{center}
@@ -1066,11 +1068,12 @@ to produce an invalid program.
   \end{center}
 \end{figure}
 
-According to the authors, the reason why they didn't choose to adopt VDP is that
+According to its authors, the reason why they didn't choose to adopt VDP is that
 they believe the generated code doesn't look like the VDP graph, making it harder
-from a user who later transitions from the tool to textual programming to adapt.
+from a user who later transitions from the tool to textual programming to adapt
+to the new format.
 
-Tt is possible to define new blocks as well completely controlling
+It is possible to define new blocks as well completely controlling
 how generated code will look like, as well as defining new types. These features
 seem to be enough that Blockly can be considered a framework complete enough to
 be suitable for building most VPEs and, because it is open-source, it can be
@@ -1108,7 +1111,7 @@ anonymous functions or case expressions). The exception is the capability to
 have an incomplete graph and allowing the user to textually insert code to fill
 in the gaps (see the blue areas in Figure \ref{fig:viskell}).
 
-Being a work in progress, its authors have sketched ideas of how to deal with
+Being a work in progress, its authors have pointed out ideas of how to deal with
 increased program complexity that they have still not implemented in the language.
 Some of them are shown in Figure \ref{fig:viskell2} and outlined below:
 
@@ -1138,7 +1141,7 @@ its original format) and readable representation.
 \subsubsection{WindowBuilder}
 \label{sec:winb}
 
-One domain where VPLs have been successfully applied is in UI design. Instead of
+One domain where VPLs have been successfully applied is UI design. Instead of
 going through the tedious task of writing boilerplate code (often having to
 memorize complicated function signatures) and needing to memorize APIs, users
 can just drag and drop elements on the screen.
@@ -1146,7 +1149,7 @@ can just drag and drop elements on the screen.
 The Eclipse IDE provides several plugins on its marketplace, one of which is the
 WindowBuiler plugin \cite{winbuild} to build Java SWT/Swing UIs.
 
-WindowBuilder bi-directional and WISIWIG tool (What You See Is What You Get), meaning
+WindowBuilder is a bi-directional and WISIWIG tool (What You See Is What You Get), meaning
 that it generates code that faithfully represents the drawn UI and it is also possible to
 directly edit the code and see the updated result back in the design view.
 
@@ -1183,13 +1186,14 @@ usage of plates to represent loops, from a usability point of view it's not very
   \end{center}
 \end{figure}
 
-\subsubsection{WinBUGS}
+\subsection{WinBUGS}
 \label{sec:wbugs}
 
 Similarly to VIBES (described in \ref{sec:vibes}), WinBUGS is a framework with a graphical
 component which s part of the Bayesian inference Using Gibbs Sampling (BUGS) project.
 It allows the user to, graphically or textually, define a model and automatically perform inference
-on it (unlike VIBES, the inference algorithm is Markov chain Monte Carlo) \cite{Lunn2000}.
+on it (unlike VIBES, the inference algorithm is Gibbs sampling, a method that
+resorts to a Markov chain Monte Carlo technique) \cite{Lunn2000}.
 Its interface is very similar to VIBES and the only difference between them,
 besides the algorithm used, is that WinBUGS provides a bi-directional conversion
 between graphical and textual representations.
@@ -1209,3 +1213,19 @@ formalism it represents. This is exactly the problem we want think it can be
 solved with a proper VPE.
 
 \section{Conclusions}
+
+In this section we have seen the application of VP concepts to tools, confirming
+the usefulness of many of the concepts studied in the Secton \ref{sec:vp}.
+
+By comparing the different VP applications, we have identified useful features
+such as the use of color and icons to transmit meaning, block compression (either
+hiding block details or even the grouping of several blocks in different manners),
+zooming in and out, minimap navigation, explicit errors, bi-directionality (
+being able not only to convert graphics to code, but also vice-versa) and strong typing.
+
+Equally useful to knowing what features are useful is to understand which pitfalls
+to avoid, such as not including labels or icons for the sake of having a simpler
+interface, resulting being an interface where semantics are too implicit and
+hard to capture quickly. One of main goals is to avoid having a VPL that is harder to understand
+than the original representation of the model we are developing, similarly to
+what happens with WinBUGS textual representation.
