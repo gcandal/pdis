@@ -135,10 +135,10 @@ false positives). Also, consider that we have 2 neighbors (Mary and John) who
 may call us whether the alarm is ringing or not. This problem is represented in
 figure \ref{fig:beliefnet}.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{beliefnet}
+    \includegraphics[max width=0.86\textwidth]{beliefnet}
     \caption{Belief network for the alarm problem \cite{belfn}}
     \label{fig:beliefnet}
   \end{center}
@@ -226,10 +226,10 @@ Gamma, Half-Cauchy or \textit{t}), all Bayesian Networks and Markov Chain
 can be represented in a PPL by just using Bernoulli distributions \cite{PPm}.
 We can see an example of such a translation in Figure \ref{fig:mppl}.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{markppl}
+    \includegraphics[max width=0.86\textwidth]{markppl}
     \caption{Translation of Discrete Time Markov Chain to a PPL \cite{PPm}}
     \label{fig:mppl}
   \end{center}
@@ -274,10 +274,10 @@ distribution instead.
 most programmers and data scientists who have enough domain and programming
 knowledge but not enough expertise in probability theory or machine learning.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{distribution}
+    \includegraphics[max width=0.86\textwidth]{distribution}
     \caption{Implied distributions over variables \cite{intpp}}
     \label{fig:distribution}
   \end{center}
@@ -305,10 +305,10 @@ point in time, is equal to every one of them) and proceeds to make several
 observations regarding games between them. Finally, it shows the inferred
 probability distribution of the posterior on the bottom graphic.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{trueskill}
+    \includegraphics[max width=0.86\textwidth]{trueskill}
     \caption{Microsoft Xbox Live True Skill \cite{minka2012infer}}
     \label{fig:truskill}
   \end{center}
@@ -856,19 +856,19 @@ programming, even if it is more suitable for web programming (being written in
 JavaScript it has easy access to DOM manipulation capabilities), there are
 examples of it even being used for controlling a drone.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{noflo}
+    \includegraphics[max width=0.86\textwidth]{noflo}
     \caption{Example of node expansion in NoFlo \cite{noflo}}
     \label{fig:noflo}
   \end{center}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{noflo2}
+    \includegraphics[max width=0.86\textwidth]{noflo2}
     \caption{NoFlo node search and minimap navigator \cite{noflo}}
     \label{fig:noflo2}
   \end{center}
@@ -941,6 +941,15 @@ how important is it to be seeing everything at the same time. A tool which doesn
 support moving windows and tabs must make a choice whether or not to have the
 output shown alongside with the program.
 
+\begin{figure}[!htpb]
+  \begin{center}
+    \leavevmode
+    \includegraphics[max width=0.86\textwidth]{rapidminer}
+    \caption{Classifier in Rapidminer \cite{rapidminer}}
+    \label{fig:rapidminer}
+  \end{center}
+\end{figure}
+
 Other strengths of RapidMiner include having error indicators in each block
 and thorough descriptions of each
 node's functionality, input, output and parameters, including examples. It also
@@ -948,15 +957,6 @@ provides visual clues about a node's functionality by using not only meaningful
 icons but also colors. This can be observed in Figure \ref{fig:rapidminer},
 where file reading nodes are gray, model-related ones green and those related
 with data preparation are in pink.
-
-\begin{figure}[t]
-  \begin{center}
-    \leavevmode
-    \includegraphics[width=0.86\textwidth]{rapidminer}
-    \caption{Classifier in Rapidminer \cite{rapidminer}}
-    \label{fig:rapidminer}
-  \end{center}
-\end{figure}
 
 Something that doesn't seem to work particularly well for someone using the tool
 for the first time are the abbreviated labels in the ports. They are cryptic
@@ -969,10 +969,10 @@ label for the sake of clarity, or just don't show anything at all.
 Weka Knowledge Flow is one of the available frontends (others being APIs and a GUI Explorer)
 to WEKA's core algorithms \cite{weka}.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{weka}
+    \includegraphics[max width=0.86\textwidth]{weka}
     \caption{ROC curve in Weka Knowledge Flow \cite{weka}}
     \label{fig:weka}
   \end{center}
@@ -1005,10 +1005,10 @@ graphical filters, which are analogous to a functional map operation.},
 which is an example of a VPL that intentionally did not incorporate a common
 idiom in VDP because it does not make sense for its domain.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{blender}
+    \includegraphics[max width=0.86\textwidth]{blender}
     \caption{Script for texture transformation in Blender \cite{blender}}
     \label{fig:blender}
   \end{center}
@@ -1059,10 +1059,10 @@ so that users can't connect blocks that wouldn't make sense, such as applying an
 uppercase function to a number. The way Blockly is built, it is possible to stop the user
 from producing an invalid program.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{blockly}
+    \includegraphics[max width=0.86\textwidth]{blockly}
     \caption{Blockly example \cite{blockly}}
     \label{fig:blockly}
   \end{center}
@@ -1096,10 +1096,10 @@ don't have icons but explicit names and all ports have explicit types. This clas
 of design choices don't seem to be clearly superior to other state of the art tools,
 so probably we won't be including them in our VPE.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{viskell}
+    \includegraphics[max width=0.86\textwidth]{viskell}
     \caption{Viskell example \cite{viskell}}
     \label{fig:viskell}
   \end{center}
@@ -1125,18 +1125,18 @@ of horizontal composition.
 right-hand side of the 3 blocks in the middle ("map", "groupOn" and "concatMap").
 \end{itemize}
 
-This way, we eliminated most of the connections between nodes and achieved a
-more compact (we have 4 arcs in a representation that would use more than 20 in
-its original format) and readable representation.
-
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{viskell2}
+    \includegraphics[max width=0.86\textwidth]{viskell2}
     \caption{Compressed visual representation example \cite{viskell}}
     \label{fig:viskell2}
   \end{center}
 \end{figure}
+
+This way, we eliminated most of the connections between nodes and achieved a
+more compact (we have 4 arcs in a representation that would use more than 20 in
+its original format) and readable representation.
 
 \subsubsection{WindowBuilder}
 \label{sec:winb}
@@ -1157,10 +1157,10 @@ Since defining UIs is a very different domain from PP there are not many feature
 that we can use from WindowBuilder in our future VPE. The exception is the
 bi-directionality of code, which could be useful in certain scenarios.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{winbuild}
+    \includegraphics[max width=0.86\textwidth]{eclipse}
     \caption{WindowBuilder's design view \cite{winbuild}}
     \label{fig:winbuild}
   \end{center}
@@ -1177,10 +1177,10 @@ algorithm, so it has reduced focus on human-computer interaction. Other than its
 of deterministic inputs with a different edge style than undeterministic ones and
 usage of plates to represent loops, from a usability point of view it's not very interesting.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{vibes}
+    \includegraphics[max width=0.86\textwidth]{vibes}
     \caption{Example of a model using VIBES \cite{Winn2005}}
     \label{fig:vibes}
   \end{center}
@@ -1198,10 +1198,10 @@ Its interface is very similar to VIBES and the only difference between them,
 besides the algorithm used, is that WinBUGS provides a bi-directional conversion
 between graphical and textual representations.
 
-\begin{figure}[t]
+\begin{figure}[!htpb]
   \begin{center}
     \leavevmode
-    \includegraphics[width=0.86\textwidth]{winbugs}
+    \includegraphics[max width=0.86\textwidth]{winbugs}
     \caption{Example of a model translated to WinBUGS textual form \cite{winbugs}}
     \label{fig:winbugs}
   \end{center}
