@@ -4,13 +4,13 @@
 
 This chapter has two purposes: describing the foundations on which this work
 is built on, namely Machine Learning (ML), Probabilistic Reasoning (PR),
-Prograbilistic Programming (PP) and
+Probabilistic Programming (PP) and
 Visual Programming(VP) while enumerating different tools which are based
 on one or several of these concepts.
 
 \section{Machine learning}
 
-Machine learning (ML) is a field which can be seen as a sub field of artifical
+Machine learning (ML) is a field which can be seen as a subfield of artificial
 intelligence that incorporates mathematics and statistics and is concerned
 with conceiving algorithms that learn autonomously, that is, without human
 intervention \cite{mlbrit}\cite{mlnot}.
@@ -288,7 +288,7 @@ knowledge but not enough expertise in probability theory or machine learning.
 What is then, a Probabilistic Programming Language (PPL)? First of all, it can
 be a standalone language or an extension to a general purpose programming language.
 We'll be analyzing examples of languages from either these categories in Section
-\ref{sec:art}, but many more exist, such as as Figaro \cite{figaro} (hosted in Scala),
+\ref{sec:art}, but many more exist, such as Figaro \cite{figaro} (hosted in Scala),
 webppl \cite{dippl} (embedded in javascript) or Dimple
 \cite{DBLP:journals/corr/abs-1212-2991} (which has both a Java and a MATLAB API).
 The key difference between these languages and a PPL is the latter has
@@ -329,7 +329,7 @@ significant expertise and is a non-trivial and error-prone endeavor, every PPL
 has one incorporated.
 
 Having the inference engine work as a separate component, rather than being
-tighly coupled to each model, opens up a myriad of new
+tightly coupled to each model, opens up a myriad of new
 possibilities mainly in the form of knowledge and tool sharing, as we have
 seen in the past in the compiler space. Examples of this would be new
 compiler and interpreter techniques (such as working towards scalability or
@@ -371,7 +371,7 @@ provide faster results but are subject to bias, whereas sampling methods have
 the potential to produce more accurate results (the downside being it's slower
 and its convergence is hard to diagnose) \cite{Shen2010}.
 
-Please notice than none of these algorithms provides the same kind of exact
+Please notice that none of these algorithms provides the same kind of exact
 solution as the calculation of the joint probabilities we did in Section
 \ref{sec:bayes}. The reason for that is that calculating an exact solution
 takes time exponential in the number of variables to run, even if we have smarter
@@ -435,7 +435,7 @@ programming at higher levels of abstraction or rapid prototyping \cite{JamalRahm
 which is achieved by providing immediate visual feedback \cite{Shu1988}.
 
 The advantages of programming at higher levels of abstraction are known, and
-one of them is it exposes users who are not used completely fluent in programming
+one of them is it exposes users who are not used completely fluent in textual programming
 to a reduced number of concepts \cite{Shu1988}, while decreasing the verbosity of
 programs, which can even be useful for seasoned programmers \cite{Myers1990}.
 It also reduces the importance of being familiar with syntax, a common cause
@@ -448,7 +448,7 @@ So, the point of using a VP tool to aid in programming is to overcome the
 difficulties that many people have when learning a conventional language
 \cite{Lewis1987}. It has been shown this approach can help users without prior, or little,
 programming experience to create fairly complex programs \cite{Halbert1984}.
-This is specially true within certain small domains, where the language can be
+This is especially true within certain small domains, where the language can be
 tailored for a subset of tasks rather than trying to be suitable for all kinds
 of applications \cite{Kelleher2005}. Tools similar to Excel (spreadsheets) are a prime example of this, where the following
 benefits were identified \cite{ambler1987forms}\cite{Lewis1987}:
@@ -721,7 +721,7 @@ is as portable as a text file but VPLs require special software to view and edit
 While the implementation of the VPE's frontend to be done in this thesis is still a matter
 of study and is undecided, there is the possibility of building one using the
 HTML/CSS/javascript stack, making it portable across browsers for view and edition.
-It is also our aim to provide an intermediate representation in a data-representation
+It is also our aim to provide an intermediate representation in a
 format such as JSON or XML, so that a program built in a certain frontend can
 be processed by any other.
   \item \textbf{Tremendous difficulty in building editors and environments}.
@@ -945,7 +945,7 @@ Other strengths of RapidMiner include having error indicators in each block
 and thorough descriptions of each
 node's functionality, input, output and parameters, including examples. It also
 provides visual clues about a node's functionality by using not only meaningful
-icons but also colors. This can be observer in Figure \ref{fig:rapidminer},
+icons but also colors. This can be observed in Figure \ref{fig:rapidminer},
 where file reading nodes are gray, model-related ones green and those related
 with data preparation are in pink.
 
@@ -981,7 +981,7 @@ to WEKA's core algorithms \cite{weka}.
 In this tool, inputs are not connected to specific ports, but rather to a block.
 The semantics of the connection is expressed on the edge's label. This can save
 some space in the layout as the nodes can be smaller, but in order to understand
-a node's input, the user has to waste time following all the edges backwards
+a node's input, the user has to waste time following all the edges backward
 until he finds the label, which doesn't seem a reasonable tradeoff.
 
 Weka Knowledge makes a good use of icons to differentiate between different node
@@ -1014,7 +1014,7 @@ idiom in VDP because it does not make sense for its domain.
   \end{center}
 \end{figure}
 
-There are several interesting characteristics that are worthy highlighting:
+There are several interesting characteristics that are worth highlighting:
 \begin{itemize}
   \item Composite Nodes assigns a color to each type, so that the user can
 easily understand the type of each input or output (see Fig. \ref{fig:blender}).

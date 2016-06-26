@@ -217,7 +217,7 @@ FUNCTION {output.nonnull}
 }
 
 % Call this function just before adding something which should be presented in 
-% brackets.  bracket.state is handled specially within output.nonnull.
+% brackets.  bracket.state is handled especially within output.nonnull.
 FUNCTION {inbrackets}
 { bracket.state close.brackets =
     { within.brackets 'bracket.state := } % reset the state: not open nor closed

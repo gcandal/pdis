@@ -45,7 +45,7 @@ We can see the resulting representation in Figure \ref{fig:firstExample}, which 
 \end{lstlisting}
 
 In this fairly simple example we represent some of the most important semantics
-of a PPL: declaring random variables, the dependicies between them and plugging
+of a PPL: declaring random variables, the dependencies between them and plugging
 in observed values. In the next examples we will be adding more constructs on
 top of these basic ones, so the reader can be convinced that this representation
 is easily extensible.
@@ -160,7 +160,7 @@ namespace BlocklyInfer
   \begin{center}
     \leavevmode
     \includegraphics[width=0.86\textwidth]{truncatedGaussianEfficient}
-    \caption{Truncated Gaussian written more efficiently PP}
+    \caption{More efficient version of Truncated Gaussian PP}
     \label{fig:truncatedGaussianEfficient}
   \end{center}
 \end{figure}
@@ -172,7 +172,7 @@ numeric distributions.
 \section{Learning a Gaussian}
 
 In this model, we're trying to infer the mean and precision of a given dataset
-(generated randomly). The most distiguishing aspect of this example is that it
+(generated randomly). The most distinguishing aspect of this example is that it
 deals with lists. The resulting code from the model of Figure \ref{fig:learningAGaussian}
 is shown below.
 
@@ -252,7 +252,7 @@ to join the text with the inference result via the plus operator rather than
 using String.concat), variables being declared and set in different lines and some
 types of loops (which have been justified in the last example).
 
-It is our belief that the graphical representation is clearar than its textual
+It is our belief that the graphical representation is clearer than its textual
 counterpart, mainly because parameters are named (it is clear that 0.5 is the
 probability of true when defining a Bernoulli distributions) and due to the use
 of colors: red for statements related with

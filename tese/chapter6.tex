@@ -4,6 +4,73 @@
 
 Critical analysis: when to use or not, strengths and weaknesses.
 
+\section{Limitations}
+
+In this section we will describe some limitations that our chosen toolset (using
+Blockly to represent Infer.NET C#) imposes in functionality.
+
+\subsection{Inverse compilation}
+
+By inverse compilation we mean the act of converting a program in a textual form
+to its Blockly representation. This could be useful because it would help users
+easily switch between representations, similarly to Window Builder (as discussed in Section \ref{sec:winb})
+and unlike what happens with our current approach.
+With our VPE, if you textually make a change in the program by directly
+writing in the text-area where it appears,
+and since that won't be reflected in the graphical representation, every time
+the code is re-generated (which happens frequently and unexpectedly, in situations
+such as opening and closing menu tabs) your changes will be overridden.
+
+Even if parsing C# and converting it to an intermediate representation would be
+simple (Microsoft provides an EBNF grammar for the language \cite{ebnfcs}), there
+are a number of questions that should be explored before implementing this feature.
+For instances, our graphical representation guarantees type safety and a valid
+program so it would not make sense to allow specifying an invalid program that
+would be translated into a graphical form, it would break one of the most important
+guarantees, the one that makes it suitable for beginners in programming. In
+order to ensure a valid textual program, we would need to be able to either mimic
+the compiler's verifications or run the compiler itself; the first option is
+a big challenge while the second still requires further investigation on how
+to handle users' errors.
+
+\subsection{Instant visual results}
+
+As we discussed before in several parts of this work, a big tradeoff we made was
+to sacrifice the flexibility of using any language needed in favor of the portability
+of a VPE that runs in the browser, which (as of this moment) only runs JavaScript.
+
+Perhaps the greatest limitation of this approach is not being able to run Infer.NET
+code, which makes it impossible not to violate the VP principle of instant visual results.
+The development cycle is greatly affected by forcing the user to copy the text
+into a location where a compiler can access and run it. A workaround for this
+is to adopt a client-server architecture where our server would run the code
+and send the results back to the user. Even if that creates a need for internet
+connection, which currently does not exist, we believe it to be a worthwhile tradeoff
+and so we have chosen to implement it.
+
+The downside of this approach is that we have to wait for the round-trip time
+of the program to be sent to the server plus the compilation and execution times.
+During this process, the user does not get any feedback; this could be minimized
+by providing push notifications to the client and streaming the program's output,
+rather than waiting for the execution to finish to get a response.
+
+\subsection{Object-oriented programming}
+
+You may notice that, even while we're targeting an object-oriented programming
+language, our VPE has no support for representing classes. It also does not
+support file management (splitting the program in several files) or namespaces.
+
+The reason for this is that our target audience is not concerned with those features.
+As discussed in Section \ref{sec:vp} VP is best suited for small domains, and our
+VPE is meant to help data scientists and statisticians with little or no programming
+experience start getting familiar with PP through a PPL, and not provide a
+fully featured IDE.
+
+Incorporating this kind of features, although feasible, would significantly
+make the VPE more complex both in terms of cluttering the interface and the user
+experience by providing mostly unnecessary options, thus having little added
+benefit to the majority of users.
+
 \section{Future Work}
 
 During the work of this thesis, we have certainly identified areas where there
@@ -34,7 +101,7 @@ would be to perform an empirical study whose participants would belong to the
 target audience we defined in Section \ref{sec:audience}.
 
 The way the study would work would be by compare how fast a user can define a model for a given set of problems
-when using a VPL in a regualr way or through our graphical interface. We'd then
+when using a PPL in a regular way or through our graphical interface. We'd then
 count the number of syntax and type errors done with each representation. By
 selecting users who never used the chosen PPL, we could not only measure execution
 speed but learning time.

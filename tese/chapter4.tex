@@ -3,7 +3,7 @@
 \section{Outline}
 
 As we have seen in Chapters \ref{chap:intro} and \ref{chap:sota}, there is a
-rising awareness of the power of ML methods. PPLs, despite still being mostly
+rising awareness on the power of ML methods. PPLs, despite still being mostly
 unknown to data scientists, provide an interface for defining personalized
 probabilistic models and possess a built-in inference engine.
 The benefits of VPLs when compared to a textual format are well-known, but there
@@ -15,44 +15,35 @@ as being able to execute without installing dependencies. For this reason, we
 decided our VPE should run in the browser.
 
 It was also important that we chose
-a target PPL for which there is a decent amount of programs written on it, so we
+a target PPL for which there is a decent amount of programs written on, so we
 could thoroughly test our hypothesis. Because it was the one
 that best matched this criteria we chose Infer.NET to work with, a framework that
-can be used in CLI languages (such as C#, F# or C++). Because none of these
+can be used in CLI languages (such as C\#, F\# or C++). Because none of these
 languages can, at least at the time of writing (that might change when WebAssembly
 \cite{weba} gets widespread support), be directly compiled to JavaScript
 we will be sacrificing immediate
 visual feedback and build a hybrid text and visual system (a VPE) rather than a purely
 visual language (see Section \ref{sec:vpe} for more details). This means that
-our tool won't be able to run the model the user defines, but will generate
-Infer.NET (hosted in C#) code (see Figure \ref{fig:scope}).
+our tool won't be able to immediately run the model the user defines, but will generate
+Infer.NET (hosted in C\#) code and allow execution
+via a remote service.
 
 The user can take the generated
 code and run it in a separate runtime (such as CLR). While not the ideal scenario, because it
 complicates the development and debugging cycles (in order to see each change,
 users must first copy the code to a file in a machine that can compile and run it),
 it has the advantage of seamlessly integrating with larger projects. An example
-would be an enterprise application written in C# that has a small component
+would be an enterprise application written in C\# that has a small component
 that the team who's developing it feels it would make sense to use a PPL there.
 They can use our VPE to develop that portion of the program, and then just place
 the code in the desired place. Using a purely visual programming language in the
 same scenario, despite having a faster development time, would then require
 a rewriting in a textual form.
 
-\begin{figure}[t]
-  \begin{center}
-    \leavevmode
-    \includegraphics[width=0.86\textwidth]{scope}
-    \caption{High-level look into our tool}}
-    \label{fig:scope}
-  \end{center}
-\end{figure}
-
-\section{Architecture}
-
- % "controlled dataflow vpl"
- In this section we will be explaining why we made certain choices, such as for
- the target PPL, the front-end framework or what features to include or not.
+The other alternative would be to use the tool to run the generated code in an
+external service, with the disadvantage that it exposes the user to both network
+delays and the availability and performance of such a service. This is also not
+ideal since it makes debugging step-by-step impossible.
 
 \section{Picking a target PPL}
 \label{sec:tarppl}
@@ -124,10 +115,10 @@ directly comparing the merits of each of them, so we will try to make our own
 analysis by comparing their strengths and weaknesses while assessing what is
 more valuable in the context of a VPE for a PPL.
 
-\subsubsection{Blockly}
+\subsection{Blockly}
 \label{sec:fblock}
 
-Similarly to what happens with VP and VPEs, there are plenty of references
+Similarly to what happens with VP and VPEs in general, there are plenty of references
 in the literature that Blockly-based tools boost productivity \cite{Marron2012} and ease the process
 of learning how to program \cite{Junior2006}.
 
@@ -138,12 +129,13 @@ interface that generates code in a textual format, such as the one we're develop
 This can be seen as an advantage because, not only does it facilitate fully transitioning
 to a textual format as soon as the user is comfortable enough at programming,
 but it is also makes it easier to textually fine-tune a code that was developed
-using the VPE.
+using the VPE, because the generated code is more similar to the one a human
+would write when compared with a VDP representation.
 
 Among the features we analyzed in Section \ref{sec:sotavdp} that deal with
 helping the user to achieve program correction we saw syntax checking and type
 checking. Blockly addresses both situations by visually modeling the program
-as a puzzle where only compatible pieces fit together; this is an intuitive way
+as a puzzle where only compatible pieces fit together. This is an intuitive way
 to enforce correctness, since it maps to an activity the majority of people are
 familiarized with: assembling puzzles. This seems a better way to cope with errors
 rather than showing an error message at compile or run-time, because often it is
@@ -151,14 +143,14 @@ not even clear that there is an error, as we have seen that happens with NoFlo i
 Section \ref{sec:noflo}.
 
 Another great advantage of Blockly is that, because it runs on the browser, it is
-compatible across devices and operating while not requiring any kind of setup.
+compatible across devices and operating systems while not requiring any kind of setup.
 If the user chooses to download Blockly, it can even work with it without internet
-connection. The same applies to our VPE if we chose to build it on top of Blockly.
+connection. The same applies to our VPE if we choose to build it on top of Blockly.
 
 However, this VPE of VPEs lacks features that enable it to effectively scale up
 such as the ones we have seen with NoFlo or Blender Composite Nodes (Section \ref{sec:sotavdp}).
 Examples of this include being able to zoom in and out in the UI, searching for
-blocks by their name, zoom in and out or create group blocks to encapsulate a certain group of
+blocks by their name or create group blocks to encapsulate a certain group of
 nodes (a concept analogous to functions in regular programming). It enables the
 creation of vertically and horizontally compressed blocks, similarly to Viskell,
 by using block composition and dropdowns rather than requiring to plug-in extra blocks
@@ -173,7 +165,7 @@ by using block composition and dropdowns rather than requiring to plug-in extra 
   \end{center}
 \end{figure}
 
-\subsubsection{Eclipse Toolset}
+\subsection{Eclipse Toolset}
 
 The Eclipse Foundation has some tools, which are accessible as plugins for the
 Eclipse IDE, that we thought that could serve as a foundation for the VPE we're
@@ -208,7 +200,7 @@ extra burden (both in development time and in runtime performance) of having an
 extra transformation does not justify for the added benefits when compared with
 other front-ends.
 
-\subsubsection{Custom implementation}
+\subsection{Custom implementation}
 
 At this point the strongest candidate for a front-end was Blockly,
 but it would also be possible to fully develop a new front-end, instead of using
@@ -231,7 +223,7 @@ their inline properties and connect them).
 Examples of such core usability features, besides having a layout that has already been
 tested (proven to deliver the benefits of VP)
 that Blockly already provides include magnetic connections
-(you don't have to drag and drop a block to a stricly defined area, doing so near
+(you don't have to drag and drop a block to a strictly defined area, doing so near
 a valid connection highlights that connection and makes it possible to drop it there)
 and block mutations (a block may change when you connect certain blocks to it,
 this allows for horizontal and vertical compression).
@@ -239,6 +231,11 @@ this allows for horizontal and vertical compression).
 Using a third-party framework also has the advantage of automatically getting new
 features as soon as that framework is updated, such as the zoom in and out that
 Blockly is planning to deliver \cite{blockly}.
+
+\section{Architecture}
+
+ % "controlled dataflow vpl"
+ 
 
 \section{Development steps}
 
@@ -337,7 +334,7 @@ namespace InferBlockly
 
 Despite losing flexibility, since it is impossible to change the settings
 throughout the program (even if that is valid in Infer.NET),
-we believe that this increased simplicity is more intuitive and therefore benefitial to an inexperienced
+we believe that this increased simplicity is more intuitive and therefore beneficial to an inexperienced
 programmer than allowing the settings to be changed at any point in time.
 
 \subsection{Variable type checking}
@@ -417,73 +414,19 @@ GUI, and the XML can be saved and loaded into the computer that's running the VP
 
 \subsection{Remote execution}
 
-\section{Limitations}
+A problem that arises when building a VPE that runs in a browser is that it can't
+execute code from any language other than Javascript. Since we are using Infer.NET
+we also face this problem.
 
-In this section we will describe some limitations that our chosen toolset (using
-Blockly to represent Infer.NET C#) imposes in functionality.
+A basic approach to this issue is to assume the user can't run the program directly
+on the VPE and that he must copy the code to a local file so that he can compile
+and run it. The downside with this approach is obvious: it places a great burden
+on the user and negatively affects the development process, since it increases
+the time between designing and getting the results.
 
-\subsection{Inverse compilation}
-
-By inverse compilation we mean the act of converting a program in a textual form
-to its Blockly representation. This could be useful because it would help users
-easily switch between representations, similarly to Window Builder (as discussed in Section \ref{sec:winb})
-and unlike what happens with our current approach.
-With our VPE, if you textually make a change in the the program by directly
-writing in the text-area where it appears,
-and since that won't be reflected in the graphical representation, everytime
-the code is re-generated (which happens frequently and unexpectedly, in situations
-such as opening and closing menu tabs) your changes will be overridden.
-
-Even if parsing C# and converting it to an intermediate representation would be
-simple (Microsoft provides an EBNF grammar for the language \cite{ebnfcs}), there
-are a number of questions that should be explored before implementing this feature.
-For instances, our graphical representation guarantees type safety and a valid
-program so it would not make sense to allow specifying an invalid program that
-would be translated into a graphical form, it would break one of the most important
-guarantess, the one that makes it suitable for beginners in programming. In
-order to ensure a valid textual program, we would need to be able to either mimick
-the compiler's verifications or run the compiler itself; the first option is
-a big challenge while the second still requires further investigation on how
-to handle users' errors.
-
-\subsection{Instant visual results}
-
-As we discussed before in several parts of this work, a big tradeoff we made was
-to sacrifice the flexibility of using any language needed in favor of the portability
-of a VPE that runs in the browser, which (as of this moment) only runs JavaScript.
-
-Perhaps the greatest limitation of this approach is not being able to run Infer.NET
-code, which makes it impossible not to violate the VP principle of instant visual results.
-The development cycle is greatly affected by forcing the user to copy the text
-into a location where a compiler can access and run it. A work around for this
-is to adopt a client-server architecture where our server would run the code
-and send the results back to the user. Even if that creates a need for internet
-connection, which currently does not exist, we believe it to be a worthwhile tradeoff
-and so we have chosen to implement it.
-
-The downside of this approach is that we have to wait for the round-trip time
-of the program to be sent to the server plus the compilation and execution times.
-During this process, the user does not get any feedback; this could be minimized
-by providing push notifications to the client and streaming the program's output,
-rather than waiting for the execution to finish to get a response.
-
-\subsection{Object-oriented programming}
-
-You may notice that, even while we're targeting an object-oriented programming
-language, our VPE has no support for representing classes. It also does not
-support file management (splitting the program in several files) or namespaces.
-
-The reason for this is that our target audience is not concerned with those features.
-As discussed in Section \ref{sec:vp} VP is best suited for small domains, and our
-VPE is meant to help data scientists and statisticians with little or no programming
-experience start getting familiar with PP through a PPL, and not provide a
-fully featured IDE.
-
-Incorporating this kind of features, although feasible, would significantly
-make the VPE more complex both in terms of cluttering the interface and the user
-experience by providing mostly unnecessary options, thus having little added
-benefit to the majority of users.
-
-\section{Tutorial}
-
-\section{Conclusions}
+Our solution to this problem was to develop a web service that provides a single
+HTTP endpoint. This endpoint receives the textual representation of the code as
+input and return's that program's output. This way even if we still don't have
+instant visual feedback because of the network round-trip time, that delay is
+often negligenciable when compared to the time needed for the program to run,
+particularly for larger programs.
