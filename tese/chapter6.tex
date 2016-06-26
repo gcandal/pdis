@@ -6,7 +6,7 @@ Critical analysis: when to use or not, strengths and weaknesses.
 
 \section{Limitations}
 
-In this section we will describe some limitations that our chosen toolset (using
+In this section, we will describe some limitations that our chosen toolset (using
 Blockly to represent Infer.NET C#) imposes in functionality.
 
 \subsection{Inverse compilation}
@@ -45,7 +45,7 @@ The development cycle is greatly affected by forcing the user to copy the text
 into a location where a compiler can access and run it. A workaround for this
 is to adopt a client-server architecture where our server would run the code
 and send the results back to the user. Even if that creates a need for internet
-connection, which currently does not exist, we believe it to be a worthwhile tradeoff
+connection, which currently does not exist, we believe it to be a worthwhile tradeoff,
 and so we have chosen to implement it.
 
 The downside of this approach is that we have to wait for the round-trip time
@@ -58,7 +58,7 @@ rather than waiting for the execution to finish to get a response.
 
 You may notice that, even while we're targeting an object-oriented programming
 language, our VPE has no support for representing classes. It also does not
-support file management (splitting the program in several files) or namespaces.
+support file management (splitting the program into several files) or namespaces.
 
 The reason for this is that our target audience is not concerned with those features.
 As discussed in Section \ref{sec:vp} VP is best suited for small domains, and our

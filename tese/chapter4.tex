@@ -1,15 +1,19 @@
 \chapter{Implementation details}\label{chap:chap3}
 
+In this section we will be explaining what is our VPE capable of doing and
+why we made certain choices, such as the target PPL, the front-end framework
+or what features to include or not.
+
 \section{Outline}
 
 As we have seen in Chapters \ref{chap:intro} and \ref{chap:sota}, there is a
 rising awareness on the power of ML methods. PPLs, despite still being mostly
 unknown to data scientists, provide an interface for defining personalized
 probabilistic models and possess a built-in inference engine.
-The benefits of VPLs when compared to a textual format are well-known, but there
+The benefits of VPLs, when compared to a textual format, are well-known, but there
 is no VPL applied to a PPL, so we aim to create one.
 
-A big requirement we wished to fulfill was, not only ease of use, but also ease
+A big requirement we wished to fulfill was, not only ease of use but also ease
 of installation. This means having portability across operating systems as well
 as being able to execute without installing dependencies. For this reason, we
 decided our VPE should run in the browser.
@@ -17,14 +21,14 @@ decided our VPE should run in the browser.
 It was also important that we chose
 a target PPL for which there is a decent amount of programs written on, so we
 could thoroughly test our hypothesis. Because it was the one
-that best matched this criteria we chose Infer.NET to work with, a framework that
+that best matched this criterion we chose Infer.NET to work with, a framework that
 can be used in CLI languages (such as C\#, F\# or C++). Because none of these
 languages can, at least at the time of writing (that might change when WebAssembly
 \cite{weba} gets widespread support), be directly compiled to JavaScript
 we will be sacrificing immediate
 visual feedback and build a hybrid text and visual system (a VPE) rather than a purely
 visual language (see Section \ref{sec:vpe} for more details). This means that
-our tool won't be able to immediately run the model the user defines, but will generate
+our tool won't be able to run immediately the model the user defines, but will generate
 Infer.NET (hosted in C\#) code and allow execution
 via a remote service.
 
@@ -48,7 +52,7 @@ ideal since it makes debugging step-by-step impossible.
 \section{Picking a target PPL}
 \label{sec:tarppl}
 
-Perhaps one of the most important decisions we had to made concerns the PPL we
+Perhaps one of the most important decisions we had to make concerns the PPL we
 would be offering a VPE to, since the visual programming concepts applied are
 highly dependent on the language's own capabilities. For instances, we cannot
 study how VP can be helpful in an object-oriented design if we are using a
@@ -74,8 +78,8 @@ a mainstream programming language (as opposed to being a standalone language by 
 and it should run on the browser. The first three points are related to how well
 can we learn the language well enough to design a VPE for it, having no prior
 experience with it, in a short amount of time. Being executable on the browser
-would allow to provide instant visual feedback of the results, since the VPE
-would not be limited to defining a model, but it would could execute it.
+would allow providing instant visual feedback of the results since the VPE
+would not be limited to defining a model, but it could execute it.
 
 On a technical side the strongest candidate is VentureScript \cite{probcomp},
 due to the fact it is hosted in javascript (with the aforementioned advantages).
@@ -96,7 +100,7 @@ of papers that resorted to Infer.NET. Some of these papers are about PP or PPL t
 but others are about applications of it, such as "Automatic analysis and
 identification of verbal aggression and abusive behaviors for online social
 games" \cite{balci2015automatic}, which gives us confidence that Infer.NET is
-mature enough so we can focus in the VPE design rather than struggling with
+mature enough so we can focus in the VPE design rather than struggle with
 learning the language. Bottom line, it was chosen due to the abundant number of
 programs written on it publicly available.
 
@@ -106,7 +110,7 @@ After knowing which would be the language we would be targeting, there was still
 the need to define both the visual paradigm and the framework, if any, that we
 would use to develop the front-end (visual interface) of our VPE.
 
-Regarding the paradigms the two competing alternatives are VDP and the one offered
+Regarding the paradigms, the two competing alternatives are VDP and the one offered
 by Blockly. While the first approach is what we typically see in similar tools,
 such as RapidMiner or NoFlo, the second one is a fairly new approach, unseen
 in tools other than those which were built using Blockly. It is not trivial to
@@ -128,26 +132,26 @@ is written \cite{blockly}, which can be an advantage in a tool that aims to serv
 interface that generates code in a textual format, such as the one we're developing.
 This can be seen as an advantage because, not only does it facilitate fully transitioning
 to a textual format as soon as the user is comfortable enough at programming,
-but it is also makes it easier to textually fine-tune a code that was developed
+but it also makes it easier to fine-tune textually code that was developed
 using the VPE, because the generated code is more similar to the one a human
 would write when compared with a VDP representation.
 
 Among the features we analyzed in Section \ref{sec:sotavdp} that deal with
-helping the user to achieve program correction we saw syntax checking and type
+helping the user to achieve program correction, we saw syntax checking and type
 checking. Blockly addresses both situations by visually modeling the program
 as a puzzle where only compatible pieces fit together. This is an intuitive way
 to enforce correctness, since it maps to an activity the majority of people are
 familiarized with: assembling puzzles. This seems a better way to cope with errors
-rather than showing an error message at compile or run-time, because often it is
+rather than showing an error message at compile or run-time because often it is
 not even clear that there is an error, as we have seen that happens with NoFlo in
 Section \ref{sec:noflo}.
 
 Another great advantage of Blockly is that, because it runs on the browser, it is
 compatible across devices and operating systems while not requiring any kind of setup.
-If the user chooses to download Blockly, it can even work with it without internet
+If the user chooses to download Blockly, it can even work with it without an internet
 connection. The same applies to our VPE if we choose to build it on top of Blockly.
 
-However, this VPE of VPEs lacks features that enable it to effectively scale up
+However, this VPE of VPEs lacks features that enable it to scale up effectively
 such as the ones we have seen with NoFlo or Blender Composite Nodes (Section \ref{sec:sotavdp}).
 Examples of this include being able to zoom in and out in the UI, searching for
 blocks by their name or create group blocks to encapsulate a certain group of
@@ -193,7 +197,7 @@ which not only constitutes an entry barrier but hinders collaboration, because
 it makes it difficult to share the model among colleagues. And secondly, they
 were built to generate code to specific target languages (C for Damos and Java
 for EMF), neither of which has a PPL implementation with a strong community
-(Probabilistic-C \cite{Paige2014} serves as a proof of concept and we already explained
+(Probabilistic-C \cite{Paige2014} serves as a proof of concept, and we already explained
 in Section \ref{sec:tarppl} why we discarded Figaro). Even if we could eventually
 use the generated C or Java as an intermediary representation, we believe the
 extra burden (both in development time and in runtime performance) of having an
@@ -213,8 +217,8 @@ just like a regular HTML page; for performance reasons, we could use the HTML
 \textit{canvas} element \cite{w3ccanvas}.
 
 The reason why we won't be choosing this option is that we believe that this
-flexibility of implementing extra features, that essentially have to do with
-navigation and block filtering or selection, are not worth the risk of having
+flexibility of implementing extra features (that essentially have to do with
+navigation, block filtering and block selection) are not worth the risk of having
 a VPE that does not feel as fluid and as natural as Blockly or GMF implementation would, since all
 those aforementioned features are secondary when compared to the look and feel
 of the core VPE (by core we mean the workspace where we drag the blocks, edit
@@ -235,9 +239,24 @@ Blockly is planning to deliver \cite{blockly}.
 \section{Architecture}
 
  % "controlled dataflow vpl"
- 
+
+The VPE's architecture is fairly straighforward, as you can confirm in Figure \ref{fig:arch}.
+We have leveraged Blockly's already existing blocks for common programming language
+constructs, such as as conditional clauses or loops, and added new capabilities
+that we believe to be fundamental to using a VPE for designing probabilistic models
+(we'll be discussing them in detail in Section \ref{sec:dev}).
+
+ \begin{figure}[!htpb]
+   \begin{center}
+     \leavevmode
+     \includegraphics[max width=0.86\textwidth]{arch}
+     \caption{High-level overview of the VPE's architecture}
+     \label{fig:arch}
+   \end{center}
+ \end{figure}
 
 \section{Development steps}
+\label{sec:dev}
 
 The purpose of this section is to enumerate the difficulties encountered when
 developing a VPE that could support the design of programs similar in functionality
@@ -284,7 +303,7 @@ name = "John Winn";
 Console.WriteLine(String.Concat("Is ", name, 23, "?"));
 \end{lstlisting}
 
-If you try to run this code you will get a compile-time error, as expected.
+If you try to run this code, you will get a compile-time error as expected.
 
 Another issue that arises when representing Infer.NET programs in Blockly is how
 to specify inference engine settings, such as the algorithm is should use, if it
@@ -362,12 +381,12 @@ it targets: JavaScript, Python, PHP and Dart (which supports static type-checkin
 but it's not the default mode \cite{dart}). The negative consequence of this is that it's
 not ready to perform type checking on variables, meaning that a user can
 produce invalid programs when using variables (as seen in Figure \ref{fig:valid_blockly}, we have
-drawn a program that will produce a runtime exception, since we can't evaluate
+drawn a program that will produce a runtime exception since we can't evaluate
 the square root of a text string), although the same doesn't happen when
 directly connecting the blocks, since we can't connect text input blocks to the
 right connector of the square root block.
 
-There have been discussions among open-source projects that rely on Blockly on how
+There have been discussions among the open-source projects that rely on Blockly on how
 to incorporate type checking for variables (such as a VPE for Arduino \cite{bduino}
 or one for Kiwi.js \cite{gbl}, an HTML5 game framework) as well as in Blockly's
 discussion forum \cite{gbl2}, but none reached a final proposal, let along a working
@@ -405,7 +424,7 @@ are similar.
 \subsection{Serialization}
 
 It is important in a VPE to be able to save and load programs, so the user can
-not only work on a given program at different points in time, but also share it
+not only work on a given program at different points in time but also share it
 with other users. Blockly makes it possible to do so by converting a graphical
 representation to XML, which can later be imported.
 

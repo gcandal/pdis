@@ -42,7 +42,7 @@ and several sources of uncertainty \cite{reas}, such as:
   domain or simply because the effects are inherently stochastic.
 \end{itemize}
 
-So, probabilistic reasoning only gives probabilistic results and it is one way to
+So, probabilistic reasoning only gives probabilistic results, and it is one way to
 overcome cognitive bias and be able to make rational decisions \cite{Sedlmeier2001}.
 
 A trial has been made \cite{christensen1982experience}
@@ -58,7 +58,7 @@ and Bayesian reasoning in the next section.
 \subsection{Bayesian Reasoning}
 \label{sec:bayes}
 
-One way to approach PR is by using bayesian reasoning, which is inspired in the
+One way to approach PR is by using bayesian reasoning, which is inspired by the
 Bayes Theorem (or Rule, or Law). An equivalent formula to the theorem, in its
 simplest form (applied to a single event) is:
 
@@ -77,7 +77,7 @@ about its results \cite{Fienberg2006}:
 
 \begin{itemize}
   \item Frequentist interpretation: probabilities are defined by the relative
-frequency of events, given a natural sampling. Meaning, the probability of
+frequency of events, given a natural sampling. This means that the probability of
 obtaining 'Heads' when rolling a dice is equal to the number of 'Heads' obtained
 after rolling the dice a sufficient number of times relative to the total number
 of times the dice has been rolled.
@@ -110,7 +110,7 @@ matrix for P(alarm, burglary) (Table \ref{tab:bayes}).
 
 You can interpret each table's cell as P(A, B). For instances, the top left
 cell is the probability that the alarm rings and there is a burglar, while the
-bottom left cell is the probability that the alarm rang but there was no burglar
+bottom left cell is the probability that the alarm rang, but there was no burglar
 (a false positive).
 
 If we substitute the values of Bayes' rule described above, we get:
@@ -147,7 +147,7 @@ figure \ref{fig:beliefnet}.
 Some interesting question we can ask, given this scenario are:
 
 \begin{itemize}
-  \item If John calls saying the alarm is ringing but Mary doesn't, what are the
+  \item If John calls saying the alarm is ringing, but Mary doesn't, what are the
 odds it really is ringing?
   \item If the alarm is ringing, was there an earthquake?
   \item What are the chances that both my neighbors call, the alarm is ringing,
@@ -162,7 +162,7 @@ Notice how counter-intuitive this
 example is: the probability of there being an earthquake is about 32 times larger
 than there being an earthquake, the alarm ringing and the neighbors calling us,
 even if the conditional probabilities are reasonably high (0.95, 0.9 and 0.7).
-This is the result of the calculation of the joint probability being an highly
+This is the result of the calculation of the joint probability being a highly
 combinatorial problem, which is yet another argument in favor of using PR
 rather than subjective heuristics.
 
@@ -299,7 +299,7 @@ the program. That way, you update the prior probability based
 on those observations. Consider the example in Figure \ref{fig:truskill} (which
 is a simplified version of how Microsoft applies PP in its Xbox matchmaking
 algorithm \cite{minka2012infer}) where the prior is a normal distribution with
-equal parameters for all players (shown by the graphic in the top). Then, it
+equal parameters for all players (shown by the graphic at the top). Then, it
 defines how the performance of the player is based on his skill (which at the initial
 point in time, is equal to every one of them) and proceeds to make several
 observations regarding games between them. Finally, it shows the inferred
@@ -318,7 +318,7 @@ probability distribution of the posterior on the bottom graphic.
 
 We said that a PPL empowers the user to formalize a model and then query for the
 probability distribution of its variables, which is automatically done via
-inference. While general-purpose language require you to write one-time
+inference. While general-purpose languages require you to write one-time
 inference methods that tightly coupled to the PP you are inferring on, PPLs
 ship with an inference engine suited to most PP programs you can write
 \cite{Freer2010}.
@@ -368,7 +368,8 @@ methods \cite{Winn2005}\cite{Minka1999} and sampling methods (in the case of Gib
 sampling, it's based on Markov chain Monte Carlo) \cite{Andrieu2003}. The main
 difference, as far as the end-user is concerned, is that variational methods
 provide faster results but are subject to bias, whereas sampling methods have
-the potential to produce more accurate results (the downside being it's slower
+the potential to produce more accurate results when compared to the ones that
+resort to sampling (the downside being it's slower
 and its convergence is hard to diagnose) \cite{Shen2010}.
 
 Please notice that none of these algorithms provides the same kind of exact
@@ -393,7 +394,7 @@ data into an existing model), the user will have the tool necessary to design
 the model that best fits the domain he is working on.
 Plus, it provides full probability distributions over both the predictions and parameters of the
 model, whereas ML methods can mostly only give the user a certain degree of confidence
-on the predictions.
+in the predictions.
 
 \subsection{Conclusion}
 
@@ -501,7 +502,7 @@ programming-by-example systems, constraint-oriented systems and form-based syste
 
 In the context of this dissertation, as we want to leverage the advantages of
 both a VPL and a PPL while avoiding implementing a PPL, so the obvious choice
-is to use an hybrid text and visual system. We will be calling this system a
+is to use a hybrid text and visual system. We will be calling this system a
 visual programming environment (VPE). The difference between a VPE and a purely visual language (PVL)
 is that, while a PVL is a language \textit{per se} (meaning that it there
 is a direct mapping between graphics and execution), VPEs offer a middle ground
@@ -512,10 +513,10 @@ a VPE is the Eclipse IDE plug-in WindowBuilder \cite{winbuild}.
 
 If conceived
 correctly, VPEs can help addressing some of the issues raised by critics of VP (detailed in section \ref{sec:crit}),
-such as VP's inability to solve real-world large-scale problems. This is done
+such as VP's inability to solve large-scale real-world problems. This is done
 by applying VP to only subsets of entire systems, making it possible to combine
 a general-purpose programming language with the advantages of VP \cite{Burnett1999},
-since the code generated by a VPE can be seamlessly integrated in any project
+since the code generated by a VPE can be seamlessly integrated into any project
 built with its target language.
 
 Concretely, VPEs are able to overcome the tradeoff of control for simplicity
@@ -528,7 +529,7 @@ makes it possible to design scalable programs, both in terms of performance
 \subsection{Visual Dataflow Programming}
 
 A Dataflow Programming Language (DPL) is built upon the notion that data flows
-from one node to another. Therefore, in this paradigm a program is internally
+from one node to another. Therefore, in this paradigm, a program is internally
 represented as a direct graph \cite{Hils1992}. This graph is constituted by
 three kinds of nodes (also called blocks): sources (take no input and produce
 output), processing/transformation (take an input and produce an output based
@@ -593,10 +594,10 @@ by Burnett \cite{Burnett1999} and are listed below.
 and instances of values rather than meta-information such as types or classes.
   \item Directness - work with concrete values rather than possible ones.
   \item Explicitness - everything that there is to be known about the program
-can be easily understood by looking at the graphical representation, the
+can be easily understood by looking at the graphical representation and the
 user does not need to infer semantics by himself.
   \item Immediate visual feedback - every change to the program should be
-immediately propagate to change in the affected output. Spreadsheets are an example of
+immediately propagated to change in the affected output. Spreadsheets are an example of
 this.
 \end{itemize}
 
@@ -606,12 +607,12 @@ Viskell (described in \ref{sec:viskell}) violates directness by allowing to
 work with the option monad, or concreteness by placing a great emphasis on type
 definition.
 
-Whitley and Blackwell \cite{Whitley1997} said that, because the design decisions
+Whitley and Blackwell \cite{Whitley1997} said that because the design decisions
 in a VPL lack formal basis, the only way to assess if they really contribute
-to facilitate the programmer's cognitive processes while programming is through
+to facilitating the programmer's cognitive processes while programming is through
 empirical studies. In their studies, they have found that while subjects
 cited ease of learning as a benefit of VPLs, their opinions differed when asked
-if using a VPL had a positive impact in productivity during a project.
+if using a VPL had a positive impact on productivity during a project.
 
 They also claim that there is a gap between academia and industry programmers.
 In contrast to the first group who tends to focus on theories of cognition to justify the use
@@ -636,8 +637,8 @@ interactive prototyping, two principles that are promoted by the usage of VPLs.
 Also, it has been shown that the richness of the visual paradigm
 introduces new ways of approaching programming problems, particularly for
 those not trained in traditional software development methods \cite{JamalRahmanandWenzel2014}
-(such as data scientists, which constitute the target audience of this work).
-Studies also shown that fairly complicated algorithms, such as garbage collection,
+(such as data scientists, which constitute the target audience for this work).
+Studies have also shown that fairly complicated algorithms, such as garbage collection,
 could be described graphically \cite{Myers1990}.
 
 Green also discusses, contrary to some other evidence we discussed before \cite{Cardellini2002}\cite{Burnett1999},
@@ -697,7 +698,7 @@ We intend to solve this issue by studying the application of some techniques
 that provide a greater level of abstraction in order to be able to transmit
 more semantics while avoiding the layout to get cluttered with details \cite{Burnett1995}.
   \item \textbf{Poor representations}. Programs are hard to understand once created and
-difficult to debug and edit. The larger the size, the worse this problems becomes.
+difficult to debug and edit. The larger the size, the worse this problem becomes.
 
 This is related with the previous point and the proposed solution is similar.
   \item \textbf{Need for automatic layout}. When a program gets too large the layout
@@ -709,7 +710,7 @@ attractive layout.
 This problem is out of the scope of this thesis, although
 it certainly seems important for the future of VPL.
   \item \textbf{Lack of formal specification}. Currently, there is no formal way to describe
-a VPL such as the Backus-Naur Form, even if there is some work towards one was
+a VPL such as the Backus-Naur Form, even if some work towards one has
 already been made \cite{selker1988elements}.
 
 Again, this is out of scope, even
@@ -728,7 +729,7 @@ be processed by any other.
 In 1990, each graphical language required its own editor and environment, and there were no general purpose
 VPL editors.
 
-Currently there are alternatives of re-usable frontends for VPLs,
+Currently, there are alternatives of re-usable frontends for VPLs,
 such as Blockly \cite{blockly} or GoJS \cite{gojs}.
   \item \textbf{Lack of evidence of VPLs' worth}.
 
@@ -887,7 +888,7 @@ flexibility.
   \item There is a minimap that helps to navigate the screen, so we can have
 a higher level view of the layout \ref{fig:noflo2}).
   \item Weak typing makes it confuse to use some of the nodes, it is unclear
-when we can connect input and outputs with mismatching labels, because sometimes
+when we can connect input and outputs with mismatching labels because sometimes
 they are compatible and other times they aren't.
   \item Sometimes errors appear immediately, others we can just see them in
 runtime. This would be fine as long as it was clear that there was an error,
@@ -913,11 +914,11 @@ According to the popular data mining portal KDnuggets' latest tool popularity
 poll \cite{kdn}, RapidMiner is the most popular visual tool to use in applied
 machine learning. It is also the most complete, featuring 1500 different blocks \cite{rapidminer}.
 
-The product has too many features to be able to deeply analyze each one of them,
+The product has too many features to be able to analyze deeply each one of them,
 including cloud and repository capabilities for storing and sharing work,
 mechanisms for deploying models developed locally to a production server or
 an API for developing new blocks. RapidMiner is actually more of a suite rather
-than just a tool, so in our analysis we'll restrict ourselves to the design of
+than just a tool, so in our analysis, we'll restrict ourselves to the design of
 a model.
 
 The most differentiating factor between RapidMiner and the other VPLs we studied
@@ -962,7 +963,7 @@ Something that doesn't seem to work particularly well for someone using the tool
 for the first time are the abbreviated labels in the ports. They are cryptic
 enough that an inexperienced user has to click the node and read the description
 to understand what they are. Maybe it would make sense to either write the full
-label for the sake of clarity, or just don't show anything at all.
+label for the sake of clarity or just don't show anything at all.
 
 \subsubsection{Weka Knowledge Flow}
 
@@ -992,7 +993,7 @@ and sink nodes, but also between the different processing nodes' categories
 \subsubsection{Blender Composite Nodes}
 
 Blender Composite Nodes is part of the Blender open-source 3D computer graphics
-software and provides a way for the user to visually build (through a dataflow
+software and provides a way for the user to build visually (through a dataflow
 representation) a script that can be applied to images or Blender scenes \cite{blender}.
 
 It incorporates common VDP idioms such as source nodes (such as render layers or
@@ -1092,8 +1093,8 @@ a good type system.
 
 This VPL does not resemble the most popular ones, having some main differences:
 the program is designed from top to bottom rather than left to right, blocks
-don't have icons but explicit names and all ports have explicit types. This class
-of design choices don't seem to be clearly superior to other state of the art tools,
+don't have icons (using explicit names instead) and all ports have explicit types. This class
+of design choices doesn't seem to be clearly superior to other state of the art tools,
 so probably we won't be including them in our VPE.
 
 \begin{figure}[!htpb]
@@ -1108,7 +1109,7 @@ so probably we won't be including them in our VPE.
 Nevertheless, there are other interesting features in Viskell, many of which
 are tightly coupled to functional programming (such as how it supports currying,
 anonymous functions or case expressions). The exception is the capability to
-have an incomplete graph and allowing the user to textually insert code to fill
+have an incomplete graph and allowing the user to insert code textually to fill
 in the gaps (see the blue areas in Figure \ref{fig:viskell}).
 
 Being a work in progress, its authors have pointed out ideas of how to deal with

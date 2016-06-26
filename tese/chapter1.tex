@@ -29,11 +29,11 @@ In the second alternative one common way to approach it is by using bayesian rea
 where you model unknown causes with random variables, feed the model the data you
 have gathered and then perform inference to query for the
 desired, and previously unknown, variables \cite{thbay}. The problem in choosing
-this method is this last step, since it is non-trivial
+this method is this last step since it is non-trivial
 to write an inference method \cite{Duvenaud}.
 
 The solution to this has been building generic inference engines for graphical
-models, so that modeling and inference can be treated as separate concerns and
+models so that modeling and inference can be treated as separate concerns and
 scientists can focus on the modeling \cite{Jordan1996}. However, not all models can be represented as
 graphical models, and that’s why we now have Probabilistic Programming Languages
 (PPLs), which are able to represent a larger class of problems \cite{intpp}.
@@ -91,7 +91,7 @@ current ML methods \cite{darpa}. It identifies five strategic goals:
   domains and tool types
 \end{itemize}
 
-The purpose of this work is to try addressing the first four. In order to do so we
+The purpose of this work is to try addressing the first four. In order to do so, we
 aim to overcome the difficulties in learning a new language, either for
 inexperienced developers or seasoned ones, such as learning yet another syntax
 or getting accustomed to the language's idioms. It is known that typical
@@ -105,9 +105,9 @@ express themselves in the language they're using to solve a given problem.
 
 So, the goal of this dissertation will be to develop a Visual Programming
 Language (VPL) with probabilistic programming capabilities. The targeted
-audience are programmers and data scientists with background knowledge in
-statistics who aren't still comfortable
-with full blown PPLs, but wish to educate themselves in the topic so they can
+audience is programmers and data scientists with background knowledge in
+statistics which aren't still comfortable
+with full blown PPLs, but wish to educate themselves on the topic so they can
 eventually leverage the power of this novel machine learning approach.
 
 The way to do so would be developing a graphical editor, similar to
