@@ -2,7 +2,32 @@
 
 \section*{}
 
-Critical analysis: when to use or not, strengths and weaknesses.
+The generated code is fairly similar to one that a human would write, with the exceptions of string
+concatenation (in this case it would be more natural to join the text with the inference result via the
+plus operator rather than using String.concat), variables being declared and set in different lines
+and some types of loops (which have been justified in the last example).
+
+It is our belief that the graphical representation is clearer than its textual counterpart, mainly
+because parameters are named (it is clear that 0.5 is the probability of true when defining a
+Bernoulli distributions) and due to the use of colors: red for statements related with the inference
+engine, dark yellow for boolean distributions, green for text and I/O, blue for booleans and
+control structures and purple for numbers.
+
+The main reason to use a VPE rather than the original textual representation is because of the
+safety net it provides and which prevents the user from making either syntax or type errors.
+
+For these reasons, we believe this kind of visual programming environment can be useful to
+help data scientists who are inexperienced programmers take the first steps in using a PPL.
+
+However, if we don’t look at the VPE as an educational tool but rather as something that
+won’t be transitional, we think that productivity-wise it falls short when compared to tools such as
+RapidMiner, Excel or even textual representations. The main rationale behind this is that, because
+we chose to adopt a Blockly representation, the resulting VPE is not a completely visual language
+since it violates concreteness and does not fully encapsulate textual programming concepts (such
+as variable declarations). If there was someone considering to develop a VPL to be used as a
+permanent substitute to the textual form of PPLs, we believe he should explore a dataflow repre-
+sentation, which is at an higher-level of abstraction than Blockly and has been used in successful
+applications both in industry and academia.
 
 \section{Limitations}
 

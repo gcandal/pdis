@@ -44,10 +44,9 @@
 
 \begin{document}
 
-\title{\vspace*{-8mm}\textbf{\textsc{Modelo de Escrita de Resumos de\\Projecto/Dissertação: um Exemplo}}}
-\author{\emph{António Manuel Silva}\\[2mm]
-\small{Projecto/Dissertação realizado sob a orientação do \emph{Prof.\ José Marco Soares}}\\
-\small{na \emph{FazSoft Lda}}}
+\title{\vspace*{-8mm}\textbf{\textsc{Exploring Visual Programming Concepts\\for Probabilistic Programming}}}
+\author{\emph{Gabriel Cardoso Candal}\\[2mm]
+\small{Dissertation done under the supervision of \emph{Prof.\ Hugo Sereno Ferreira}}}
 \date{}
 \maketitle
 %no page number
@@ -57,86 +56,40 @@
 
 \begin{multicols}{2}
 
-\section{Motivação}\label{sec:motiva}
+\section{Motivation}
 
-Neste documento apresentam-se alguns conselhos e instruções para a preparação dos resumos de projecto/dissertação.
-Pede-se aos autores o favor de, dentro do possível, cumprirem com as instruções que são dadas, assim como com a estrutura apresentada, de forma a manter-se o mesmo aspecto em todos os resumos.
-Nas sub-secções~\ref{sec:lingua} a ~\ref{sec:number} podem encontrar-se alguns detalhes sobre a formatação do documento.
+There is, among several domains with interesting and relevant problems to solve (computer vision,
+cryptography, biology, fraud detection, recommender systems, ...) \cite{intml}, the recurring
+necessity to be able to make decisions in the face of uncertainty using machine
+learning (ML) methods.
+One of the ML approaches that can me used to tacke the problem is to build a
+probabilistic model through the use of a probabilistic programming language (PPL),
+which lets you write your model as a program and have off-the-shelf inference \cite{Prekopa2003}.
+Despite PPLs’ power and flexibility, it's difficult for their target audience
+(data scientists, statisticians, mathematicians, ...) to adapt to the textual
+interface these languages provide, which lack the graphical intuition provided
+by other tools they are accustomed to. We believe this negatively affects
+productivity and slows down the adoption of PPLs \cite{darpa}.
 
-Na secção ``Motivação'' deve ser apresentado o enquadramento do trabalho, dando ideia das necessidades que o mesmo cobre.
+\section{Goals}
 
-\section{Objectivos}\label{sec:goals}
+We aim to overcome
+the difficulties in learning a new language, either for inexperienced developers or seasoned
+ones, such as learning yet another syntax or getting accustomed to the language’s idioms. It is
+known that typical languages are difficult to learn and use \cite{Lewis1987} and that there are advantages in
+providing a language with a visual interface \cite{dfbeg}.
 
-A secção ``Objectivos'' deve enunciar claramente os objectivos a atingir com o trabalho de projecto/dissertação, enquadrando-os na respectiva área de actividade a que o trabalho se destina.
-Por exemplo, este documento tem como objectivos:
-\begin{itemize}
-\item Servir de modelo/exemplo do ponto de vista da dos resumos;
-\item Apresentar o aspecto gráfico que se pretende para os resumos;
-\item Disponibilizar \emph{templates} a quem pretenda utilizar \LaTeX.
-\end{itemize}
+The goal of this dissertation was to develop a Visual Programming Language (VPL) with
+probabilistic programming capabilities. The target audience is programmers and data scientists
+with background knowledge in statistics which aren’t still comfortable with full blown PPLs, but
+wish to educate themselves on the topic so they can eventually leverage the power of this novel
+machine learning approach.
 
-\section{Descrição do Trabalho}\label{sec:work}
+\section{Work description}
 
-Na secção ``Descrição do Trabalho'' (com este ou com outro nome que se julgue mais adequado) devem ser apresentadas as principais partes do trabalho, começando pela sua estruturação. Devem ser mencionadas as tecnologias utilizadas, com referências à sua interdependência e interligação dando especial ênfase aos componentes desenvolvidos pelo estudante no âmbito do trabalho em causa.
+During this dissertation we have contributed 
 
-No presente documento, seguem-se 9 subsecções com instruções acerca da extensão da comunicação, margens, estilos e outras recomendações gerais acerca da elaboração da versão final dos resumos.
-
-\subsection{Línguas Obrigatórias}\label{sec:lingua}
-
-Os resumos deverão ser apresentados, em ficheiros separados, em versões portuguesa e inglesa.
-No resumo em Português e em caso de necessidade de utilização de termos em língua Inglesa, estes deverão ser devidamente salientados pela adopção da fonte em itálico, como, por exemplo, \emph{Ray-Tracing}.
-
-\subsection{Cabeçalho de Identificação}
-
-O cabeçalho de identificação deve ser centrado e inicia-se com o título da comunicação, em letras maiúsculas de tamanho 12 e em negrito.
-Seguem-se, em linhas separadas e em tamanho 9, a identificação do estudante, da empresa e dos orientadores (estes dois numa única linha).
-Todos os quatro nomes devem ser em itálico.
-
-\subsection{Extensão do Artigo e Tipo de Letra}
-
-Cada resumo deve ser formatado com texto a duas colunas, não devendo exceder duas páginas de formato A4.
-\textbf{As duas colunas devem terminar sensivelmente à mesma altura}, em cada uma das páginas.
-
-O tipo de letra para o texto genérico deverá ser \emph{Times New Roman} com tamanho 9 e espaçamento simples entre linhas.
-O espaçamento entre parágrafos deverá ser estendido a 1.5 linhas (0.5 linha de espaçamento extra).
-
-\subsection{Dimensões das Margens}
-
-As margens a manter à volta do texto deverão ser as constantes na Tab.~\ref{tab:medidas}.
-
-\begin{table}[H]
-  \centering
-  \caption{Margens expressas em centímetros}
-\begin{tabular}{c | c}
-	\hline
-\textbf{Espaçamento} & \textbf{Medida}\\
-	\hline
-	\hline
-        Margem Superior & 3 cm\\
-        Margem Inferior & 3 cm\\
-        Margem Esquerda & 3 cm\\
-        Margem Direita  & 3 cm\\
-        Entre Colunas   & 1.2 cm\\
-	\hline
-\end{tabular}
-  \label{tab:medidas}
-\end{table}
-
-\subsection{Corpo do Texto}
-
-Todos os títulos de secções e subsecções devem ser escritos em negrito e com um espaçamento para cima ligeiramente superior ao de um parágrafo normal.
-Os títulos de níveis um e dois devem ter tamanhos, respectivamente, 11 e 9.
-As ``subsubsecções'' devem ser evitadas.
-
-\subsection{Numeração das Secções}
-
-As secções deverão ser numeradas com início em "1", de acordo com os níveis e subníveis respectivos, usando-se o ponto como separador.
-
-\subsection{Figuras, Equações e Quadros}
-
-As figuras e as tabelas deverão ser centradas, sempre que possível, à largura da coluna de texto em que se
-inserem (Tab.~\ref{tab:medidas} e Fig.~\ref{fig:figura}).
-As figuras e tabelas cujas dimensões não o permitam, podem ser centradas à largura da página.
+\subsection{Blbla}
 
 \begin{figure}[H]
 \centerline{\includegraphics[scale=.6]{figura.png}}
@@ -144,40 +97,9 @@ As figuras e tabelas cujas dimensões não o permitam, podem ser centradas à la
 \label{fig:figura}
 \end{figure}
 
-As legendas das figuras, a negrito, devem ser colocadas na sua parte inferior, contendo a respectiva numeração antecedida do termo \textbf{Fig.}
-O mesmo é aplicável às tabelas, excepto que a legenda deve ser iniciada pelo termo \textbf{Tab.}\ e deve ser colocada acima da tabela respectiva.
-Devem ser evitadas figuras ou outros elementos com cores.
-
-\begin{equation}
-  S_{L,i} = S_{L,i-1} . (1-S_{P,i-1}) = \prod_{k=0}^{i-1} (1-S_{p,k}) \label{eq:cif}
-\end{equation}
-% \begin{eqnarray}
-% S_{L,i} &=& S_{L,i-1} . (1-S_{P,i-1}) \nonumber\\
-%        &=& \prod_{k=0}^{i-1} (1-S_{p,k}) \label{eq:cif}
-% \end{eqnarray}
-
-As equações deverão conter a respectiva numeração na mesma linha de texto e à sua direita, entre parêntesis, como se mostra no exemplo da Equação~\ref{eq:cif}.
-
-As figuras deverão ser numeradas a partir do número 1 e com uma única sequência, i.e., sem reinício em cada secção.
-O mesmo deve suceder com as equações e com as tabelas.
-
-\subsection{Numeração de Páginas}\label{sec:number}
-
-As páginas \textbf{NÃO} devem ser numeradas.
-
-\subsection{Codificação dos Caracteres}\label{sec:encomding}
-
-Este exemplo está escrito em UTF-8; para outras codificações deverá
-ser alterado \texttt{\\usepackage[utf8]\{inputenc\}}.
+\section{Conclusions}\label{sec:conclui}
 
 
-\section{Conclusões}\label{sec:conclui}
-
-Espera-se que este documento possa contribuir para uma melhor qualidade dos resumos dos projectos/dissertações do MIEIC/FEUP.
-
-Documentos que não respeitem este aspecto gráfico serão liminarmente recusados, ficando os respectivos autores em falta em relação à sua entrega.
-
-Para as dissertações existem regras definidas noutro lado~\cite{kn:Mat93}.
 
 %%English version: comment first, uncomment second
 %\bibliographystyle{unsrt-pt}  % numeric, unsorted refs
