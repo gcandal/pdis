@@ -3,7 +3,7 @@
 %%
 %% PLEASE send improvements to jlopes at fe.up.pt and to jcf at fe.up.pt
 %%
-  
+
 \NeedsTeXFormat{LaTeX2e}
 \def \filename {feupteses.sty}
 \def \filedate {2011/07/31}
@@ -169,7 +169,7 @@ with the `report' document style}{}}{}
   \newcommand{\citet}{\cite}
   \newcommand{\citep}{\cite}
 \else
-  \if@alpharefs 
+  \if@alpharefs
      \newcommand{\citet}{\cite}
      \newcommand{\citep}{\cite}
   \else
@@ -205,7 +205,7 @@ with the `report' document style}{}}{}
 \def\additionalfronttext#1{\gdef\@provisionaltext{#1}}
 
 %% Members of the committee (viva)
-\newbox\@vivatext 
+\newbox\@vivatext
 
 %% add initial text
 \def\committeetext#1{%
@@ -237,7 +237,7 @@ with the `report' document style}{}}{}
 %% the user makes multiple calls to \supervisor
 %% Usage: \supervisor{role}{name}{title}
 
-\newbox\@supervisorstext 
+\newbox\@supervisorstext
 
 \def\supervisor#1#2{%
   \setbox\@supervisorstext\vbox%
@@ -313,7 +313,7 @@ with the `report' document style}{}}{}
 \fi
 \vfill\vfill
 \hbox to \textwidth{%
-  \setbox\@crestbox=\vbox{\includegraphics[max width=0.86\textwidth][width=72mm]{\@logo}}%
+  \setbox\@crestbox=\vbox{\includegraphics[width=72mm]{\@logo}}%
 \box\@crestbox%
 }
 \vfill%
@@ -365,7 +365,7 @@ with the `report' document style}{}}{}
 %% If the titlepage environment, the paragraph skip is infinitely
 %% stretchable, so if you leave a blank line between lines that you
 %% want space between, the space will stretch so that the title page
-%% fills up the entire page. 
+%% fills up the entire page.
 \def\titlepage{\cleardoublepage\centering
   \thispagestyle{empty}
   \parindent 0pt \parskip 10pt plus 1fil minus 1fil
@@ -460,9 +460,9 @@ with the `report' document style}{}}{}
  \fi
 \fi
 
-\if@onpaper 
+\if@onpaper
   \hypersetup{%
-    plainpages=false, 
+    plainpages=false,
     pdfpagelayout=SinglePage,
     bookmarksopen=false,
     bookmarksnumbered=true,
@@ -473,7 +473,7 @@ with the `report' document style}{}}{}
   }
 \else
   \hypersetup{%
-    plainpages=false, 
+    plainpages=false,
     pdfpagelayout=SinglePage,
     bookmarksopen=false,
     bookmarksnumbered=true,
